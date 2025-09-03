@@ -1,0 +1,36 @@
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Frontend";
+}
+
+<div id="particles-js" style="position:fixed; inset:0; z-index:-2;"></div>
+
+<div class="parallax-section">
+    <h2 class="content-block">Frontend Technologies</h2>
+    <div class="portfolio-grid">
+        <div class="portfolio-card">
+            <h3>HTML/CSS</h3>
+            <p>Building accessible responsive UIs with modern CSS and SASS.</p>
+        </div>
+        <div class="portfolio-card">
+            <h3>JS/TS</h3>
+            <p>Rich client interactivity using vanilla JS, TypeScript and frameworks.</p>
+        </div>
+        <div class="portfolio-card">
+            <h3>UX</h3>
+            <p>Focus on performance, perceived latency, and accessibility.</p>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script>
+        if (window.particlesJS) {
+            particlesJS('particles-js', {
+                particles: { number: { value: 50 }, color: { value: '#00ff7a' }, opacity: { value: 0.5 }, size: { value: 2 } },
+                interactivity: { events: { onhover: { enable: true, mode: 'grab' } } }
+            });
+        }
+    </script>
+}

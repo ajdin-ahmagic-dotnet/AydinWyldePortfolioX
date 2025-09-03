@@ -1,0 +1,97 @@
+@model List<AydinWyldePortfolioX.Models.BlogPost>
+
+<h2 class="content-block">Tech Blog</h2>
+
+<div class="blog-container">
+    @foreach (var post in Model)
+    {
+        <article class="blog-post">
+            <header class="blog-post-header">
+                <h3 class="blog-post-title">@post.Title</h3>
+                <div class="blog-post-meta">
+                    <span class="blog-post-date">
+                        <i class="fas fa-calendar-alt"></i> @post.PublishDate.ToString("MMM dd, yyyy")
+                    </span>
+                    <span class="blog-post-author">
+                        <i class="fas fa-user"></i> @post.Author
+                    </span>
+                    <span class="blog-post-category">
+                        <i class="fas fa-folder"></i> @post.Category
+                    </span>
+                </div>
+            </header>
+            <div class="blog-post-content">
+                <p>@post.Content</p>
+                <a href="#" class="main-menu-link" style="display: inline-block; margin-top: 1rem;">Read More</a>
+            </div>
+            <div class="blog-post-tags">
+                @foreach (var tag in post.Tags)
+                {
+                    <span class="blog-tag">@tag</span>
+                }
+            </div>
+        </article>
+    }
+    
+    <nav class="blog-pagination">
+        @for (int i = 1; i <= ViewBag.TotalPages; i++)
+        {
+            <a href="@Url.Action("Blog", "Home", new { page = i })" 
+               class="blog-pagination-link @(i == ViewBag.CurrentPage ? "active" : "")">
+                @i
+            </a>
+        }
+    </nav>
+</div>
+
+<div class="parallax-section counters-section">
+    <h2>Blog Statistics</h2>
+    <div class="counters-grid">
+        <div class="counter-item">
+            <div class="counter-icon"><i class="fas fa-newspaper"></i></div>
+            <h3 class="counter-number" data-target="36">0</h3>
+            <p class="counter-label">Articles Published</p>
+        </div>
+        <div class="counter-item">
+            <div class="counter-icon"><i class="fas fa-eye"></i></div>
+            <h3 class="counter-number" data-target="25000">0</h3>
+            <p class="counter-label">Monthly Readers</p>
+        </div>
+        <div class="counter-item">
+            <div class="counter-icon"><i class="fas fa-comment"></i></div>
+            <h3 class="counter-number" data-target="540">0</h3>
+            <p class="counter-label">Comments</p>
+        </div>
+        <div class="counter-item">
+            <div class="counter-icon"><i class="fas fa-heart"></i></div>
+            <h3 class="counter-number" data-target="12500">0</h3>
+            <p class="counter-label">Total Likes</p>
+        </div>
+    </div>
+</div>
+
+<div class="parallax-section">
+    <h2>Featured Topics</h2>
+    <div class="portfolio-grid">
+        <div class="portfolio-card">
+            <h3>ASP.NET Core</h3>
+            <p>Deep dives into web development, APIs, and performance optimization with ASP.NET Core.</p>
+            <a href="#" class="main-menu-link" style="display: inline-block; margin-top: 1rem;">View Articles</a>
+        </div>
+        <div class="portfolio-card">
+            <h3>Cloud Architecture</h3>
+            <p>Exploring microservices, serverless, and scalable cloud solutions for modern applications.</p>
+            <a href="#" class="main-menu-link" style="display: inline-block; margin-top: 1rem;">View Articles</a>
+        </div>
+        <div class="portfolio-card">
+            <h3>Database Performance</h3>
+            <p>Optimizing database queries, indexing strategies, and data access patterns for scalability.</p>
+            <a href="#" class="main-menu-link" style="display: inline-block; margin-top: 1rem;">View Articles</a>
+        </div>
+        <div class="portfolio-card">
+            <h3>DevOps Practices</h3>
+            <p>Implementing CI/CD pipelines, infrastructure as code, and automated testing strategies.</p>
+            <a href="#" class="main-menu-link" style="display: inline-block; margin-top: 1rem;">View Articles</a>
+        </div>
+    </div>
+</div>

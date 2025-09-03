@@ -1,0 +1,33 @@
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Cloud";
+}
+
+<div id="particles-js" style="position:fixed; inset:0; z-index:-2;"></div>
+
+<div class="parallax-section">
+    <h2 class="content-block">Cloud & DevOps</h2>
+    <div class="portfolio-grid">
+        <div class="portfolio-card">
+            <h3>Azure & Containers</h3>
+            <p>Deploying microservices with containers and managed platform services.</p>
+        </div>
+        <div class="portfolio-card">
+            <h3>CI/CD</h3>
+            <p>Automated pipelines with robust testing and deployment strategies.</p>
+        </div>
+        <div class="portfolio-card">
+            <h3>Monitoring</h3>
+            <p>Application Insights, logging and observability best practices.</p>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script>
+        if (window.particlesJS) {
+            particlesJS('particles-js', { particles: { number: { value: 40 }, color: { value: '#00ff7a' }, size: { value: 4 } }, interactivity: { events: { onhover: { enable: true, mode: 'repulse' } } } });
+        }
+    </script>
+}

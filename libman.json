@@ -1,0 +1,30 @@
+{
+  "version": "1.0",
+  "defaultProvider": "filesystem",
+  "libraries": [
+    {
+      "library": "node_modules/devextreme-dist/js/",
+      "destination": "wwwroot/js/devextreme",
+      "files": [
+        "dx.all.js",
+        "dx.all.debug.js"
+      ]
+    },
+    {
+      "library": "node_modules/devextreme-dist/js/dx.aspnet.mvc.js",
+      "destination": "wwwroot/js/devextreme/aspnet/"
+    },
+    {
+      "library": "node_modules/devextreme-dist/css",
+      "destination": "wwwroot/css/devextreme"
+    },
+    {
+      "library": "node_modules/devextreme-dist/css/fonts",
+      "destination": "wwwroot/css/devextreme/fonts"
+    },
+    {
+      "library": "node_modules/devextreme-dist/css/icons",
+      "destination": "wwwroot/css/devextreme/icons"
+    }
+  ]
+}

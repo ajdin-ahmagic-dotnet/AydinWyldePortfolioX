@@ -1,0 +1,124 @@
+@using DXApplication3.Models
+
+<div id="section-hero" class="parallax-section">
+    <h2>Continuous Learning Journey</h2>
+    <div class="portfolio-grid hero-cards">
+        <div class="portfolio-card">
+            <h3>Welcome</h3>
+            <p>Hi, I'm Aydin Wylde – building resilient, observable and secure software solutions with a product mindset.</p>
+        </div>
+        <div class="portfolio-card">
+            <h3>Core Strengths</h3>
+            <ul>
+                <li>Domain-driven design</li>
+                <li>Performance optimization</li>
+                <li>Cloud architecture</li>
+            </ul>
+        </div>
+        <div class="portfolio-card">
+            <h3>Current Focus</h3>
+            <p>Exploring .NET 9 minimal APIs, advanced caching strategies & improving developer experience.</p>
+        </div>
+        <div class="portfolio-card">
+            <h3>Welcome</h3>
+            <p>Hi, I'm Aydin Wylde – building resilient, observable and secure software solutions with a product mindset.</p>
+        </div>
+        <div class="portfolio-card">
+            <h3>Welcome</h3>
+            <p>Hi, I'm Aydin Wylde – building resilient, observable and secure software solutions with a product mindset.</p>
+        </div>
+        <div class="portfolio-card">
+            <h3>Welcome</h3>
+            <p>Hi, I'm Aydin Wylde – building resilient, observable and secure software solutions with a product mindset.</p>
+        </div>
+    </div>
+</div>
+
+<div id="section-expertise" class="parallax-section counters-section">
+    <h2>My Expertise</h2>
+    <div class="counters-grid">
+        <div class="counter-item">
+            <div class="counter-icon">💼</div>
+            <h3 class="counter-number" data-target="50">0</h3>
+            <p class="counter-label">Projects Completed</p>
+        </div>
+        <div class="counter-item">
+            <div class="counter-icon">🚀</div>
+            <h3 class="counter-number" data-target="25">0</h3>
+            <p class="counter-label">Core Skills</p>
+        </div>
+        <div class="counter-item">
+            <div class="counter-icon">⭐</div>
+            <h3 class="counter-number" data-target="98">0</h3>
+            <p class="counter-label">Client Satisfaction</p>
+        </div>
+        <div class="counter-item">
+            <div class="counter-icon">🏆</div>
+            <h3 class="counter-number" data-target="5">0</h3>
+            <p class="counter-label">Years Experience</p>
+        </div>
+    </div>
+</div>
+
+<div id="section-latest" class="parallax-section">
+    <h2>Latest Work</h2>
+    <div class="portfolio-grid">
+        <div class="portfolio-card">
+            <h3>Recent Achievement</h3>
+            <p>Successfully architected and deployed a microservices platform serving 100k+ daily users with 99.9% uptime.</p>
+        </div>
+        <div class="portfolio-card">
+            <h3>Innovation</h3>
+            <p>Implemented cutting-edge caching strategies that reduced API response times by 60% across all endpoints.</p>
+        </div>
+        <div class="portfolio-card">
+            <h3>Leadership</h3>
+            <p>Led a team of 8 developers in migrating legacy systems to modern .NET architecture without downtime.</p>
+        </div>
+        <div class="portfolio-card">
+            <h3>Recognition</h3>
+            <p>Received "Developer of the Year" award for outstanding contributions to system optimization and team mentoring.</p>
+        </div>
+        <div class="portfolio-card">
+            <h3>Microsoft Certified</h3>
+            <p>Received "Developer of the Year" award for outstanding contributions to system optimization and team mentoring.</p>
+        </div>
+        <div class="portfolio-card">
+            <h3>Mentoring</h3>
+            <p>Received "Developer of the Year" award for outstanding contributions to system optimization and team mentoring.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Ensure variables are declared
+    const items = document.querySelectorAll('.your-nav-item-selector'); // Replace with actual selector
+    const container = document.documentElement || document.body; // Adjust if you have a specific scroll container
+    const sections = [
+        document.getElementById('section-hero'),
+        document.getElementById('section-expertise'),
+        document.getElementById('section-latest')
+    ];
+
+    // Click scroll
+    items.forEach(item => {
+        item.addEventListener('click', () => {
+            const target = document.querySelector(item.dataset.target);
+            if(target){
+                target.scrollIntoView({behavior:'smooth', block:'start'});
+            }
+        });
+    });
+
+    // Active state on scroll
+    function updateActive(){
+        let activeIndex = 0;
+        const scrollPos = container.scrollTop + window.innerHeight * 0.3; // bias
+        sections.forEach((sec, idx) => {
+            if(sec.offsetTop <= scrollPos) activeIndex = idx;
+        });
+        items.forEach((i, idx)=> i.classList.toggle('active', idx===activeIndex));
+    }
+    container.addEventListener('scroll', updateActive);
+    updateActive();
+</script>

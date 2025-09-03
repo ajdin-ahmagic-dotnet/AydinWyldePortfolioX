@@ -1,0 +1,33 @@
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Architecture";
+}
+
+<div id="particles-js" style="position:fixed; inset:0; z-index:-2;"></div>
+
+<div class="parallax-section">
+    <h2 class="content-block">Architecture</h2>
+    <div class="portfolio-grid">
+        <div class="portfolio-card">
+            <h3>Design Patterns</h3>
+            <p>Applying proven design patterns to create maintainable systems.</p>
+        </div>
+        <div class="portfolio-card">
+            <h3>System Design</h3>
+            <p>Capacity planning, fault tolerance and scalability considerations.</p>
+        </div>
+        <div class="portfolio-card">
+            <h3>Governance</h3>
+            <p>Standards for security, observability and deployability.</p>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script>
+        if (window.particlesJS) {
+            particlesJS('particles-js', { particles: { number: { value: 45 }, color: { value: '#00ff7a' }, size: { value: 3 } }, interactivity: { events: { onhover: { enable: true, mode: 'grab' } } } });
+        }
+    </script>
+}

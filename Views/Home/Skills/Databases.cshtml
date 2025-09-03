@@ -1,0 +1,33 @@
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Databases";
+}
+
+<div id="particles-js" style="position:fixed; inset:0; z-index:-2;"></div>
+
+<div class="parallax-section">
+    <h2 class="content-block">Databases</h2>
+    <div class="portfolio-grid">
+        <div class="portfolio-card">
+            <h3>Relational</h3>
+            <p>Schema design and query optimization for SQL Server & PostgreSQL.</p>
+        </div>
+        <div class="portfolio-card">
+            <h3>NoSQL</h3>
+            <p>Designing document and key-value stores for scalable workloads.</p>
+        </div>
+        <div class="portfolio-card">
+            <h3>Indexing</h3>
+            <p>Index strategies and partitioning to improve performance.</p>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script>
+        if (window.particlesJS) {
+            particlesJS('particles-js', { particles: { number: { value: 35 }, color: { value: '#00ff7a' }, size: { value: 3 } }, interactivity: { events: { onhover: { enable: true, mode: 'repulse' } } } });
+        }
+    </script>
+}

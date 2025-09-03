@@ -1,0 +1,33 @@
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Tools";
+}
+
+<div id="particles-js" style="position:fixed; inset:0; z-index:-2;"></div>
+
+<div class="parallax-section">
+    <h2 class="content-block">Tools & Environments</h2>
+    <div class="portfolio-grid">
+        <div class="portfolio-card">
+            <h3>Dev Tools</h3>
+            <p>IDE, debugging and profiling tools.</p>
+        </div>
+        <div class="portfolio-card">
+            <h3>CI/CD Tools</h3>
+            <p>Pipelines, testing and release management.</p>
+        </div>
+        <div class="portfolio-card">
+            <h3>Monitoring</h3>
+            <p>Telemetry, logs and dashboards.</p>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script>
+        if (window.particlesJS) {
+            particlesJS('particles-js', { particles: { number: { value: 50 }, color: { value: '#00ff7a' }, size: { value: 3 } }, interactivity: { events: { onhover: { enable: true, mode: 'grab' } } } });
+        }
+    </script>
+}

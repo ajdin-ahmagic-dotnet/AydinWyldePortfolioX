@@ -1,0 +1,179 @@
+<h2 class="content-block">Search Results</h2>
+
+<div class="search-page">
+    <div class="search-stats" id="searchStats">
+        <p>Searching...</p>
+    </div>
+    
+    <div class="search-results-container" id="searchResultsContainer">
+        <!-- Results will be dynamically populated here -->
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const query = urlParams.get('q');
+        
+        if (query && query.length >= 2) { // Changed from 3 to 2 characters
+            // Set the search input value
+            const searchInput = document.getElementById('globalSearch');
+            if (searchInput) {
+                searchInput.value = query;
+            }
+            
+            // Wait for search index to be built - check multiple times
+            let attempts = 0;
+            const maxAttempts = 20;
+            
+            const checkIndex = () => {
+                attempts++;
+                
+                if (window.searchIndex) {
+                    const results = window.searchIndex.search(query);
+                    displayResults(results, query);
+                } else if (attempts < maxAttempts) {
+                    setTimeout(checkIndex, 500);
+                } else {
+                    document.getElementById('searchStats').innerHTML = 
+                        `<p class="error">Search index is still loading. Please wait a moment and try again.</p>`;
+                }
+            };
+            
+            setTimeout(checkIndex, 500);
+        } else {
+            document.getElementById('searchStats').innerHTML = 
+                `<p>Please enter a search term with at least 2 characters.</p>`;
+        }
+    });
+    
+    function displayResults(results, query) {
+        const statsElement = document.getElementById('searchStats');
+        const containerElement = document.getElementById('searchResultsContainer');
+        
+        if (results.length === 0) {
+            statsElement.innerHTML = `<p>No results found for: <strong>${query}</strong></p>`;
+            return;
+        }
+        
+        // Update stats
+        statsElement.innerHTML = `<p>Found <strong>${results.length}</strong> results for: <strong>${query}</strong></p>`;
+        
+        // Group results by page
+        const groupedResults = {};
+        results.forEach(result => {
+            const url = result.metadata.url.split('#')[0]; // Remove anchor
+            if (!groupedResults[url]) {
+                groupedResults[url] = [];
+            }
+            groupedResults[url].push(result);
+        });
+        
+        // Display results grouped by page
+        const html = Object.entries(groupedResults).map(([url, pageResults]) => {
+            const pageName = pageResults[0].metadata.pageName || url.split('/').pop() || 'Home';
+            const formattedUrl = url + (url.includes('?') ? '&' : '?') + `q=${encodeURIComponent(query)}`;
+            
+            const resultItems = pageResults.map(result => {
+                const title = result.metadata.title || 'Untitled';
+                const excerpt = window.searchIndex ? window.searchIndex.highlightMatches(
+                    result.metadata.excerpt,
+                    result.matchedTerms
+                ) : result.metadata.excerpt;
+                const type = result.metadata.type ? 
+                    `<span class="search-result-type">${result.metadata.type}</span>` : '';
+                
+                return `
+                    <div class="search-result-item">
+                        <div class="search-result-title">${title} ${type}</div>
+                        <div class="search-result-excerpt">${excerpt}</div>
+                    </div>
+                `;
+            }).join('');
+            
+            return `
+                <div class="search-result-page">
+                    <h3 class="search-page-title">
+                        <a href="${formattedUrl}">${pageName} Page</a>
+                    </h3>
+                    <div class="search-page-results">
+                        ${resultItems}
+                    </div>
+                </div>
+            `;
+        }).join('');
+        
+        containerElement.innerHTML = html;
+    }
+</script>
+
+<style>
+    .search-page {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 1rem;
+    }
+    
+    .search-stats {
+        background: rgba(0, 40, 0, 0.7);
+        border-radius: 8px;
+        padding: 1rem;
+        margin-bottom: 2rem;
+        border: 1px solid rgba(0, 255, 120, 0.2);
+    }
+    
+    .search-stats p {
+        margin: 0;
+        color: #00ff7a;
+    }
+    
+    .search-stats p.error {
+        color: #ff5555;
+    }
+    
+    .search-result-page {
+        background: rgba(0, 30, 0, 0.7);
+        border-radius: 12px;
+        border: 1px solid rgba(0, 255, 120, 0.2);
+        margin-bottom: 2rem;
+        overflow: hidden;
+    }
+    
+    .search-page-title {
+        background: rgba(0, 50, 0, 0.8);
+        margin: 0;
+        padding: 1rem;
+        border-bottom: 1px solid rgba(0, 255, 120, 0.2);
+    }
+    
+    .search-page-title a {
+        color: #00ff7a;
+        text-decoration: none;
+        display: block;
+        transition: all 0.2s ease;
+    }
+    
+    .search-page-title a:hover {
+        color: #ffffff;
+        text-shadow: 0 0 10px rgba(0, 255, 120, 0.7);
+    }
+    
+    .search-page-results {
+        padding: 0 1rem;
+    }
+    
+    .search-page .search-result-item {
+        padding: 1rem;
+        border-bottom: 1px solid rgba(0, 255, 120, 0.1);
+        cursor: pointer;
+        transition: background 0.2s ease;
+    }
+    
+    .search-page .search-result-item:last-child {
+        border-bottom: none;
+    }
+    
+    .search-page .search-result-item:hover {
+        background: rgba(0, 40, 0, 0.5);
+    }
+</style>

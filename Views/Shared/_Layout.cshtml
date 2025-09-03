@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Aydin Wylde</title>
+    <!-- Add Monoid font from CDN -->
+    <link href="https://cdn.jsdelivr.net/gh/larsenwork/monoid/Monoid.css" rel="stylesheet" />
+    <link href="~/css/devextreme/dx.fluent.blue.light.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/devextreme/dx.fluent.neon-overrides.css" />
+    <link rel="stylesheet" href="~/css/Site.css" />
+    <script src="~/js/devextreme/jquery.js"></script>
+    <script src="~/js/devextreme/dx.all.js"></script>
+    <script src="~/js/devextreme/aspnet/dx.aspnet.mvc.js"></script>
+    <script src="~/js/devextreme/aspnet/dx.aspnet.data.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <style>
+        /* Override font for all elements */
+        * {
+            font-family: 'Monoid', monospace;
+        }
+        input, button, textarea, select {
+            font-family: 'Monoid', monospace;
+        }
+
+    </style>
+</head>
+<body class="dx-viewport">
+    <canvas id="matrix-bg"></canvas>
+    <div class="page-transition" id="pageTransition"></div>
+
+    <header class="layout-header">
+        <nav class="main-navigation">
+            <div class="nav-container">
+                <div class="header-title">Aydin Wylde</div>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="nav-menu" id="main-nav">
+                    <ul class="main-menu">
+                        <li class="main-menu-item">
+                            <a href="@Url.Action("Index", "Home")" class="main-menu-link @(ViewContext.RouteData.Values["Action"]?.ToString() == "Index" ? "active" : "")">Home</a>
+                        </li>
+                        <li class="main-menu-item">
+                            <a href="@Url.Action("About", "Home")" class="main-menu-link @(ViewContext.RouteData.Values["Action"]?.ToString() == "About" ? "active" : "")">About</a>
+                        </li>
+                        <li class="main-menu-item">
+                            <a href="@Url.Action("Skills", "Home")" class="main-menu-link @(ViewContext.RouteData.Values["Action"]?.ToString() == "Skills" ? "active" : "")">Skills</a>
+                            <div class="dropdown-menu">
+                                <a href="@Url.Action("Skills", "Home", new { id = "Backend" })" class="dropdown-item">
+                                    <i class="fas fa-server dropdown-icon"></i>
+                                    Backend
+                                </a>
+                                <a href="@Url.Action("Skills", "Home", new { id = "Frontend" })" class="dropdown-item">
+                                    <i class="fas fa-laptop-code dropdown-icon"></i>
+                                    Frontend
+                                </a>
+                                <a href="@Url.Action("Skills", "Home", new { id = "Cloud" })" class="dropdown-item">
+                                    <i class="fas fa-cloud dropdown-icon"></i>
+                                    Cloud & DevOps
+                                </a>
+                                <a href="@Url.Action("Skills", "Home", new { id = "Architecture" })" class="dropdown-item">
+                                    <i class="fas fa-sitemap dropdown-icon"></i>
+                                    Architecture
+                                </a>
+                                <a href="@Url.Action("Skills", "Home", new { id = "Databases" })" class="dropdown-item">
+                                    <i class="fas fa-database dropdown-icon"></i>
+                                    Databases
+                                </a>
+                                <a href="@Url.Action("Skills", "Home", new { id = "Mobile" })" class="dropdown-item">
+                                    <i class="fas fa-mobile-alt dropdown-icon"></i>
+                                    Mobile Dev
+                                </a>
+                                <a href="@Url.Action("Skills", "Home", new { id = "Certifications" })" class="dropdown-item">
+                                    <i class="fas fa-certificate dropdown-icon"></i>
+                                    Certifications
+                                </a>
+                                <a href="@Url.Action("Skills", "Home", new { id = "Tools" })" class="dropdown-item">
+                                    <i class="fas fa-tools dropdown-icon"></i>
+                                    Tools
+                                </a>
+                            </div>
+                        </li>
+                        <li class="main-menu-item">
+                            <a href="@Url.Action("Projects", "Home")" class="main-menu-link @(ViewContext.RouteData.Values["Action"]?.ToString() == "Projects" ? "active" : "")">Projects</a>
+                        </li>
+                        <li class="main-menu-item">
+                            <a href="@Url.Action("Education", "Home")" class="main-menu-link @(ViewContext.RouteData.Values["Action"]?.ToString() == "Education" ? "active" : "")">Education</a>
+                        </li>
+                        <li class="main-menu-item">
+                            <a href="@Url.Action("Blog", "Home")" class="main-menu-link @(ViewContext.RouteData.Values["Action"].ToString() == "Blog" ? "active" : "")">Blog</a>
+                        </li>
+                        <li class="main-menu-item">
+                            <a href="@Url.Action("Contact", "Home")" class="main-menu-link @(ViewContext.RouteData.Values["Action"].ToString() == "Contact" ? "active" : "")">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="parallax-container">
+        <main id="content-wrapper">
+            <!-- Search Bar -->
+            <div class="search-container">
+                <form id="searchForm" action="@Url.Action("Search", "Home")" method="get" class="search-form">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" 
+                           class="search-input" 
+                           id="globalSearch" 
+                           name="q" 
+                           placeholder="Search for anything..."
+                           autocomplete="off"
+                           value="@(Context.Request.Query["q"])" />
+                    <div class="search-results" id="searchResults"></div>
+                </form>
+            </div>
+
+            @RenderBody()
+        </main>
+        <footer class="content-footer">
+            <div id="footer">&copy; @DateTime.Now.Year Aydin Wylde | Full-Stack Developer</div>
+        </footer>
+    </div>
+
+    <button id="backToTop" title="Back to top"><i class="fas fa-chevron-up"></i></button>
+    <div id="matrix-cursor"><span id="cursor-char">A</span></div>
+
+    <!-- Add search index script -->
+    <script src="~/js/search-index.js"></script>
+    
+    <script>
+        // Matrix code effect always running
+        (function initMatrix() {
+            var canvas = document.getElementById('matrix-bg');
+            if (!canvas) return;
+            var ctx = canvas.getContext && canvas.getContext('2d');
+            if (!ctx) return;
+
+            var letters = ('01ABCDEFGHIJKLMNOPQRSTUVWXYZ#$%*+-/').split('');
+            var fontSize = 14;
+            var columns;
+            var drops;
+
+            function resize() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+                columns = Math.max(1, Math.floor(canvas.width / fontSize));
+                drops = new Array(columns).fill(1);
+            }
+
+            resize();
+            window.addEventListener('resize', resize);
+
+            function draw() {
+                ctx.fillStyle = 'rgba(0,0,0,0.1)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                const greenShades = ['#00ff00', '#00dd00', '#00bb00', '#009900'];
+                ctx.font = fontSize + 'px monospace';
+                for (var i = 0; i < drops.length; i++) {
+                    const shade = greenShades[Math.floor(Math.random() * greenShades.length)];
+                    ctx.fillStyle = shade;
+                    var text = letters[Math.floor(Math.random() * letters.length)];
+                    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) { drops[i] = 0; }
+                    drops[i]++;
+                }
+            }
+            setInterval(draw, 50);
+        })();
+
+        // Mobile menu toggle
+        document.getElementById('mobileMenuToggle').addEventListener('click', function() {
+            document.getElementById('main-nav').classList.toggle('active');
+            this.querySelector('i').classList.toggle('fa-bars');
+            this.querySelector('i').classList.toggle('fa-times');
+        });
+
+        // Mobile menu dropdown toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuItems = document.querySelectorAll('.main-menu-item');
+            
+            if (window.innerWidth <= 768) {
+                menuItems.forEach(item => {
+                    const hasDropdown = item.querySelector('.dropdown-menu');
+                    if (hasDropdown) {
+                        const link = item.querySelector('.main-menu-link');
+                        link.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            item.classList.toggle('active');
+                        });
+                    }
+                });
+            }
+            
+            // Setup search form submission
+            const searchForm = document.getElementById('searchForm');
+            const searchInput = document.getElementById('globalSearch');
+            
+            if (searchForm && searchInput) {
+                searchForm.addEventListener('submit', function(e) {
+                    // Only submit if search has at least 3 characters
+                    if (searchInput.value.trim().length < 3) {
+                        e.preventDefault();
+                    }
+                });
+            }
+        });
+
+        // Navigation click handling with smooth transitions
+        document.querySelectorAll('.main-menu-link').forEach(link => {
+            if (!link.closest('.main-menu-item').classList.contains('active')) {
+                link.addEventListener('click', function(e) {
+                    if (e.currentTarget.getAttribute('href').includes('#')) return;
+                    e.preventDefault();
+                    
+                    const url = e.currentTarget.getAttribute('href');
+                    const transition = document.getElementById('pageTransition');
+                    transition.classList.add('active');
+                    
+                    document.getElementById('main-nav').classList.remove('active');
+                    
+                    setTimeout(() => {
+                        window.location.href = url;
+                    }, 300);
+                });
+            }
+        });
+
+        // Enhanced Back to top button logic (always visible)
+        (function initBackToTop() {
+            const btn = document.getElementById('backToTop');
+            if (!btn) return;
+            const container = document.querySelector('.parallax-container');
+            
+            container.addEventListener('scroll', function () {
+                if (container.scrollTop > 300) {
+                    btn.style.opacity = "1";
+                } else {
+                    btn.style.opacity = "0.5";
+                }
+            });
+            
+            btn.addEventListener('click', function () { 
+                container.scrollTo({ 
+                    top: 0, 
+                    behavior: 'smooth' 
+                }); 
+            });
+        })();
+
+        // Enhanced matrix cursor
+        (function initMatrixCursor() {
+            const cursor = document.getElementById('matrix-cursor');
+            const charSpan = document.getElementById('cursor-char');
+            if (!cursor || !charSpan) return;
+
+            if (window.matchMedia && window.matchMedia('(pointer: coarse)').matches) {
+                cursor.style.display = 'none';
+                return;
+            }
+
+            const chars = '01ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            function randChar() { return chars[Math.floor(Math.random() * chars.length)]; }
+            setInterval(function () { charSpan.textContent = randChar(); }, 100);
+
+            let lastX = 0, lastY = 0, targetX = 0, targetY = 0;
+            let rafId = null;
+
+            function move() {
+                lastX += (targetX - lastX) * 0.3;
+                lastY += (targetY - lastY) * 0.3;
+                cursor.style.transform = 'translate(' + lastX + 'px, ' + lastY + 'px)';
+                rafId = requestAnimationFrame(move);
+            }
+
+            function onMouseMove(e) {
+                targetX = e.clientX;
+                targetY = e.clientY;
+                if (rafId === null) move();
+            }
+
+            function onMouseLeave() {
+                if (rafId !== null) { cancelAnimationFrame(rafId); rafId = null; }
+            }
+
+            window.addEventListener('mousemove', onMouseMove);
+            window.addEventListener('mouseleave', onMouseLeave);
+            window.addEventListener('blur', onMouseLeave);
+            window.addEventListener('touchstart', function () { cursor.style.display = 'none'; }, { passive: true });
+        })();
+
+        // Enhanced parallax scroll effect with smooth animations
+        (function initParallax() {
+            const container = document.querySelector('.parallax-container');
+            const sections = document.querySelectorAll('.parallax-section');
+            
+            if (!sections.length) return;
+            
+            let ticking = false;
+            
+            function updateParallax() {
+                const scrolled = container.scrollTop;
+                const windowHeight = window.innerHeight;
+                
+                sections.forEach((section, index) => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+                    const sectionCenter = sectionTop + sectionHeight / 2;
+                    const distanceFromCenter = scrolled + windowHeight / 2 - sectionCenter;
+                    const normalizedDistance = distanceFromCenter / windowHeight;
+                    
+                    // Enhanced parallax with multiple effects
+                    if (scrolled + windowHeight > sectionTop && scrolled < sectionTop + sectionHeight) {
+                        const yPos = normalizedDistance * 30; // Reduced movement for smoother effect
+                        const scale = 1 + Math.abs(normalizedDistance) * 0.05;
+                        
+                        section.style.transform = `translateY(${yPos}px) scale(${Math.max(0.95, Math.min(1.05, scale))})`;
+                    }
+                });
+                
+                ticking = false;
+            }
+            
+            container.addEventListener('scroll', () => {
+                if (!ticking) {
+                    requestAnimationFrame(updateParallax);
+                    ticking = true;
+                }
+            });
+        })();
+
+        // Fixed counter animation to ensure counting works
+        function animateCounters() {
+            const counters = document.querySelectorAll('.counter-number');
+            counters.forEach((counter, index) => {
+                const target = parseInt(counter.getAttribute('data-target'));
+                const duration = 2000;
+                const frameRate = 60;
+                const frameDuration = 1000 / frameRate;
+                const totalFrames = duration / frameDuration;
+                const increment = target / totalFrames;
+                
+                let current = 0;
+                let frame = 0;
+                
+                // Reset counter if it was previously animated
+                counter.textContent = '0';
+                
+                const timer = setInterval(() => {
+                    frame++;
+                    current += increment;
+                    counter.textContent = Math.round(current);
+                    
+                    if (frame >= totalFrames) {
+                        counter.textContent = target;
+                        clearInterval(timer);
+                    }
+                }, frameDuration);
+            });
+        }
+
+        // Improved intersection observer for counter animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (entry.target.classList.contains('counters-section')) {
+                        animateCounters();
+                        observer.unobserve(entry.target);
+                    }
+                }
+            });
+        }, { threshold: 0.2 });
+
+        // Page initialization
+        document.addEventListener('DOMContentLoaded', () => {
+            // Observe counter sections
+            const countersSections = document.querySelectorAll('.counters-section');
+            countersSections.forEach(section => observer.observe(section));
+            
+            // Remove page transition on load
+            const transition = document.getElementById('pageTransition');
+            setTimeout(() => {
+                transition.classList.remove('active');
+            }, 100);
+        });
+    </script>
+
+@* Render optional page Scripts section (fixes unrendered 'Scripts' exception) *@
+@RenderSection("Scripts", required: false)
+</body>
+</html>

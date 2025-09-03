@@ -1,0 +1,33 @@
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Certifications";
+}
+
+<div id="particles-js" style="position:fixed; inset:0; z-index:-2;"></div>
+
+<div class="parallax-section">
+    <h2 class="content-block">Certifications</h2>
+    <div class="portfolio-grid">
+        <div class="portfolio-card">
+            <h3>Azure Certifications</h3>
+            <p>Azure Developer Associate and other cloud certifications.</p>
+        </div>
+        <div class="portfolio-card">
+            <h3>Security</h3>
+            <p>Security-focused certifications and ongoing training.</p>
+        </div>
+        <div class="portfolio-card">
+            <h3>Continuous Learning</h3>
+            <p>Commitment to regular upskilling and community learning.</p>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script>
+        if (window.particlesJS) {
+            particlesJS('particles-js', { particles: { number: { value: 30 }, color: { value: '#00ff7a' }, size: { value: 4 } }, interactivity: { events: { onhover: { enable: true, mode: 'repulse' } } } });
+        }
+    </script>
+}
