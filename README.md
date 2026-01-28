@@ -1,317 +1,43 @@
-# Aydin Wylde Portfolio
+## Security and Credentials Management
 
-A modern, Matrix-themed professional portfolio website built with ASP.NET Core 9.0, featuring an integrated blog system, admin panel, and visitor analytics.
+### Protecting Sensitive Information
 
-![.NET Version](https://img.shields.io/badge/.NET-9.0-512BD4)
-![License](https://img.shields.io/badge/license-MIT-green)
-![DevExtreme](https://img.shields.io/badge/DevExtreme-24.1-FF7200)
+**Never commit secrets to source control.** This includes:
+- Azure Cosmos DB connection strings
+- Account keys (primary/secondary)
+- Resource tokens
+- Any authentication credentials
 
-## 🌟 Features
+### Best Practices
 
-### 🎨 **Matrix-Themed Design**
-- Animated Matrix digital rain background
-- Custom mouse glow effects and particle trails
-- Smooth parallax scrolling sections
-- 3D card tilt effects on hover
-- Professional loading screen with progress animation
-
-### 🔐 **Admin Panel**
-- Secure authentication system
-- Clean, modern dashboard interface
-- Quick access via **Alt + Shift + A** hotkey
-- Real-time visitor analytics
-- Comprehensive blog post management
-
-### 📝 **Blog Management System**
-- Full CRUD operations for blog posts
-- Category organization
-- Featured posts spotlight
-- Tag-based filtering
-- Rich HTML content support
-- Author attribution
-- Publish date tracking
-
-### 📊 **Analytics Dashboard**
-- Real-time visitor tracking
-- Daily, weekly, and monthly statistics
-- Page view analytics
-- Browser and device type tracking
-- Visitor journey monitoring
-
-### 🎯 **Portfolio Sections**
-- **Home**: Hero section with quick stats
-- **About**: Professional introduction
-- **Skills**: Categorized technical expertise
-  - Backend Development
-  - Frontend Development
-  - Cloud & DevOps
-  - Architecture
-  - Databases
-  - Mobile Development
-  - Certifications
-  - Tools
-- **Projects**: Portfolio showcase
-- **Education**: Academic background
-- **Blog**: Technical articles and insights
-- **Contact**: Get in touch section
-
-## 🛠️ Technologies
-
-### Backend
-- **ASP.NET Core 9.0** - Web framework
-- **C# 12** - Programming language
-- **XML Storage** - Data persistence
-
-### Frontend
-- **DevExtreme 24.1** - UI components
-- **jQuery 3.7.1** - DOM manipulation
-- **Font Awesome 6.1.1** - Icons
-- **Custom CSS3** - Styling and animations
-- **Vanilla JavaScript** - Interactive features
-
-### Security
-- Session-based authentication
-- Credential encryption
-- Protected admin routes
-- CORS configuration
-
-## 📋 Prerequisites
-
-- [.NET 9.0 SDK](https://dotnet.microsoft.com/download/dotnet/9.0)
-- Windows, macOS, or Linux
-- Modern web browser (Chrome, Edge, Firefox, Safari)
-
-## 🚀 Installation
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/ajdin-ahmagic-dotnet/AydinWyldePortfolioX.git
-   cd AydinWyldePortfolioX
-   ```
-
-2. **Restore dependencies**
-   ```bash
-   dotnet restore
-   ```
-
-3. **Build the project**
-   ```bash
-   dotnet build
-   ```
-
-4. **Run the application**
-   ```bash
-   dotnet run
-   ```
-
-5. **Access the application**
-   - HTTP: `http://localhost:5001`
-   - HTTPS: `https://localhost:7001`
-
-## 🔧 Configuration
-
-### Port Configuration
-Default ports are configured in `Properties/launchSettings.json`:
-- **HTTP**: 5001
-- **HTTPS**: 7001
-
-### Admin Default Credentials
-On first run, use the following default credentials:
-- **Username**: `admin`
-- **Password**: `admin123`
-
-⚠️ **Important**: Change the default password immediately after first login!
-
-### Data Storage
-The application uses XML files stored in the `App_Data` folder:
-- `App_Data/Secure/admin_credentials.xml` - Admin authentication
-- `App_Data/Blog/blog_posts.xml` - Blog content
-- `App_Data/Analytics/visitor_stats.xml` - Analytics data
-
-## 📖 Usage
-
-### Accessing the Admin Panel
-
-1. **Via Keyboard Shortcut** (Recommended)
-   - Press `Alt + Shift + A` anywhere on the site
-   
-2. **Via URL**
-   - Navigate to any page and use the keyboard shortcut
-
-### Admin Panel Features
-
-#### Analytics Tab
-- View visitor statistics (today, this week, this month, all-time)
-- Monitor recent activity
-- Track popular pages
-
-#### Blog Posts Tab
-- Create new blog posts
-- Edit existing content
-- Delete posts
-- Toggle featured status
-- Manage categories and tags
-
-#### Settings Tab
-- Change admin password
-- Configure site settings
-
-### Creating a Blog Post
-
-1. Open admin panel (`Alt + Shift + A`)
-2. Navigate to "Blog Posts" tab
-3. Click "New Post" button
-4. Fill in the form:
-   - Title (required)
-   - Category
-   - Summary
-   - Content (HTML supported)
-   - Tags (comma-separated)
-   - Featured checkbox
-5. Click "Save Post"
-
-## 📁 Project Structure
-
-```
-AydinWyldePortfolioX/
-├── Controllers/
-│   ├── HomeController.cs          # Main application routes
-│   └── AdminController.cs         # Admin panel API endpoints
-├── Models/
-│   ├── BlogPost.cs               # Blog post data model
-│   ├── AdminCredentials.cs       # Admin auth model
-│   └── VisitorTracking.cs        # Analytics model
-├── Services/
-│   ├── BlogService.cs            # Blog operations
-│   ├── AdminService.cs           # Admin operations
-│   ├── VisitorTrackingService.cs # Analytics service
-│   └── NotificationService.cs    # Notifications (future)
-├── Middleware/
-│   └── VisitorTrackingMiddleware.cs # Analytics tracking
-├── Views/
-│   ├── Home/                     # Page views
-│   └── Shared/
-│       └── _Layout.cshtml        # Main layout
-├── wwwroot/
-│   ├── css/
-│   │   ├── Site.css             # Main styles
-│   │   ├── Site2.css            # Additional styles
-│   │   └── devextreme/          # DevExtreme themes
-│   ├── js/
-│   │   └── devextreme/          # DevExtreme libraries
-│   └── fonts/                    # Monoid font
-├── App_Data/                     # XML data storage
-├── Program.cs                    # Application entry point
-└── appsettings.json             # Configuration
+#### Use Environment Variables
+Store sensitive configuration in environment variables or secure configuration providers:
+```bash
+COSMOS_ENDPOINT=https://your-account.documents.azure.com:443/
+COSMOS_KEY=<stored-securely>
 ```
 
-## 🎨 Customization
+#### Leverage Azure Key Vault
+For production environments:
+- Store connection strings in **Azure Key Vault**
+- Use **Managed Identity** to authenticate your application
+- Reference secrets at runtime, never hardcode
 
-### Changing Colors
-The Matrix theme colors can be modified in `wwwroot/css/Site2.css`:
-```css
---matrix-green: #00ff7a;
---matrix-dark: rgba(0, 20, 0, 0.95);
---matrix-glow: rgba(0, 255, 120, 0.3);
+#### Use .gitignore
+Ensure your `.gitignore` includes:
+```
+.env
+appsettings.json
+appsettings.Development.json
+local.settings.json
 ```
 
-### Modifying Admin Hotkey
-Change the keyboard shortcut in `Views/Shared/_Layout.cshtml`:
-```javascript
-// Current: Alt + Shift + A
-if (e.altKey && e.shiftKey && (e.key === 'A' || e.key === 'a')) {
-    openAdminModal();
-}
-```
+#### Development with Emulator
+For local development, use the [Azure Cosmos DB Emulator](https://learn.microsoft.com/azure/cosmos-db/emulator):
+- Well-known emulator endpoint and key (safe for local use only)
+- No cloud costs
+- Never use emulator credentials in production
 
-### Adding New Skills
-Edit the skills data in `Controllers/HomeController.cs`:
-```csharp
-ViewBag.Skills = new Dictionary<string, List<string>>
-{
-    ["Backend"] = new List<string> { "C#", "ASP.NET Core", "..." },
-    // Add more categories...
-};
-```
-
-## 🔒 Security Considerations
-
-- Change default admin credentials immediately
-- Store `App_Data` folder outside web root in production
-- Enable HTTPS in production
-- Implement rate limiting for admin endpoints
-- Regular security updates
-- Consider database migration for production use
-
-## 🚀 Deployment
-
-### IIS Deployment
-1. Publish the application:
-   ```bash
-   dotnet publish -c Release -o ./publish
-   ```
-2. Configure IIS with ASP.NET Core Hosting Bundle
-3. Set appropriate file permissions for `App_Data`
-
-### Docker Deployment
-```dockerfile
-FROM mcr.microsoft.com/dotnet/aspnet:9.0
-WORKDIR /app
-COPY publish/ .
-EXPOSE 5001
-EXPOSE 7001
-ENTRYPOINT ["dotnet", "AydinWyldePortfolioX.dll"]
-```
-
-### Azure App Service
-1. Create an Azure App Service (Windows or Linux)
-2. Configure deployment from GitHub
-3. Set environment variables in App Service Configuration
-4. Enable HTTPS Only
-
-## 🐛 Known Issues
-
-- Loading screen may delay slightly on slower connections
-- Mouse effects disabled on touch devices (intentional)
-- Admin session expires after browser close
-
-## 🔮 Future Enhancements
-
-- [ ] Database migration (SQL Server/PostgreSQL)
-- [ ] Email notification system
-- [ ] Comment system for blog posts
-- [ ] Social media integration
-- [ ] RSS feed for blog
-- [ ] Multi-language support
-- [ ] Dark mode toggle
-- [ ] Advanced analytics (Google Analytics integration)
-- [ ] Portfolio project detail pages
-- [ ] Contact form with email service
-
-## 📝 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## 👤 Author
-
-**Aydin Wylde**
-- GitHub: [@ajdin-ahmagic-dotnet](https://github.com/ajdin-ahmagic-dotnet)
-- Portfolio: [Your Portfolio URL]
-
-## 🙏 Acknowledgments
-
-- [DevExtreme](https://js.devexpress.com/) - UI component library
-- [Font Awesome](https://fontawesome.com/) - Icon library
-- [Monoid Font](https://larsenwork.com/monoid/) - Programming font
-- Matrix digital rain inspiration from the Wachowskis' *The Matrix*
-
-## 📞 Support
-
-For issues, questions, or contributions:
-1. Open an issue on GitHub
-2. Submit a pull request
-3. Contact via portfolio website
-
----
-
-**Built with ❤️ using ASP.NET Core 9.0**
+### Additional Resources
+- [Azure Key Vault Documentation](https://learn.microsoft.com/azure/key-vault/)
+- [Managed Identity Overview](https://learn.microsoft.com/azure/active-directory/managed-identities-azure-resources/)
