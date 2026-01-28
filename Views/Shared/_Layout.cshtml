@@ -6,14 +6,11 @@
     <title>Aydin Wylde</title>
     <!-- Add Monoid font from CDN -->
     <link href="https://cdn.jsdelivr.net/gh/larsenwork/monoid/Monoid.css" rel="stylesheet" />
-    <link href="~/css/devextreme/dx.fluent.blue.light.css" rel="stylesheet" />
-    <link rel="stylesheet" href="~/css/devextreme/dx.fluent.neon-overrides.css" />
     <link rel="stylesheet" href="~/css/Site.css" />
-    <script src="~/js/devextreme/jquery.js"></script>
-    <script src="~/js/devextreme/dx.all.js"></script>
-    <script src="~/js/devextreme/aspnet/dx.aspnet.mvc.js"></script>
-    <script src="~/js/devextreme/aspnet/dx.aspnet.data.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <!-- Google AdSense (update with your publisher ID) -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
     <style>
         /* Override font for all elements */
         * {
@@ -26,8 +23,220 @@
     </style>
 </head>
 <body class="dx-viewport">
+    <!-- Professional Loading Screen -->
+    <div id="pageLoader" class="page-loader">
+        <div class="loader-content">
+            <div class="loader-logo">
+                <span class="loader-char" data-char="A">A</span>
+                <span class="loader-char" data-char="W">W</span>
+            </div>
+            <div class="loader-bar">
+                <div class="loader-progress"></div>
+            </div>
+            <div class="loader-text">
+                <span class="loader-status">Initializing</span>
+                <span class="loader-dots">...</span>
+            </div>
+            <div class="loader-matrix-rain"></div>
+        </div>
+    </div>
+
     <canvas id="matrix-bg"></canvas>
     <div class="page-transition" id="pageTransition"></div>
+
+    <!-- Mouse Follower Effects -->
+    <div id="mouse-glow" class="mouse-glow"></div>
+    <div id="mouse-trail"></div>
+
+    <!-- Admin Panel Modal -->
+    <div id="adminModal" class="admin-modal hidden">
+        <div class="admin-modal-overlay" onclick="closeAdminModal()"></div>
+        <div class="admin-modal-content">
+            <button class="admin-modal-close" onclick="closeAdminModal()">×</button>
+            
+            <!-- Login Screen -->
+            <div id="adminLoginScreen" class="admin-screen">
+                <div class="admin-login-header">
+                    <div class="admin-logo">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h2>Admin Access</h2>
+                    <p class="admin-subtitle">Secure Login Portal</p>
+                </div>
+                
+                <div id="loginMessage" class="admin-alert hidden"></div>
+                
+                <form id="loginForm" class="admin-form" onsubmit="handleLogin(event)">
+                    <div class="admin-input-group">
+                        <i class="fas fa-user input-icon"></i>
+                        <input type="text" id="loginUsername" class="admin-input" placeholder="Username" autocomplete="username" required />
+                    </div>
+                    
+                    <div class="admin-input-group">
+                        <i class="fas fa-lock input-icon"></i>
+                        <input type="password" id="loginPassword" class="admin-input" placeholder="Password" autocomplete="current-password" required />
+                    </div>
+                    
+                    <button type="submit" class="admin-btn-primary">
+                        <i class="fas fa-sign-in-alt"></i> Sign In
+                    </button>
+                </form>
+                
+                <div class="admin-login-footer">
+                    <p class="hint-text">Press <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>A</kbd> to open this dialog</p>
+                </div>
+            </div>
+            
+            <!-- Dashboard Screen -->
+            <div id="adminDashboard" class="admin-screen hidden">
+                <div class="admin-dashboard-header">
+                    <h2><i class="fas fa-tachometer-alt"></i> Admin Dashboard</h2>
+                    <button class="admin-btn-secondary" onclick="logoutAdmin()">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </div>
+                
+                <div class="admin-nav-tabs">
+                    <button class="admin-tab-btn active" onclick="switchTab('analytics')">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Analytics</span>
+                    </button>
+                    <button class="admin-tab-btn" onclick="switchTab('blog')">
+                        <i class="fas fa-blog"></i>
+                        <span>Blog Posts</span>
+                    </button>
+                    <button class="admin-tab-btn" onclick="switchTab('settings')">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </button>
+                </div>
+                
+                <div class="admin-tab-content">
+                    <!-- Analytics Tab -->
+                    <div id="tab-analytics" class="tab-pane active">
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-header">
+                                    <i class="fas fa-users"></i>
+                                    <span>Today</span>
+                                </div>
+                                <div class="stat-value" id="stat-today">0</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-header">
+                                    <i class="fas fa-calendar-week"></i>
+                                    <span>This Week</span>
+                                </div>
+                                <div class="stat-value" id="stat-week">0</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-header">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>This Month</span>
+                                </div>
+                                <div class="stat-value" id="stat-month">0</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-header">
+                                    <i class="fas fa-globe"></i>
+                                    <span>All Time</span>
+                                </div>
+                                <div class="stat-value" id="stat-total">0</div>
+                            </div>
+                        </div>
+                        <div class="analytics-content">
+                            <h3>Recent Activity</h3>
+                            <div id="recentActivity" class="activity-list"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Blog Tab -->
+                    <div id="tab-blog" class="tab-pane">
+                        <div class="blog-toolbar">
+                            <button class="admin-btn-primary" onclick="showNewPostForm()">
+                                <i class="fas fa-plus"></i> New Post
+                            </button>
+                        </div>
+                        <div id="blogPostsList" class="blog-list"></div>
+                    </div>
+                    
+                    <!-- Settings Tab -->
+                    <div id="tab-settings" class="tab-pane">
+                        <div class="settings-section">
+                            <h3>Account Security</h3>
+                            <div class="setting-item">
+                                <label>Change Password</label>
+                                <button class="admin-btn-secondary" onclick="alert('Password change feature - coming soon')">
+                                    <i class="fas fa-key"></i> Update Password
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- New/Edit Post Form -->
+            <div id="postEditorScreen" class="admin-screen hidden">
+                <div class="admin-form-header">
+                    <h2><i class="fas fa-edit"></i> <span id="postFormTitle">New Blog Post</span></h2>
+                    <button class="admin-btn-secondary" onclick="cancelPostEdit()">
+                        <i class="fas fa-times"></i> Cancel
+                    </button>
+                </div>
+                
+                <form id="postForm" class="admin-form" onsubmit="savePost(event)">
+                    <div class="admin-input-group">
+                        <label>Title</label>
+                        <input type="text" id="postTitle" class="admin-input" placeholder="Post title" required />
+                    </div>
+                    
+                    <div class="admin-input-group">
+                        <label>Category</label>
+                        <select id="postCategory" class="admin-input">
+                            <option value="ASP.NET Core">ASP.NET Core</option>
+                            <option value="C#">C#</option>
+                            <option value="Azure">Azure</option>
+                            <option value="News">News</option>
+                            <option value="Personal">Personal</option>
+                        </select>
+                    </div>
+                    
+                    <div class="admin-input-group">
+                        <label>Summary</label>
+                        <textarea id="postSummary" class="admin-input" rows="2" placeholder="Brief summary"></textarea>
+                    </div>
+                    
+                    <div class="admin-input-group">
+                        <label>Content (HTML)</label>
+                        <textarea id="postContent" class="admin-input" rows="10" placeholder="Post content..."></textarea>
+                    </div>
+                    
+                    <div class="admin-input-group">
+                        <label>Tags (comma separated)</label>
+                        <input type="text" id="postTags" class="admin-input" placeholder="tag1, tag2, tag3" />
+                    </div>
+                    
+                    <div class="admin-checkbox-group">
+                        <label>
+                            <input type="checkbox" id="postFeatured" />
+                            <span>Featured Post</span>
+                        </label>
+                    </div>
+                    
+                    <input type="hidden" id="postId" />
+                    
+                    <div class="admin-form-actions">
+                        <button type="button" class="admin-btn-secondary" onclick="cancelPostEdit()">
+                            <i class="fas fa-times"></i> Cancel
+                        </button>
+                        <button type="submit" class="admin-btn-primary">
+                            <i class="fas fa-save"></i> Save Post
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <header class="layout-header">
         <nav class="main-navigation">
@@ -130,6 +339,172 @@
     <script src="~/js/search-index.js"></script>
     
     <script>
+        // ========================================
+        // PROFESSIONAL LOADING SCREEN
+        // ========================================
+        (function initLoader() {
+            const loader = document.getElementById('pageLoader');
+            const progress = document.querySelector('.loader-progress');
+            const status = document.querySelector('.loader-status');
+            
+            if (!loader || !progress) return;
+            
+            const loadingMessages = [
+                'Initializing',
+                'Loading assets',
+                'Preparing interface',
+                'Almost ready',
+                'Welcome'
+            ];
+            
+            let currentProgress = 0;
+            let messageIndex = 0;
+            
+            function updateProgress() {
+                currentProgress += Math.random() * 20 + 10;
+                if (currentProgress > 100) currentProgress = 100;
+                
+                progress.style.width = currentProgress + '%';
+                
+                // Update loading message
+                const newIndex = Math.floor((currentProgress / 100) * (loadingMessages.length - 1));
+                if (newIndex !== messageIndex && status) {
+                    messageIndex = newIndex;
+                    status.textContent = loadingMessages[messageIndex];
+                }
+                
+                if (currentProgress < 100) {
+                    setTimeout(updateProgress, 80 + Math.random() * 100);
+                } else {
+                    completeLoading();
+                }
+            }
+            
+            function completeLoading() {
+                setTimeout(() => {
+                    loader.classList.add('hidden');
+                    document.body.style.overflow = '';
+                }, 400);
+            }
+            
+            // Start loading animation
+            document.body.style.overflow = 'hidden';
+            
+            // Fail-safe: ensure loading completes within 3 seconds
+            setTimeout(completeLoading, 3000);
+            
+            // Start progress animation
+            setTimeout(updateProgress, 200);
+        })();
+
+        // ========================================
+        // ENHANCED MOUSE EFFECTS & PARALLAX
+        // ========================================
+        (function initMouseEffects() {
+            const mouseGlow = document.getElementById('mouse-glow');
+            const trailContainer = document.getElementById('mouse-trail');
+            
+            // Skip on touch devices
+            if (window.matchMedia && window.matchMedia('(pointer: coarse)').matches) {
+                if (mouseGlow) mouseGlow.style.display = 'none';
+                document.body.style.cursor = 'auto';
+                return;
+            }
+            
+            let mouseX = 0, mouseY = 0;
+            let glowX = 0, glowY = 0;
+            let lastTrailTime = 0;
+            
+            // Smooth glow follow
+            function animateGlow() {
+                glowX += (mouseX - glowX) * 0.1;
+                glowY += (mouseY - glowY) * 0.1;
+                
+                if (mouseGlow) {
+                    mouseGlow.style.left = glowX + 'px';
+                    mouseGlow.style.top = glowY + 'px';
+                }
+                
+                requestAnimationFrame(animateGlow);
+            }
+            animateGlow();
+            
+            // Trail effect
+            function createTrailParticle(x, y) {
+                if (!trailContainer) return;
+                
+                const particle = document.createElement('div');
+                particle.className = 'trail-particle';
+                particle.style.left = (x - 3) + 'px';
+                particle.style.top = (y - 3) + 'px';
+                trailContainer.appendChild(particle);
+                
+                setTimeout(() => {
+                    particle.remove();
+                }, 800);
+            }
+            
+            // Card tilt effect
+            function handleCardTilt(card, e) {
+                const rect = card.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+                
+                const deltaX = (e.clientX - centerX) / (rect.width / 2);
+                const deltaY = (e.clientY - centerY) / (rect.height / 2);
+                
+                const rotateX = deltaY * -10; // Max 10 degrees
+                const rotateY = deltaX * 10;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+                card.classList.add('tilt-active');
+            }
+            
+            function resetCardTilt(card) {
+                card.style.transform = '';
+                card.classList.remove('tilt-active');
+            }
+            
+            // Apply tilt to interactive cards
+            function setupCardTilt() {
+                const cards = document.querySelectorAll('.portfolio-card, .blog-card, .counter-item, .blog-hero-card, .skill-card');
+                
+                cards.forEach(card => {
+                    card.addEventListener('mousemove', (e) => handleCardTilt(card, e));
+                    card.addEventListener('mouseleave', () => resetCardTilt(card));
+                });
+            }
+            
+            // Global mouse move handler
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                
+                // Create trail particles (throttled)
+                const now = Date.now();
+                if (now - lastTrailTime > 50) {
+                    createTrailParticle(e.clientX, e.clientY);
+                    lastTrailTime = now;
+                }
+            });
+            
+            // Hide effects when mouse leaves window
+            document.addEventListener('mouseleave', () => {
+                if (mouseGlow) mouseGlow.classList.add('hidden');
+            });
+            
+            document.addEventListener('mouseenter', () => {
+                if (mouseGlow) mouseGlow.classList.remove('hidden');
+            });
+            
+            // Setup card tilt on DOM ready
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', setupCardTilt);
+            } else {
+                setupCardTilt();
+            }
+        })();
+
         // Matrix code effect always running
         (function initMatrix() {
             var canvas = document.getElementById('matrix-bg');
@@ -253,41 +628,78 @@
         (function initMatrixCursor() {
             const cursor = document.getElementById('matrix-cursor');
             const charSpan = document.getElementById('cursor-char');
-            if (!cursor || !charSpan) return;
-
-            if (window.matchMedia && window.matchMedia('(pointer: coarse)').matches) {
-                cursor.style.display = 'none';
+            if (!cursor || !charSpan) {
+                console.log('Matrix cursor elements not found');
                 return;
             }
 
-            const chars = '01ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-            function randChar() { return chars[Math.floor(Math.random() * chars.length)]; }
-            setInterval(function () { charSpan.textContent = randChar(); }, 100);
-
-            let lastX = 0, lastY = 0, targetX = 0, targetY = 0;
-            let rafId = null;
-
-            function move() {
-                lastX += (targetX - lastX) * 0.3;
-                lastY += (targetY - lastY) * 0.3;
-                cursor.style.transform = 'translate(' + lastX + 'px, ' + lastY + 'px)';
-                rafId = requestAnimationFrame(move);
+            // Hide on touch devices
+            if (window.matchMedia && window.matchMedia('(pointer: coarse)').matches) {
+                cursor.style.display = 'none';
+                document.body.style.cursor = 'auto';
+                return;
             }
 
-            function onMouseMove(e) {
+            const chars = '01ABCDEFGHIJKLMNOPQRSTUVWXYZ#$%&*';
+            function randChar() { return chars[Math.floor(Math.random() * chars.length)]; }
+            setInterval(function () { charSpan.textContent = randChar(); }, 80);
+
+            // Position tracking
+            let currentX = window.innerWidth / 2;
+            let currentY = window.innerHeight / 2;
+            let targetX = currentX;
+            let targetY = currentY;
+            
+            // Get cursor element dimensions for centering
+            const cursorSize = 54;
+            const offset = cursorSize / 2;
+            
+            // Set initial position
+            cursor.style.left = '0px';
+            cursor.style.top = '0px';
+            cursor.style.opacity = '1';
+
+            // Animation loop - runs continuously
+            function animate() {
+                // Smooth interpolation
+                currentX += (targetX - currentX) * 0.15;
+                currentY += (targetY - currentY) * 0.15;
+                
+                // Apply transform
+                cursor.style.transform = 'translate3d(' + (currentX - offset) + 'px, ' + (currentY - offset) + 'px, 0)';
+                
+                requestAnimationFrame(animate);
+            }
+            
+            // Start animation immediately
+            animate();
+
+            // Update target position on mouse move
+            document.addEventListener('mousemove', function(e) {
                 targetX = e.clientX;
                 targetY = e.clientY;
-                if (rafId === null) move();
-            }
+                cursor.style.opacity = '1';
+            }, { passive: true });
 
-            function onMouseLeave() {
-                if (rafId !== null) { cancelAnimationFrame(rafId); rafId = null; }
-            }
+            // Hide when mouse leaves document
+            document.addEventListener('mouseleave', function() {
+                cursor.style.opacity = '0';
+            });
+            
+            // Show when mouse enters document
+            document.addEventListener('mouseenter', function(e) {
+                targetX = e.clientX;
+                targetY = e.clientY;
+                currentX = e.clientX;
+                currentY = e.clientY;
+                cursor.style.opacity = '1';
+            });
 
-            window.addEventListener('mousemove', onMouseMove);
-            window.addEventListener('mouseleave', onMouseLeave);
-            window.addEventListener('blur', onMouseLeave);
-            window.addEventListener('touchstart', function () { cursor.style.display = 'none'; }, { passive: true });
+            // Hide on touch
+            window.addEventListener('touchstart', function () { 
+                cursor.style.display = 'none'; 
+                document.body.style.cursor = 'auto';
+            }, { passive: true });
         })();
 
         // Enhanced parallax scroll effect with smooth animations
@@ -383,6 +795,303 @@
             setTimeout(() => {
                 transition.classList.remove('active');
             }, 100);
+        });
+
+        // ============================================
+        // ADMIN PANEL - Secret Key Combination Handler
+        // Press: Ctrl + Shift + A + W (in sequence)
+        // ============================================
+        (function initAdminPanel() {
+            // Admin dialog hotkey: Alt+Shift+A (safe, no browser conflicts)
+            document.addEventListener('keydown', function(e) {
+                // Alt+Shift+A - doesn't conflict with Edge or Chrome shortcuts
+                if (e.altKey && e.shiftKey && (e.key === 'A' || e.key === 'a')) {
+                    e.preventDefault();
+                    openAdminModal();
+                }
+            });
+        })();
+
+        // Admin Modal Functions
+        let isAdminInitialized = false;
+
+        function openAdminModal() {
+            const modal = document.getElementById('adminModal');
+            modal.classList.remove('hidden');
+            showLoginScreen();
+        }
+
+        function closeAdminModal() {
+            document.getElementById('adminModal').classList.add('hidden');
+            resetAllScreens();
+        }
+
+        function showScreen(screenId) {
+            document.querySelectorAll('.admin-screen').forEach(s => s.classList.add('hidden'));
+            document.getElementById(screenId).classList.remove('hidden');
+        }
+
+        function resetAllScreens() {
+            showScreen('adminLoginScreen');
+            document.getElementById('loginUsername').value = '';
+            document.getElementById('loginPassword').value = '';
+            document.getElementById('loginMessage').classList.add('hidden');
+        }
+
+        function showLoginScreen() {
+            showScreen('adminLoginScreen');
+        }
+
+        async function handleLogin(event) {
+            event.preventDefault();
+            
+            const username = document.getElementById('loginUsername').value;
+            const password = document.getElementById('loginPassword').value;
+            const messageEl = document.getElementById('loginMessage');
+            
+            messageEl.classList.add('hidden');
+            
+            try {
+                const response = await fetch('/api/admin/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    messageEl.textContent = 'Login successful!';
+                    messageEl.classList.remove('error');
+                    messageEl.classList.add('success');
+                    messageEl.classList.remove('hidden');
+                    
+                    setTimeout(() => showDashboardScreen(), 500);
+                } else {
+                    messageEl.textContent = data.error || 'Invalid credentials';
+                    messageEl.classList.remove('success');
+                    messageEl.classList.add('error');
+                    messageEl.classList.remove('hidden');
+                }
+            } catch (error) {
+                messageEl.textContent = 'Connection error. Please try again.';
+                messageEl.classList.remove('success');
+                messageEl.classList.add('error');
+                messageEl.classList.remove('hidden');
+            }
+        }
+
+        async function logoutAdmin() {
+            try {
+                await fetch('/api/admin/logout', { method: 'POST' });
+            } catch (error) {}
+            showLoginScreen();
+        }
+
+        function showDashboardScreen() {
+            showScreen('adminDashboard');
+            switchTab('analytics');
+            loadDashboardData();
+        }
+
+        function switchTab(tabName) {
+            // Update tab buttons
+            document.querySelectorAll('.admin-tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event?.currentTarget?.classList.add('active');
+            
+            // Show selected tab content
+            document.querySelectorAll('.tab-pane').forEach(pane => {
+                pane.classList.remove('active');
+            });
+            document.getElementById('tab-' + tabName)?.classList.add('active');
+            
+            // Load tab data
+            if (tabName === 'blog') {
+                loadBlogPosts();
+            }
+        }
+
+        async function loadDashboardData() {
+            try {
+                const response = await fetch('/api/admin/dashboard');
+                if (!response.ok) {
+                    showLoginScreen();
+                    return;
+                }
+                
+                const data = await response.json();
+                
+                // Update stats
+                document.getElementById('stat-today').textContent = data.TodayVisitors || 0;
+                document.getElementById('stat-week').textContent = data.ThisWeekVisitors || 0;
+                document.getElementById('stat-month').textContent = data.ThisMonthVisitors || 0;
+                document.getElementById('stat-total').textContent = data.TotalVisitors || 0;
+                
+                // Show recent activity
+                const activityHtml = '<div style="color: rgba(0,255,120,0.7);">Activity monitoring coming soon...</div>';
+                document.getElementById('recentActivity').innerHTML = activityHtml;
+                
+            } catch (error) {
+                console.error('Error loading dashboard:', error);
+            }
+        }
+
+        async function loadBlogPosts() {
+            try {
+                const response = await fetch('/api/admin/blog/posts');
+                if (!response.ok) return;
+                
+                const posts = await response.json();
+                const listEl = document.getElementById('blogPostsList');
+                
+                if (posts.length === 0) {
+                    listEl.innerHTML = '<div style="text-align:center; color:rgba(0,255,120,0.6); padding:40px;">No blog posts yet. Create your first post!</div>';
+                    return;
+                }
+                
+                listEl.innerHTML = posts.map(post => `
+                    <div class="blog-item">
+                        <div class="blog-item-info">
+                            <h4>${post.title}</h4>
+                            <div class="blog-item-meta">
+                                <span>${post.category}</span> • 
+                                <span>${post.date}</span>
+                                ${post.featured ? ' • <strong style="color:#00ff7a">Featured</strong>' : ''}
+                            </div>
+                        </div>
+                        <div class="blog-item-actions">
+                            <button class="admin-btn-secondary" onclick="editPost('${post.id}')">
+                                <i class="fas fa-edit"></i> Edit
+                            </button>
+                            <button class="admin-btn-secondary" onclick="deletePost('${post.id}')" style="border-color:rgba(255,80,80,0.4); color:#ff5050;">
+                                <i class="fas fa-trash"></i> Delete
+                            </button>
+                        </div>
+                    </div>
+                `).join('');
+            } catch (error) {
+                console.error('Error loading posts:', error);
+            }
+        }
+
+        function showNewPostForm() {
+            document.getElementById('postFormTitle').textContent = 'New Blog Post';
+            document.getElementById('postId').value = '';
+            document.getElementById('postTitle').value = '';
+            document.getElementById('postCategory').value = 'ASP.NET Core';
+            document.getElementById('postSummary').value = '';
+            document.getElementById('postContent').value = '';
+            document.getElementById('postTags').value = '';
+            document.getElementById('postFeatured').checked = false;
+            
+            showScreen('postEditorScreen');
+        }
+
+        async function editPost(postId) {
+            try {
+                const response = await fetch(`/api/admin/blog/post/${postId}`);
+                if (!response.ok) return;
+                
+                const post = await response.json();
+                
+                document.getElementById('postFormTitle').textContent = 'Edit Blog Post';
+                document.getElementById('postId').value = post.Id;
+                document.getElementById('postTitle').value = post.Title;
+                document.getElementById('postCategory').value = post.Category;
+                document.getElementById('postSummary').value = post.Summary;
+                document.getElementById('postContent').value = post.Content;
+                document.getElementById('postTags').value = post.Tags;
+                document.getElementById('postFeatured').checked = post.Featured;
+                
+                showScreen('postEditorScreen');
+            } catch (error) {
+                alert('Error loading post');
+            }
+        }
+
+        async function savePost(event) {
+            event.preventDefault();
+            
+            const postData = {
+                id: document.getElementById('postId').value || null,
+                title: document.getElementById('postTitle').value,
+                category: document.getElementById('postCategory').value,
+                summary: document.getElementById('postSummary').value,
+                content: document.getElementById('postContent').value,
+                tags: document.getElementById('postTags').value,
+                featured: document.getElementById('postFeatured').checked
+            };
+            
+            try {
+                const url = postData.id ? `/api/admin/blog/update/${postData.id}` : '/api/admin/blog/create';
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(postData)
+                });
+                
+                if (response.ok) {
+                    alert('Post saved successfully!');
+                    showDashboardScreen();
+                    switchTab('blog');
+                } else {
+                    alert('Error saving post');
+                }
+            } catch (error) {
+                alert('Error saving post');
+            }
+        }
+
+        async function deletePost(postId) {
+            if (!confirm('Are you sure you want to delete this post?')) return;
+            
+            try {
+                const response = await fetch(`/api/admin/blog/delete/${postId}`, {
+                    method: 'POST'
+                });
+                
+                if (response.ok) {
+                    loadBlogPosts();
+                } else {
+                    alert('Error deleting post');
+                }
+            } catch (error) {
+                alert('Error deleting post');
+            }
+        }
+
+        function cancelPostEdit() {
+            showDashboardScreen();
+            switchTab('blog');
+        }
+                
+                // Render recent visitors
+                const visitors = data.RecentVisitors || [];
+                const visitorsHtml = visitors.slice(0, 10).map(v => 
+                    `<tr>
+                        <td>${new Date(v.VisitTime).toLocaleString()}</td>
+                        <td>${v.PageVisited}</td>
+                        <td>${v.Browser}</td>
+                        <td>${v.DeviceType}</td>
+                    </tr>`
+                ).join('');
+                document.getElementById('recentVisitorsTable').innerHTML = 
+                    `<table class="admin-table">
+                        <thead><tr><th>Time</th><th>Page</th><th>Browser</th><th>Device</th></tr></thead>
+                        <tbody>${visitorsHtml || '<tr><td colspan="4">No visitors yet</td></tr>'}</tbody>
+                    </table>`;
+            } catch (error) {
+                console.error('Error loading dashboard:', error);
+            }
+        }
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && !document.getElementById('adminModal').classList.contains('hidden')) {
+                closeAdminModal();
+            }
         });
     </script>
 

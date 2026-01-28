@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfBlogPost xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <BlogPost>
+    <Id>1</Id>
+    <Title>Getting Started with ASP.NET Core 9</Title>
+    <Slug>getting-started-aspnet-core-9</Slug>
+    <Summary>A comprehensive guide to building modern web applications with ASP.NET Core 9, covering the latest features and best practices.</Summary>
+    <Content>&lt;h3&gt;Introduction&lt;/h3&gt;
+&lt;p&gt;ASP.NET Core 9 brings exciting new features and performance improvements to the .NET ecosystem. In this article, we'll explore the key changes and how to leverage them in your applications.&lt;/p&gt;
+
+&lt;h3&gt;What's New in .NET 9&lt;/h3&gt;
+&lt;p&gt;The latest release focuses on performance, cloud-native development, and developer productivity. Key highlights include:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Native AOT improvements for faster startup times&lt;/li&gt;
+&lt;li&gt;Enhanced minimal APIs with better OpenAPI support&lt;/li&gt;
+&lt;li&gt;Blazor improvements for hybrid applications&lt;/li&gt;
+&lt;li&gt;Better performance in Entity Framework Core&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Getting Started&lt;/h3&gt;
+&lt;p&gt;To create a new ASP.NET Core 9 project, ensure you have the .NET 9 SDK installed, then run:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;dotnet new webapp -n MyWebApp
+cd MyWebApp
+dotnet run&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3&gt;Conclusion&lt;/h3&gt;
+&lt;p&gt;ASP.NET Core 9 continues to evolve as a powerful framework for building modern web applications. Start exploring today!&lt;/p&gt;</Content>
+    <PublishDate>2026-01-26T13:49:06.4639217Z</PublishDate>
+    <LastModified xsi:nil="true" />
+    <Author>Aydin Wylde</Author>
+    <Category>ASP.NET Core</Category>
+    <Tags>
+      <Tag>ASP.NET Core</Tag>
+      <Tag>.NET 9</Tag>
+      <Tag>Web Development</Tag>
+      <Tag>Tutorial</Tag>
+    </Tags>
+    <IsFeatured>true</IsFeatured>
+    <FeaturedImage>/images/blog/aspnet-core-9.jpg</FeaturedImage>
+    <ViewCount>0</ViewCount>
+    <IsPublished>true</IsPublished>
+  </BlogPost>
+  <BlogPost>
+    <Id>2</Id>
+    <Title>Mastering C# Pattern Matching</Title>
+    <Slug>mastering-csharp-pattern-matching</Slug>
+    <Summary>Deep dive into C# pattern matching features, from basic is expressions to advanced switch expressions and recursive patterns.</Summary>
+    <Content>&lt;h3&gt;Pattern Matching in C#&lt;/h3&gt;
+&lt;p&gt;Pattern matching is one of the most powerful features in modern C#. It allows you to write cleaner, more expressive code by testing values against patterns.&lt;/p&gt;
+
+&lt;h3&gt;Type Patterns&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;object obj = "Hello";
+if (obj is string s)
+{
+    Console.WriteLine(s.ToUpper());
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3&gt;Switch Expressions&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;var discount = customer switch
+{
+    { IsPremium: true, Years: &gt; 5 } =&gt; 0.20m,
+    { IsPremium: true } =&gt; 0.15m,
+    { Years: &gt; 3 } =&gt; 0.10m,
+    _ =&gt; 0.05m
+};&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3&gt;List Patterns (C# 11+)&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;int[] numbers = { 1, 2, 3 };
+var result = numbers switch
+{
+    [1, 2, 3] =&gt; "Exact match",
+    [1, .., 3] =&gt; "Starts with 1, ends with 3",
+    [_, _, _] =&gt; "Three elements",
+    _ =&gt; "Other"
+};&lt;/code&gt;&lt;/pre&gt;</Content>
+    <PublishDate>2026-01-23T13:49:06.4642115Z</PublishDate>
+    <LastModified xsi:nil="true" />
+    <Author>Aydin Wylde</Author>
+    <Category>C#</Category>
+    <Tags>
+      <Tag>C#</Tag>
+      <Tag>Pattern Matching</Tag>
+      <Tag>Best Practices</Tag>
+    </Tags>
+    <IsFeatured>true</IsFeatured>
+    <FeaturedImage>/images/blog/csharp-patterns.jpg</FeaturedImage>
+    <ViewCount>0</ViewCount>
+    <IsPublished>true</IsPublished>
+  </BlogPost>
+  <BlogPost>
+    <Id>3</Id>
+    <Title>Building a Career in Software Development</Title>
+    <Slug>building-career-software-development</Slug>
+    <Summary>Personal insights and lessons learned from my journey as a software developer, including tips for aspiring developers.</Summary>
+    <Content>&lt;h3&gt;My Journey&lt;/h3&gt;
+&lt;p&gt;After years in the software development industry, I've gathered valuable insights that I wish someone had shared with me when I started.&lt;/p&gt;
+
+&lt;h3&gt;Key Lessons Learned&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Never stop learning:&lt;/strong&gt; Technology evolves rapidly. Dedicate time each week to learning new skills.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Build a portfolio:&lt;/strong&gt; Personal projects demonstrate your abilities better than any resume.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Soft skills matter:&lt;/strong&gt; Communication and teamwork are as important as coding skills.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Embrace failure:&lt;/strong&gt; Every bug is a learning opportunity. Don't fear making mistakes.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Advice for Beginners&lt;/h3&gt;
+&lt;p&gt;Start with fundamentals before jumping to frameworks. Understanding how things work under the hood makes you a better developer.&lt;/p&gt;</Content>
+    <PublishDate>2026-01-18T13:49:06.4642125Z</PublishDate>
+    <LastModified xsi:nil="true" />
+    <Author>Aydin Wylde</Author>
+    <Category>Personal</Category>
+    <Tags>
+      <Tag>Career</Tag>
+      <Tag>Personal</Tag>
+      <Tag>Advice</Tag>
+      <Tag>Development</Tag>
+    </Tags>
+    <IsFeatured>false</IsFeatured>
+    <FeaturedImage>/images/blog/career.jpg</FeaturedImage>
+    <ViewCount>0</ViewCount>
+    <IsPublished>true</IsPublished>
+  </BlogPost>
+  <BlogPost>
+    <Id>4</Id>
+    <Title>.NET 9 Performance Improvements</Title>
+    <Slug>dotnet-9-performance-improvements</Slug>
+    <Summary>Exploring the significant performance enhancements in .NET 9, including JIT optimizations and runtime improvements.</Summary>
+    <Content>&lt;h3&gt;Performance in .NET 9&lt;/h3&gt;
+&lt;p&gt;.NET 9 brings substantial performance improvements across the board. Let's explore the key enhancements.&lt;/p&gt;
+
+&lt;h3&gt;JIT Compiler Improvements&lt;/h3&gt;
+&lt;p&gt;The JIT compiler in .NET 9 includes better loop optimizations, improved inlining decisions, and enhanced generic code generation.&lt;/p&gt;
+
+&lt;h3&gt;Native AOT&lt;/h3&gt;
+&lt;p&gt;Native AOT compilation continues to improve, offering faster startup times and smaller deployment sizes for console and server applications.&lt;/p&gt;
+
+&lt;h3&gt;Benchmarks&lt;/h3&gt;
+&lt;p&gt;Internal benchmarks show 10-20% performance improvements in common scenarios compared to .NET 8.&lt;/p&gt;</Content>
+    <PublishDate>2026-01-13T13:49:06.4642135Z</PublishDate>
+    <LastModified xsi:nil="true" />
+    <Author>Aydin Wylde</Author>
+    <Category>News</Category>
+    <Tags>
+      <Tag>.NET 9</Tag>
+      <Tag>Performance</Tag>
+      <Tag>News</Tag>
+    </Tags>
+    <IsFeatured>true</IsFeatured>
+    <FeaturedImage>/images/blog/dotnet-performance.jpg</FeaturedImage>
+    <ViewCount>0</ViewCount>
+    <IsPublished>true</IsPublished>
+  </BlogPost>
+  <BlogPost>
+    <Id>5</Id>
+    <Title>Entity Framework Core Best Practices</Title>
+    <Slug>entity-framework-core-best-practices</Slug>
+    <Summary>Essential tips and patterns for using Entity Framework Core efficiently in production applications.</Summary>
+    <Content>&lt;h3&gt;EF Core Best Practices&lt;/h3&gt;
+&lt;p&gt;Entity Framework Core is a powerful ORM, but using it incorrectly can lead to performance issues. Here are essential practices.&lt;/p&gt;
+
+&lt;h3&gt;Use AsNoTracking for Read-Only Queries&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;var products = await _context.Products
+    .AsNoTracking()
+    .Where(p =&gt; p.IsActive)
+    .ToListAsync();&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3&gt;Eager Loading vs Lazy Loading&lt;/h3&gt;
+&lt;p&gt;Prefer explicit eager loading with Include() over lazy loading to avoid N+1 query problems.&lt;/p&gt;
+
+&lt;h3&gt;Projection for Better Performance&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;var productDtos = await _context.Products
+    .Select(p =&gt; new ProductDto
+    {
+        Id = p.Id,
+        Name = p.Name
+    })
+    .ToListAsync();&lt;/code&gt;&lt;/pre&gt;</Content>
+    <PublishDate>2026-01-08T13:49:06.4642139Z</PublishDate>
+    <LastModified xsi:nil="true" />
+    <Author>Aydin Wylde</Author>
+    <Category>ASP.NET Core</Category>
+    <Tags>
+      <Tag>Entity Framework</Tag>
+      <Tag>Database</Tag>
+      <Tag>Performance</Tag>
+      <Tag>Best Practices</Tag>
+    </Tags>
+    <IsFeatured>false</IsFeatured>
+    <FeaturedImage>/images/blog/efcore.jpg</FeaturedImage>
+    <ViewCount>0</ViewCount>
+    <IsPublished>true</IsPublished>
+  </BlogPost>
+</ArrayOfBlogPost>

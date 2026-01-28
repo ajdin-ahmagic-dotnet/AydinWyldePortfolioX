@@ -1,0 +1,186 @@
+@model AydinWyldePortfolioX.Models.BlogPost
+@{
+    var recentPosts = ViewBag.RecentPosts as List<AydinWyldePortfolioX.Models.BlogPost> ?? new List<AydinWyldePortfolioX.Models.BlogPost>();
+    var relatedPosts = ViewBag.RelatedPosts as List<AydinWyldePortfolioX.Models.BlogPost> ?? new List<AydinWyldePortfolioX.Models.BlogPost>();
+}
+
+<article class="blog-article">
+    <!-- Article Header -->
+    <header class="article-header">
+        <div class="article-meta">
+            <a href="@Url.Action("Blog", "Home", new { category = Model.Category })" class="article-category">
+                <i class="fas fa-folder"></i> @Model.Category
+            </a>
+            <span class="article-date">
+                <i class="fas fa-calendar"></i> @Model.PublishDate.ToString("MMMM dd, yyyy")
+            </span>
+            <span class="article-author">
+                <i class="fas fa-user"></i> @Model.Author
+            </span>
+        </div>
+        <h1 class="article-title">@Model.Title</h1>
+        <div class="article-tags">
+            @foreach (var tag in Model.Tags)
+            {
+                <span class="blog-tag">@tag</span>
+            }
+        </div>
+    </header>
+
+    <!-- Google Ad (Top of Article) -->
+    <div class="ad-container ad-article-top">
+        <div class="ad-placeholder">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                 data-ad-slot="XXXXXXXXXX"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <div class="ad-label">Advertisement</div>
+        </div>
+    </div>
+
+    <div class="article-content-wrapper">
+        <!-- Main Article Content -->
+        <div class="article-main">
+            <div class="article-content">
+                @Html.Raw(Model.Content)
+            </div>
+
+            <!-- Share Buttons -->
+            <div class="share-buttons">
+                <span class="share-label">Share this article:</span>
+                <a href="https://twitter.com/intent/tweet?url=@Context.Request.Path&text=@Model.Title" 
+                   target="_blank" class="share-btn twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=@Context.Request.Path&title=@Model.Title" 
+                   target="_blank" class="share-btn linkedin">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u=@Context.Request.Path" 
+                   target="_blank" class="share-btn facebook">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <button class="share-btn copy-link" onclick="copyArticleLink()">
+                    <i class="fas fa-link"></i>
+                </button>
+            </div>
+
+            <!-- Google Ad (Middle of Article) -->
+            <div class="ad-container ad-article-middle">
+                <div class="ad-placeholder">
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                         data-ad-slot="XXXXXXXXXX"
+                         data-ad-format="rectangle"></ins>
+                    <div class="ad-label">Advertisement</div>
+                </div>
+            </div>
+
+            <!-- Author Bio -->
+            <div class="author-bio">
+                <div class="author-avatar">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+                <div class="author-info">
+                    <h4>@Model.Author</h4>
+                    <p>Full-Stack Developer specializing in .NET, cloud architecture, and building scalable applications.</p>
+                    <div class="author-social">
+                        <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <div class="article-navigation">
+                <a href="@Url.Action("Blog", "Home")" class="nav-back">
+                    <i class="fas fa-arrow-left"></i> Back to Blog
+                </a>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="article-sidebar">
+            <!-- Recent Posts -->
+            @if (recentPosts.Any())
+            {
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title"><i class="fas fa-clock"></i> Recent Posts</h3>
+                    <div class="sidebar-posts">
+                        @foreach (var post in recentPosts)
+                        {
+                            <a href="@Url.Action("BlogPost", "Home", new { slug = post.Slug })" class="sidebar-post-link">
+                                <div class="sidebar-post">
+                                    <h4>@post.Title</h4>
+                                    <span class="sidebar-post-date">@post.PublishDate.ToString("MMM dd")</span>
+                                </div>
+                            </a>
+                        }
+                    </div>
+                </div>
+            }
+
+            <!-- Google Ad (Sidebar) -->
+            <div class="sidebar-section ad-section">
+                <div class="ad-placeholder sidebar-ad">
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                         data-ad-slot="XXXXXXXXXX"
+                         data-ad-format="vertical"></ins>
+                    <div class="ad-label">Advertisement</div>
+                </div>
+            </div>
+
+            <!-- Tags Cloud -->
+            <div class="sidebar-section">
+                <h3 class="sidebar-title"><i class="fas fa-tags"></i> Tags</h3>
+                <div class="tags-cloud">
+                    @foreach (var tag in Model.Tags)
+                    {
+                        <span class="blog-tag">@tag</span>
+                    }
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Related Posts -->
+    @if (relatedPosts.Any())
+    {
+        <section class="related-posts parallax-section">
+            <h2>Related Articles</h2>
+            <div class="portfolio-grid">
+                @foreach (var post in relatedPosts)
+                {
+                    <a href="@Url.Action("BlogPost", "Home", new { slug = post.Slug })" class="portfolio-card related-post-card">
+                        <h3>@post.Title</h3>
+                        <p>@post.Summary</p>
+                        <span class="related-post-date">
+                            <i class="fas fa-calendar"></i> @post.PublishDate.ToString("MMM dd, yyyy")
+                        </span>
+                    </a>
+                }
+            </div>
+        </section>
+    }
+</article>
+
+@section Scripts {
+    <script>
+        function copyArticleLink() {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                alert('Link copied to clipboard!');
+            });
+        }
+
+        // Syntax highlighting for code blocks
+        document.querySelectorAll('pre code').forEach(block => {
+            block.classList.add('code-block');
+        });
+    </script>
+}

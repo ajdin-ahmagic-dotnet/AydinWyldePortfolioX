@@ -1,97 +1,292 @@
 @model List<AydinWyldePortfolioX.Models.BlogPost>
+@{
+    var categories = ViewBag.Categories as List<string> ?? new List<string>();
+    var featuredPosts = ViewBag.FeaturedPosts as List<AydinWyldePortfolioX.Models.BlogPost> ?? new List<AydinWyldePortfolioX.Models.BlogPost>();
+    var selectedCategory = ViewBag.SelectedCategory as string;
+    var searchQuery = ViewBag.SearchQuery as string;
+}
 
-<h2 class="content-block">Tech Blog</h2>
+<div class="blog-page">
+    <!-- Blog Header -->
+    <div class="parallax-section blog-header">
+        <h1 class="blog-main-title">Tech Blog</h1>
+        <p class="blog-subtitle">Insights, tutorials, and thoughts on software development</p>
+        
+        <!-- Search Bar -->
+        <div class="blog-search-container">
+            <form action="@Url.Action("Blog", "Home")" method="get" class="blog-search-form">
+                <i class="fas fa-search blog-search-icon"></i>
+                <input type="text" 
+                       name="search" 
+                       class="blog-search-input" 
+                       placeholder="Search articles..."
+                       value="@searchQuery" />
+                <button type="submit" class="blog-search-btn">Search</button>
+            </form>
+        </div>
+    </div>
 
-<div class="blog-container">
-    @foreach (var post in Model)
-    {
-        <article class="blog-post">
-            <header class="blog-post-header">
-                <h3 class="blog-post-title">@post.Title</h3>
-                <div class="blog-post-meta">
-                    <span class="blog-post-date">
-                        <i class="fas fa-calendar-alt"></i> @post.PublishDate.ToString("MMM dd, yyyy")
-                    </span>
-                    <span class="blog-post-author">
-                        <i class="fas fa-user"></i> @post.Author
-                    </span>
-                    <span class="blog-post-category">
-                        <i class="fas fa-folder"></i> @post.Category
-                    </span>
-                </div>
-            </header>
-            <div class="blog-post-content">
-                <p>@post.Content</p>
-                <a href="#" class="main-menu-link" style="display: inline-block; margin-top: 1rem;">Read More</a>
-            </div>
-            <div class="blog-post-tags">
-                @foreach (var tag in post.Tags)
-                {
-                    <span class="blog-tag">@tag</span>
-                }
-            </div>
-        </article>
-    }
-    
-    <nav class="blog-pagination">
-        @for (int i = 1; i <= ViewBag.TotalPages; i++)
-        {
-            <a href="@Url.Action("Blog", "Home", new { page = i })" 
-               class="blog-pagination-link @(i == ViewBag.CurrentPage ? "active" : "")">
-                @i
+    <!-- Category Pills -->
+    <div class="blog-categories-section">
+        <div class="category-pills">
+            <a href="@Url.Action("Blog", "Home")" 
+               class="category-pill @(string.IsNullOrEmpty(selectedCategory) && string.IsNullOrEmpty(searchQuery) ? "active" : "")">
+                <i class="fas fa-globe"></i> All Posts
             </a>
-        }
-    </nav>
-</div>
+            <a href="@Url.Action("Blog", "Home", new { category = "ASP.NET Core" })" 
+               class="category-pill @(selectedCategory == "ASP.NET Core" ? "active" : "")">
+                <i class="fas fa-code"></i> ASP.NET Core
+            </a>
+            <a href="@Url.Action("Blog", "Home", new { category = "C#" })" 
+               class="category-pill @(selectedCategory == "C#" ? "active" : "")">
+                <i class="fas fa-hashtag"></i> C#
+            </a>
+            <a href="@Url.Action("Blog", "Home", new { category = "News" })" 
+               class="category-pill @(selectedCategory == "News" ? "active" : "")">
+                <i class="fas fa-newspaper"></i> News
+            </a>
+            <a href="@Url.Action("Blog", "Home", new { category = "Personal" })" 
+               class="category-pill @(selectedCategory == "Personal" ? "active" : "")">
+                <i class="fas fa-user"></i> Personal
+            </a>
+            @foreach (var cat in categories.Where(c => c != "ASP.NET Core" && c != "C#" && c != "News" && c != "Personal"))
+            {
+                <a href="@Url.Action("Blog", "Home", new { category = cat })" 
+                   class="category-pill @(selectedCategory == cat ? "active" : "")">
+                    <i class="fas fa-folder"></i> @cat
+                </a>
+            }
+        </div>
+    </div>
 
-<div class="parallax-section counters-section">
-    <h2>Blog Statistics</h2>
-    <div class="counters-grid">
-        <div class="counter-item">
-            <div class="counter-icon"><i class="fas fa-newspaper"></i></div>
-            <h3 class="counter-number" data-target="36">0</h3>
-            <p class="counter-label">Articles Published</p>
+    <!-- Google Ad Banner (Top) -->
+    <div class="ad-container ad-banner-top">
+        <div class="ad-placeholder">
+            <!-- Google AdSense Code Here -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                 data-ad-slot="XXXXXXXXXX"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <div class="ad-label">Advertisement</div>
         </div>
-        <div class="counter-item">
-            <div class="counter-icon"><i class="fas fa-eye"></i></div>
-            <h3 class="counter-number" data-target="25000">0</h3>
-            <p class="counter-label">Monthly Readers</p>
+    </div>
+
+    <div class="blog-content-wrapper">
+        <!-- Main Blog Content -->
+        <div class="blog-main-content">
+            @if (!string.IsNullOrEmpty(searchQuery))
+            {
+                <div class="search-results-info">
+                    <h2><i class="fas fa-search"></i> Search results for "@searchQuery"</h2>
+                    <p>Found @Model.Count article(s)</p>
+                    <a href="@Url.Action("Blog", "Home")" class="clear-search"><i class="fas fa-times"></i> Clear search</a>
+                </div>
+            }
+
+            @if (!string.IsNullOrEmpty(selectedCategory))
+            {
+                <div class="category-results-info">
+                    <h2><i class="fas fa-folder-open"></i> @selectedCategory</h2>
+                    <p>@Model.Count article(s) in this category</p>
+                </div>
+            }
+
+            @if (Model.Count == 0)
+            {
+                <div class="no-posts-message">
+                    <i class="fas fa-inbox"></i>
+                    <h3>No articles found</h3>
+                    <p>Try a different search term or browse all categories.</p>
+                    <a href="@Url.Action("Blog", "Home")" class="main-menu-link">View All Posts</a>
+                </div>
+            }
+            else
+            {
+                <div class="blog-posts-grid">
+                    @foreach (var post in Model)
+                    {
+                        <article class="blog-card @(post.IsFeatured ? "featured" : "")">
+                            @if (post.IsFeatured)
+                            {
+                                <div class="featured-badge"><i class="fas fa-star"></i> Featured</div>
+                            }
+                            <div class="blog-card-image">
+                                <div class="blog-card-image-placeholder">
+                                    <i class="fas fa-code"></i>
+                                </div>
+                            </div>
+                            <div class="blog-card-content">
+                                <div class="blog-card-meta">
+                                    <span class="blog-card-category">
+                                        <i class="fas fa-folder"></i> @post.Category
+                                    </span>
+                                    <span class="blog-card-date">
+                                        <i class="fas fa-calendar"></i> @post.PublishDate.ToString("MMM dd, yyyy")
+                                    </span>
+                                </div>
+                                <h3 class="blog-card-title">
+                                    <a href="@Url.Action("BlogPost", "Home", new { slug = post.Slug })">@post.Title</a>
+                                </h3>
+                                <p class="blog-card-summary">@post.Summary</p>
+                                <div class="blog-card-footer">
+                                    <div class="blog-card-tags">
+                                        @foreach (var tag in post.Tags.Take(3))
+                                        {
+                                            <span class="blog-tag">@tag</span>
+                                        }
+                                    </div>
+                                    <a href="@Url.Action("BlogPost", "Home", new { slug = post.Slug })" class="read-more-link">
+                                        Read More <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+                    }
+                </div>
+            }
+
+            <!-- Pagination -->
+            @if ((int)ViewBag.TotalPages > 1)
+            {
+                <nav class="blog-pagination">
+                    @if ((int)ViewBag.CurrentPage > 1)
+                    {
+                        <a href="@Url.Action("Blog", "Home", new { page = (int)ViewBag.CurrentPage - 1, category = selectedCategory, search = searchQuery })" 
+                           class="pagination-link prev">
+                            <i class="fas fa-chevron-left"></i> Previous
+                        </a>
+                    }
+                    
+                    <div class="pagination-numbers">
+                        @for (int i = 1; i <= (int)ViewBag.TotalPages; i++)
+                        {
+                            <a href="@Url.Action("Blog", "Home", new { page = i, category = selectedCategory, search = searchQuery })" 
+                               class="pagination-link @(i == (int)ViewBag.CurrentPage ? "active" : "")">
+                                @i
+                            </a>
+                        }
+                    </div>
+                    
+                    @if ((int)ViewBag.CurrentPage < (int)ViewBag.TotalPages)
+                    {
+                        <a href="@Url.Action("Blog", "Home", new { page = (int)ViewBag.CurrentPage + 1, category = selectedCategory, search = searchQuery })" 
+                           class="pagination-link next">
+                            Next <i class="fas fa-chevron-right"></i>
+                        </a>
+                    }
+                </nav>
+            }
         </div>
-        <div class="counter-item">
-            <div class="counter-icon"><i class="fas fa-comment"></i></div>
-            <h3 class="counter-number" data-target="540">0</h3>
-            <p class="counter-label">Comments</p>
+
+        <!-- Sidebar -->
+        <aside class="blog-sidebar">
+            <!-- Featured Posts -->
+            @if (featuredPosts.Any())
+            {
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title"><i class="fas fa-star"></i> Featured</h3>
+                    <div class="sidebar-posts">
+                        @foreach (var post in featuredPosts)
+                        {
+                            <a href="@Url.Action("BlogPost", "Home", new { slug = post.Slug })" class="sidebar-post-link">
+                                <div class="sidebar-post">
+                                    <h4>@post.Title</h4>
+                                    <span class="sidebar-post-date">@post.PublishDate.ToString("MMM dd")</span>
+                                </div>
+                            </a>
+                        }
+                    </div>
+                </div>
+            }
+
+            <!-- Google Ad (Sidebar) -->
+            <div class="sidebar-section ad-section">
+                <div class="ad-placeholder sidebar-ad">
+                    <!-- Google AdSense Code Here -->
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                         data-ad-slot="XXXXXXXXXX"
+                         data-ad-format="vertical"></ins>
+                    <div class="ad-label">Advertisement</div>
+                </div>
+            </div>
+
+            <!-- Categories -->
+            <div class="sidebar-section">
+                <h3 class="sidebar-title"><i class="fas fa-tags"></i> Categories</h3>
+                <ul class="sidebar-categories">
+                    @foreach (var cat in categories)
+                    {
+                        <li>
+                            <a href="@Url.Action("Blog", "Home", new { category = cat })" 
+                               class="@(selectedCategory == cat ? "active" : "")">
+                                @cat
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+
+            <!-- Newsletter -->
+            <div class="sidebar-section newsletter-section">
+                <h3 class="sidebar-title"><i class="fas fa-envelope"></i> Newsletter</h3>
+                <p>Get the latest articles delivered to your inbox.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email" class="newsletter-input" />
+                    <button type="submit" class="newsletter-btn">Subscribe</button>
+                </form>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Google Ad Banner (Bottom) -->
+    <div class="ad-container ad-banner-bottom">
+        <div class="ad-placeholder">
+            <!-- Google AdSense Code Here -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                 data-ad-slot="XXXXXXXXXX"
+                 data-ad-format="horizontal"
+                 data-full-width-responsive="true"></ins>
+            <div class="ad-label">Advertisement</div>
         </div>
-        <div class="counter-item">
-            <div class="counter-icon"><i class="fas fa-heart"></i></div>
-            <h3 class="counter-number" data-target="12500">0</h3>
-            <p class="counter-label">Total Likes</p>
+    </div>
+
+    <!-- Blog Stats Section -->
+    <div class="parallax-section counters-section">
+        <h2>Blog Statistics</h2>
+        <div class="counters-grid">
+            <div class="counter-item">
+                <div class="counter-icon"><i class="fas fa-newspaper"></i></div>
+                <h3 class="counter-number" data-target="@Model.Count">0</h3>
+                <p class="counter-label">Articles Published</p>
+            </div>
+            <div class="counter-item">
+                <div class="counter-icon"><i class="fas fa-eye"></i></div>
+                <h3 class="counter-number" data-target="25000">0</h3>
+                <p class="counter-label">Monthly Readers</p>
+            </div>
+            <div class="counter-item">
+                <div class="counter-icon"><i class="fas fa-tags"></i></div>
+                <h3 class="counter-number" data-target="@categories.Count">0</h3>
+                <p class="counter-label">Categories</p>
+            </div>
+            <div class="counter-item">
+                <div class="counter-icon"><i class="fas fa-heart"></i></div>
+                <h3 class="counter-number" data-target="12500">0</h3>
+                <p class="counter-label">Total Likes</p>
+            </div>
         </div>
     </div>
 </div>
 
-<div class="parallax-section">
-    <h2>Featured Topics</h2>
-    <div class="portfolio-grid">
-        <div class="portfolio-card">
-            <h3>ASP.NET Core</h3>
-            <p>Deep dives into web development, APIs, and performance optimization with ASP.NET Core.</p>
-            <a href="#" class="main-menu-link" style="display: inline-block; margin-top: 1rem;">View Articles</a>
-        </div>
-        <div class="portfolio-card">
-            <h3>Cloud Architecture</h3>
-            <p>Exploring microservices, serverless, and scalable cloud solutions for modern applications.</p>
-            <a href="#" class="main-menu-link" style="display: inline-block; margin-top: 1rem;">View Articles</a>
-        </div>
-        <div class="portfolio-card">
-            <h3>Database Performance</h3>
-            <p>Optimizing database queries, indexing strategies, and data access patterns for scalability.</p>
-            <a href="#" class="main-menu-link" style="display: inline-block; margin-top: 1rem;">View Articles</a>
-        </div>
-        <div class="portfolio-card">
-            <h3>DevOps Practices</h3>
-            <p>Implementing CI/CD pipelines, infrastructure as code, and automated testing strategies.</p>
-            <a href="#" class="main-menu-link" style="display: inline-block; margin-top: 1rem;">View Articles</a>
-        </div>
-    </div>
-</div>
+@section Scripts {
+    <script>
+        // Initialize Google AdSense (uncomment when you have your ad client ID)
+        // (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+}

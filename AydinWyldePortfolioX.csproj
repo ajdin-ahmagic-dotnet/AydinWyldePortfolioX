@@ -16,7 +16,6 @@
   </Target>
 
   <ItemGroup>
-    <PackageReference Include="DevExtreme.AspNet.Core" Version="24.2.3" />
     <PackageReference Include="Microsoft.Web.LibraryManager.Build" Version="2.1.175" />
   </ItemGroup>
 

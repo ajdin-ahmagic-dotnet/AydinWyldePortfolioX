@@ -1,4 +1,8 @@
 @using DXApplication3.Models
+@{
+    var latestPosts = ViewBag.LatestPosts as List<AydinWyldePortfolioX.Models.BlogPost> ?? new List<AydinWyldePortfolioX.Models.BlogPost>();
+    var featuredPosts = ViewBag.FeaturedPosts as List<AydinWyldePortfolioX.Models.BlogPost> ?? new List<AydinWyldePortfolioX.Models.BlogPost>();
+}
 
 <div id="section-hero" class="parallax-section">
     <h2>Welcome to My Portfolio</h2>
@@ -89,6 +93,44 @@
         </div>
     </div>
 </div>
+
+<!-- Latest Blog Posts Section -->
+@if (latestPosts.Any())
+{
+    <div id="section-blog" class="parallax-section">
+        <h2><i class="fas fa-rss"></i> Latest from the Blog</h2>
+        <p class="section-subtitle">Stay updated with my latest articles and tutorials</p>
+        <div class="portfolio-grid blog-cards-grid">
+            @foreach (var post in latestPosts)
+            {
+                <a href="@Url.Action("BlogPost", "Home", new { slug = post.Slug })" class="portfolio-card blog-hero-card @(post.IsFeatured ? "featured" : "")">
+                    @if (post.IsFeatured)
+                    {
+                        <div class="new-badge"><i class="fas fa-star"></i> Featured</div>
+                    }
+                    else if (post.PublishDate > DateTime.UtcNow.AddDays(-7))
+                    {
+                        <div class="new-badge"><i class="fas fa-bolt"></i> New</div>
+                    }
+                    <div class="blog-card-category">
+                        <i class="fas fa-folder"></i> @post.Category
+                    </div>
+                    <h3>@post.Title</h3>
+                    <p>@post.Summary</p>
+                    <div class="blog-card-meta-bottom">
+                        <span class="blog-date"><i class="fas fa-calendar"></i> @post.PublishDate.ToString("MMM dd, yyyy")</span>
+                        <span class="read-more">Read More <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+            }
+        </div>
+        <div class="view-all-link">
+            <a href="@Url.Action("Blog", "Home")" class="main-menu-link">
+                <i class="fas fa-book-open"></i> View All Articles
+            </a>
+        </div>
+    </div>
+}
 
 <script>
     // Ensure variables are declared

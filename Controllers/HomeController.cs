@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AydinWyldePortfolioX.Models;
+using AydinWyldePortfolioX.Services;
 using Microsoft.AspNetCore.Mvc;
 using DXApplication3.Models;
 
@@ -10,8 +11,18 @@ namespace AydinWyldePortfolioX.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IBlogService _blogService;
+
+        public HomeController(IBlogService blogService)
+        {
+            _blogService = blogService;
+        }
+
         public IActionResult Index()
         {
+            // Get latest blog posts for hero section
+            ViewBag.LatestPosts = _blogService.GetLatestPosts(3);
+            ViewBag.FeaturedPosts = _blogService.GetFeaturedPosts().Take(3).ToList();
             return View();
         }
 
@@ -50,47 +61,57 @@ namespace AydinWyldePortfolioX.Controllers
             return View();
         }
         
-        public IActionResult Blog(int page = 1)
+        public IActionResult Blog(int page = 1, string category = null, string search = null)
         {
-            // Generate sample blog posts for demo
-            var blogPosts = new List<BlogPost>
+            const int pageSize = 6;
+            
+            List<BlogPost> posts;
+            if (!string.IsNullOrEmpty(search))
             {
-                new BlogPost
-                {
-                    Id = 1,
-                    Title = "Microservices Architecture with .NET 9",
-                    Content = "Exploring the latest microservices patterns and best practices with .NET 9...",
-                    PublishDate = DateTime.Now.AddDays(-5),
-                    Author = "Aydin Wylde",
-                    Category = "Architecture",
-                    Tags = new List<string> { "Microservices", ".NET 9", "Architecture" }
-                },
-                new BlogPost
-                {
-                    Id = 2,
-                    Title = "Optimizing Entity Framework Core Performance",
-                    Content = "Tips and tricks to boost your EF Core queries and improve application performance...",
-                    PublishDate = DateTime.Now.AddDays(-12),
-                    Author = "Aydin Wylde",
-                    Category = "Database",
-                    Tags = new List<string> { "EF Core", "Performance", "SQL" }
-                },
-                new BlogPost
-                {
-                    Id = 3,
-                    Title = "Building Secure APIs with ASP.NET Core",
-                    Content = "Security best practices for your Web APIs to protect against common vulnerabilities...",
-                    PublishDate = DateTime.Now.AddDays(-18),
-                    Author = "Aydin Wylde",
-                    Category = "Security",
-                    Tags = new List<string> { "API", "Security", "ASP.NET Core" }
-                }
-            };
+                posts = _blogService.SearchPosts(search);
+                ViewBag.SearchQuery = search;
+            }
+            else if (!string.IsNullOrEmpty(category))
+            {
+                posts = _blogService.GetPostsByCategory(category);
+                ViewBag.SelectedCategory = category;
+            }
+            else
+            {
+                posts = _blogService.GetAllPosts();
+            }
+
+            var totalPosts = posts.Count;
+            var totalPages = (int)Math.Ceiling(totalPosts / (double)pageSize);
+            
+            var pagedPosts = posts
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToList();
             
             ViewBag.CurrentPage = page;
-            ViewBag.TotalPages = 1;
+            ViewBag.TotalPages = totalPages;
+            ViewBag.Categories = _blogService.GetAllCategories();
+            ViewBag.FeaturedPosts = _blogService.GetFeaturedPosts().Take(3).ToList();
             
-            return View(blogPosts);
+            return View(pagedPosts);
+        }
+
+        public IActionResult BlogPost(string slug)
+        {
+            var post = _blogService.GetPostBySlug(slug);
+            if (post == null)
+            {
+                return NotFound();
+            }
+            
+            ViewBag.RecentPosts = _blogService.GetLatestPosts(5).Where(p => p.Id != post.Id).Take(4).ToList();
+            ViewBag.RelatedPosts = _blogService.GetPostsByCategory(post.Category)
+                .Where(p => p.Id != post.Id)
+                .Take(3)
+                .ToList();
+            
+            return View(post);
         }
 
         public IActionResult Search(string q)
