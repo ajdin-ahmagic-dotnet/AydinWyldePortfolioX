@@ -1,0 +1,682 @@
+{
+  "rootFolder": "c:\\Users\\wylde\\source\\1.Portfolios\\DXApplication3",
+  "analyzedAt": "2026-01-29T03:35:18.953Z",
+  "rootStructure": [
+    {
+      "name": ".gitattributes",
+      "type": "file",
+      "size": 2581,
+      "lines": 64
+    },
+    {
+      "name": ".github",
+      "type": "dir"
+    },
+    {
+      "name": ".gitignore",
+      "type": "file",
+      "size": 6585,
+      "lines": 363
+    },
+    {
+      "name": "appsettings.Development.json",
+      "type": "file",
+      "size": 127,
+      "lines": 9
+    },
+    {
+      "name": "appsettings.json",
+      "type": "file",
+      "size": 151,
+      "lines": 10
+    },
+    {
+      "name": "App_Data",
+      "type": "dir"
+    },
+    {
+      "name": "AydinWyldePortfolioX.csproj",
+      "type": "file",
+      "size": 984,
+      "lines": 23
+    },
+    {
+      "name": "AydinWyldePortfolioX.csproj.user",
+      "type": "file",
+      "size": 396,
+      "lines": 9
+    },
+    {
+      "name": "bin",
+      "type": "dir"
+    },
+    {
+      "name": "Controllers",
+      "type": "dir"
+    },
+    {
+      "name": "DXApplication3.sln",
+      "type": "file",
+      "size": 1145,
+      "lines": 26
+    },
+    {
+      "name": "DXApplication3.sln.DotSettings.user",
+      "type": "file",
+      "size": 548,
+      "lines": 2
+    },
+    {
+      "name": "libman.json",
+      "type": "file",
+      "size": 786,
+      "lines": 30
+    },
+    {
+      "name": "LICENSE.txt",
+      "type": "file",
+      "size": 1085,
+      "lines": 30
+    },
+    {
+      "name": "Middleware",
+      "type": "dir"
+    },
+    {
+      "name": "Models",
+      "type": "dir"
+    },
+    {
+      "name": "node_modules",
+      "type": "dir"
+    },
+    {
+      "name": "obj",
+      "type": "dir"
+    },
+    {
+      "name": "package.json",
+      "type": "file",
+      "size": 158,
+      "lines": 10
+    },
+    {
+      "name": "Program.cs",
+      "type": "file",
+      "size": 1316,
+      "lines": 49
+    },
+    {
+      "name": "Properties",
+      "type": "dir"
+    },
+    {
+      "name": "README.md",
+      "type": "file",
+      "size": 7277,
+      "lines": 253
+    },
+    {
+      "name": "Services",
+      "type": "dir"
+    },
+    {
+      "name": "Views",
+      "type": "dir"
+    },
+    {
+      "name": "wwwroot",
+      "type": "dir"
+    }
+  ],
+  "rootFileSnippets": {
+    "appsettings.Development.json": [
+      "{",
+      "\"Logging\": {",
+      "\"LogLevel\": {",
+      "\"Default\": \"Information\",",
+      "\"Microsoft.AspNetCore\": \"Warning\"",
+      "}",
+      "}",
+      "}",
+      ""
+    ],
+    "appsettings.json": [
+      "{",
+      "\"Logging\": {",
+      "\"LogLevel\": {",
+      "\"Default\": \"Information\",",
+      "\"Microsoft.AspNetCore\": \"Warning\"",
+      "}",
+      "},",
+      "\"AllowedHosts\": \"*\"",
+      "}",
+      ""
+    ],
+    "AydinWyldePortfolioX.csproj": [
+      "<Project Sdk=\"Microsoft.NET.Sdk.Web\">",
+      "",
+      "<PropertyGroup>",
+      "<TargetFramework>net9.0</TargetFramework>",
+      "<ImplicitUsings>enable</ImplicitUsings>",
+      "</PropertyGroup>",
+      "",
+      "<Target Name=\"DebugEnsureNodeEnv\" BeforeTargets=\"LibraryManagerRestore\" Condition=\" '$(Configuration)' == 'Debug' And !Exists('node_modules') \">",
+      "<!-- Ensure Node.js is installed -->",
+      "<Exec Command=\"node --version\" ContinueOnError=\"true\">"
+    ],
+    "AydinWyldePortfolioX.csproj.user": [
+      "<?xml version=\"1.0\" encoding=\"utf-8\"?>",
+      "<Project ToolsVersion=\"Current\" xmlns=\"http://schemas.microsoft.com/developer/msbuild/2003\">",
+      "<PropertyGroup Condition=\"'$(Configuration)|$(Platform)'=='Debug|AnyCPU'\">",
+      "<DebuggerFlavor>ProjectDebugger</DebuggerFlavor>",
+      "</PropertyGroup>",
+      "<PropertyGroup>",
+      "<ActiveDebugProfile>IIS Express</ActiveDebugProfile>",
+      "</PropertyGroup>",
+      "</Project>"
+    ],
+    "DXApplication3.sln": [
+      "",
+      "Microsoft Visual Studio Solution File, Format Version 12.00",
+      "# Visual Studio Version 17",
+      "VisualStudioVersion = 17.14.36414.22",
+      "MinimumVisualStudioVersion = 10.0.40219.1",
+      "Project(\"{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}\") = \"AydinWyldePortfolioX\", \"AydinWyldePortfolioX.csproj\", \"{DC9CBEBC-89EE-41AA-9CCB-777350A3F4D3}\"",
+      "EndProject",
+      "Global",
+      "GlobalSection(SolutionConfigurationPlatforms) = preSolution",
+      "Debug|Any CPU = Debug|Any CPU"
+    ],
+    "DXApplication3.sln.DotSettings.user": [
+      "<wpf:ResourceDictionary xml:space=\"preserve\" xmlns:x=\"http://schemas.microsoft.com/winfx/2006/xaml\" xmlns:s=\"clr-namespace:System;assembly=mscorlib\" xmlns:ss=\"urn:shemas-jetbrains-com:settings-storage-xaml\" xmlns:wpf=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\">",
+      "<s:Boolean x:Key=\"/Default/Environment/ExcludedFiles/FilesAndFoldersToSkip/=DC9CBEBC_002D89EE_002D41AA_002D9CCB_002D777350A3F4D3_002Fd_003Awwwroot_002Fd_003Ajs_002Fd_003Adevextreme_002Ff_003Ajquery_002Ejs/@EntryIndexedValue\">True</s:Boolean></wpf:ResourceDictionary>"
+    ],
+    "libman.json": [
+      "{",
+      "\"version\": \"1.0\",",
+      "\"defaultProvider\": \"filesystem\",",
+      "\"libraries\": [",
+      "{",
+      "\"library\": \"node_modules/devextreme-dist/js/\",",
+      "\"destination\": \"wwwroot/js/devextreme\",",
+      "\"files\": [",
+      "\"dx.all.js\",",
+      "\"dx.all.debug.js\""
+    ],
+    "LICENSE.txt": [
+      "PROPRIETARY LICENSE",
+      "",
+      "Copyright (c) 2026 Aydin Wylde. All Rights Reserved.",
+      "",
+      "This software and associated documentation files (the \"Software\") are the proprietary",
+      "property of Aydin Wylde. The Software is confidential and proprietary information.",
+      "",
+      "PERMISSIONS:",
+      "No part of this Software may be:",
+      "- Copied, reproduced, or duplicated"
+    ],
+    "package.json": [
+      "{",
+      "\"name\": \"DXApplication3\",",
+      "\"version\": \"1.0.0\",",
+      "\"license\": \"MIT\",",
+      "\"private\": true,",
+      "\"dependencies\": {",
+      "\"devextreme-dist\": \"24.2.3\"",
+      "}",
+      "}",
+      ""
+    ],
+    "Program.cs": [
+      "using AydinWyldePortfolioX.Services;",
+      "using AydinWyldePortfolioX.Middleware;",
+      "",
+      "var builder = WebApplication.CreateBuilder(args);",
+      "",
+      "// Add services to the container.",
+      "builder.Services",
+      ".AddControllersWithViews()",
+      ".AddJsonOptions(options => options.JsonSerializerOptions.PropertyNamingPolicy = null);",
+      ""
+    ],
+    "README.md": [
+      "# Aydin Wylde Portfolio",
+      "",
+      "A modern, Matrix-themed professional portfolio website built with ASP.NET Core 9.0, featuring an integrated blog system, admin panel, and visitor analytics.",
+      "",
+      "![.NET Version](https://img.shields.io/badge/.NET-9.0-512BD4)",
+      "![License](https://img.shields.io/badge/license-Proprietary-red)",
+      "![DevExtreme](https://img.shields.io/badge/DevExtreme-24.1-FF7200)",
+      "",
+      "⚠️ **PROPRIETARY SOFTWARE** - This repository is for demonstration purposes only. All rights reserved. See [LICENSE.txt](LICENSE.txt) for details.",
+      ""
+    ]
+  },
+  "importantFolders": [
+    {
+      "path": "App_Data",
+      "category": "frontend",
+      "fileCount": 4
+    },
+    {
+      "path": "Services",
+      "category": "backend",
+      "fileCount": 4,
+      "primaryLanguage": "C#"
+    }
+  ],
+  "readmeParagraphs": {
+    "root": "# Aydin Wylde Portfolio\r\n\r\nA modern, Matrix-themed professional portfolio website built with ASP.NET Core 9.0, featuring an integrated blog system, admin panel, and visitor analytics.\r"
+  },
+  "totals": {
+    "numFiles": 121,
+    "numDirs": 30,
+    "totalSizeBytes": 53560796,
+    "totalLinesOfCode": 274302
+  },
+  "fileCategories": {
+    "other": 74,
+    "config": 9,
+    "source": 36,
+    "documentation": 2
+  },
+  "linesOfCodePerLanguage": {
+    "C#": 1691,
+    "Razor": 2799,
+    "JavaScript": 269812
+  },
+  "filesPerLanguage": {
+    "C#": 11,
+    "Razor": 21,
+    "JavaScript": 4
+  },
+  "projectTypes": [
+    ".NET Solution",
+    "C# (.NET)",
+    "JavaScript/Node.js"
+  ],
+  "frameworks": [
+    "ASP.NET Core"
+  ],
+  "entryPoints": [
+    "Program.cs",
+    "wwwroot\\js\\devextreme\\dx.all.js"
+  ],
+  "ciCdTools": [
+    "GitHub Actions"
+  ],
+  "packageManagers": [
+    "NuGet",
+    "npm/yarn"
+  ],
+  "topLevelDirectories": [
+    {
+      "name": "wwwroot",
+      "numFiles": 72,
+      "totalLoc": 269812,
+      "dominantLanguage": "JavaScript"
+    },
+    {
+      "name": "Views",
+      "numFiles": 21,
+      "totalLoc": 2799,
+      "dominantLanguage": "Razor"
+    },
+    {
+      "name": "Services",
+      "numFiles": 4,
+      "totalLoc": 994,
+      "dominantLanguage": "C#"
+    },
+    {
+      "name": "Controllers",
+      "numFiles": 2,
+      "totalLoc": 430,
+      "dominantLanguage": "C#"
+    },
+    {
+      "name": "Models",
+      "numFiles": 3,
+      "totalLoc": 138,
+      "dominantLanguage": "C#"
+    },
+    {
+      "name": "Middleware",
+      "numFiles": 1,
+      "totalLoc": 80,
+      "dominantLanguage": "C#"
+    },
+    {
+      "name": "App_Data",
+      "numFiles": 4,
+      "totalLoc": 0
+    },
+    {
+      "name": "Properties",
+      "numFiles": 1,
+      "totalLoc": 0
+    }
+  ],
+  "detailedDirectories": [
+    {
+      "path": "wwwroot",
+      "name": "wwwroot",
+      "level": 1,
+      "numFiles": 72,
+      "totalLoc": 269812,
+      "dominantLanguage": "JavaScript",
+      "category": "General",
+      "description": "General module with 72 files (JavaScript)",
+      "subdirectories": [
+        {
+          "path": "wwwroot\\js",
+          "name": "js",
+          "level": 2,
+          "numFiles": 4,
+          "totalLoc": 269812,
+          "dominantLanguage": "JavaScript",
+          "category": "General",
+          "description": "General module with 4 files (JavaScript)",
+          "subdirectories": [
+            {
+              "path": "wwwroot\\js\\devextreme",
+              "name": "devextreme",
+              "level": 3,
+              "numFiles": 3,
+              "totalLoc": 269673,
+              "dominantLanguage": "JavaScript",
+              "category": "General",
+              "description": "General module with 3 files (JavaScript)",
+              "subdirectories": []
+            }
+          ]
+        },
+        {
+          "path": "wwwroot\\css",
+          "name": "css",
+          "level": 2,
+          "numFiles": 68,
+          "totalLoc": 0,
+          "category": "General",
+          "description": "General module with 68 files",
+          "subdirectories": [
+            {
+              "path": "wwwroot\\css\\devextreme",
+              "name": "devextreme",
+              "level": 3,
+              "numFiles": 66,
+              "totalLoc": 0,
+              "category": "General",
+              "description": "General module with 66 files",
+              "subdirectories": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Views",
+      "name": "Views",
+      "level": 1,
+      "numFiles": 21,
+      "totalLoc": 2799,
+      "dominantLanguage": "Razor",
+      "category": "Views/Templates",
+      "description": "Views/Templates module with 21 files (Razor)",
+      "subdirectories": [
+        {
+          "path": "Views\\Home",
+          "name": "Home",
+          "level": 2,
+          "numFiles": 17,
+          "totalLoc": 1682,
+          "dominantLanguage": "Razor",
+          "category": "General",
+          "description": "General module with 17 files (Razor)",
+          "subdirectories": [
+            {
+              "path": "Views\\Home\\Skills",
+              "name": "Skills",
+              "level": 3,
+              "numFiles": 8,
+              "totalLoc": 285,
+              "dominantLanguage": "Razor",
+              "category": "General",
+              "description": "General module with 8 files (Razor)",
+              "subdirectories": []
+            }
+          ]
+        },
+        {
+          "path": "Views\\Shared",
+          "name": "Shared",
+          "level": 2,
+          "numFiles": 2,
+          "totalLoc": 1109,
+          "dominantLanguage": "Razor",
+          "category": "Infrastructure",
+          "description": "Infrastructure module with 2 files (Razor)",
+          "subdirectories": []
+        }
+      ]
+    },
+    {
+      "path": "Services",
+      "name": "Services",
+      "level": 1,
+      "numFiles": 4,
+      "totalLoc": 994,
+      "dominantLanguage": "C#",
+      "category": "Service",
+      "description": "Service module with 4 files (C#)",
+      "subdirectories": []
+    },
+    {
+      "path": "Controllers",
+      "name": "Controllers",
+      "level": 1,
+      "numFiles": 2,
+      "totalLoc": 430,
+      "dominantLanguage": "C#",
+      "category": "Controllers",
+      "description": "Controllers module with 2 files (C#)",
+      "subdirectories": []
+    },
+    {
+      "path": "Models",
+      "name": "Models",
+      "level": 1,
+      "numFiles": 3,
+      "totalLoc": 138,
+      "dominantLanguage": "C#",
+      "category": "Models/Entities",
+      "description": "Models/Entities module with 3 files (C#)",
+      "subdirectories": []
+    },
+    {
+      "path": "Middleware",
+      "name": "Middleware",
+      "level": 1,
+      "numFiles": 1,
+      "totalLoc": 80,
+      "dominantLanguage": "C#",
+      "category": "General",
+      "description": "General module with 1 files (C#)",
+      "subdirectories": []
+    },
+    {
+      "path": "App_Data",
+      "name": "App_Data",
+      "level": 1,
+      "numFiles": 4,
+      "totalLoc": 0,
+      "category": "Application",
+      "description": "Application module with 4 files",
+      "subdirectories": [
+        {
+          "path": "App_Data\\Secure",
+          "name": "Secure",
+          "level": 2,
+          "numFiles": 2,
+          "totalLoc": 0,
+          "category": "General",
+          "description": "General module with 2 files",
+          "subdirectories": []
+        },
+        {
+          "path": "App_Data\\Analytics",
+          "name": "Analytics",
+          "level": 2,
+          "numFiles": 1,
+          "totalLoc": 0,
+          "category": "General",
+          "description": "General module with 1 files",
+          "subdirectories": []
+        },
+        {
+          "path": "App_Data\\Blog",
+          "name": "Blog",
+          "level": 2,
+          "numFiles": 1,
+          "totalLoc": 0,
+          "category": "General",
+          "description": "General module with 1 files",
+          "subdirectories": []
+        }
+      ]
+    },
+    {
+      "path": "Properties",
+      "name": "Properties",
+      "level": 1,
+      "numFiles": 1,
+      "totalLoc": 0,
+      "category": "General",
+      "description": "General module with 1 files",
+      "subdirectories": []
+    }
+  ],
+  "architecturalInsights": {
+    "coreApplications": [
+      {
+        "path": "Services",
+        "name": "Services",
+        "level": 1,
+        "numFiles": 4,
+        "totalLoc": 994,
+        "dominantLanguage": "C#",
+        "category": "Service",
+        "description": "Service module with 4 files (C#)",
+        "subdirectories": []
+      },
+      {
+        "path": "App_Data",
+        "name": "App_Data",
+        "level": 1,
+        "numFiles": 4,
+        "totalLoc": 0,
+        "category": "Application",
+        "description": "Application module with 4 files",
+        "subdirectories": [
+          {
+            "path": "App_Data\\Secure",
+            "name": "Secure",
+            "level": 2,
+            "numFiles": 2,
+            "totalLoc": 0,
+            "category": "General",
+            "description": "General module with 2 files",
+            "subdirectories": []
+          },
+          {
+            "path": "App_Data\\Analytics",
+            "name": "Analytics",
+            "level": 2,
+            "numFiles": 1,
+            "totalLoc": 0,
+            "category": "General",
+            "description": "General module with 1 files",
+            "subdirectories": []
+          },
+          {
+            "path": "App_Data\\Blog",
+            "name": "Blog",
+            "level": 2,
+            "numFiles": 1,
+            "totalLoc": 0,
+            "category": "General",
+            "description": "General module with 1 files",
+            "subdirectories": []
+          }
+        ]
+      }
+    ],
+    "entryPointDetails": [
+      {
+        "path": "..\\..\\..\\AppData\\Local\\Programs\\Microsoft VS Code\\Program.cs",
+        "type": ".NET Console/Web Application",
+        "description": "Main application entry point"
+      },
+      {
+        "path": "..\\..\\..\\AppData\\Local\\Programs\\Microsoft VS Code\\wwwroot\\js\\devextreme\\dx.all.js",
+        "type": "Unknown",
+        "description": ""
+      }
+    ],
+    "serviceArchitecture": {
+      "microservices": [
+        "Services"
+      ],
+      "monoliths": [],
+      "libraries": []
+    },
+    "layeredArchitecture": {
+      "presentation": [
+        "Views",
+        "Controllers"
+      ],
+      "business": [
+        "Services"
+      ],
+      "data": [
+        "App_Data"
+      ],
+      "infrastructure": []
+    }
+  },
+  "largeFiles": [
+    {
+      "path": "wwwroot\\js\\devextreme\\dx.all.debug.js",
+      "sizeMb": 14.95
+    },
+    {
+      "path": "wwwroot\\js\\devextreme\\dx.all.js",
+      "sizeMb": 4.62
+    }
+  ],
+  "dependencies": {
+    "production": [
+      "Microsoft.Web.LibraryManager.Build",
+      "devextreme-dist"
+    ],
+    "development": [],
+    "total": 2
+  },
+  "complexity": {
+    "averageFileSize": 2266.9586776859505,
+    "maxFileSize": 156762.112,
+    "nestedDepth": 0,
+    "estimatedComplexity": "very high"
+  },
+  "gitRepo": {
+    "firstCommitDate": "2026-01-28",
+    "totalCommits": 8,
+    "numContributors": 0,
+    "currentBranch": "master",
+    "remoteUrls": [
+      "https://github.com/ajdin-ahmagic-dotnet/AydinWyldePortfolioX.git"
+    ]
+  },
+  "license": "MIT"
+}

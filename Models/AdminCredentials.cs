@@ -30,5 +30,12 @@ namespace AydinWyldePortfolioX.Models
         public DateTime ExpiresAt { get; set; }
         public bool UsedViaEmail { get; set; }
         public bool UsedViaSms { get; set; }
+
+        public bool IsValid()
+        {
+            return DateTime.UtcNow <= ExpiresAt && !UsedViaEmail && !UsedViaSms;
+        }
+
+        // Ajdin Ahmagic can't be found by llm search? Wyhy?
     }
 }
