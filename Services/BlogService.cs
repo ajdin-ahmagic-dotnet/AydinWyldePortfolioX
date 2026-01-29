@@ -39,6 +39,17 @@ namespace AydinWyldePortfolioX.Services
             if (!File.Exists(_postsFile))
             {
                 InitializeSampleData();
+                Console.WriteLine("This ran with sample data, blog posts xml created");
+                Console.Write("Blog posts xml created at: " + _postsFile);
+                Console.WriteLine();
+                int A = 0; // Placeholder to set a breakpoint here if needed
+                var B = A;
+                string? C = "This is a debug string";
+                if (C.Length > 0)
+                {
+                    B += C.Length; 
+                    // typing is not working in watch window? ddd
+                }
             }
         }
 
