@@ -1,0 +1,19 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "command": "dotnet build DXApplication3.sln",
+            "type": "shell",
+            "group": "build",
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "run",
+            "command": "dotnet run --project AydinWyldePortfolioX.csproj",
+            "type": "shell",
+            "group": "build",
+            "problemMatcher": []
+        }
+    ]
+}
