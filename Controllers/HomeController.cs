@@ -61,7 +61,7 @@ namespace AydinWyldePortfolioX.Controllers
             return View();
         }
         
-        public IActionResult Blog(int page = 1, string category = null, string search = null)
+        public IActionResult Blog(int page = 1, string? category = null, string? search = null)
         {
             const int pageSize = 6;
             

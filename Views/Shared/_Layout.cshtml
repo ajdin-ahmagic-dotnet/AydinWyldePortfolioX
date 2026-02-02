@@ -44,269 +44,414 @@
     <canvas id="matrix-bg"></canvas>
     <div class="page-transition" id="pageTransition"></div>
 
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress">
+        <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+    </div>
+
+    <!-- Section Depth Indicator -->
+    <div class="depth-indicator" id="depthIndicator"></div>
+
     <!-- Mouse Follower Effects -->
     <div id="mouse-glow" class="mouse-glow"></div>
     <div id="mouse-trail"></div>
 
-    <!-- Admin Panel Modal -->
-    <div id="adminModal" class="admin-modal hidden">
-        <div class="admin-modal-overlay" onclick="closeAdminModal()"></div>
-        <div class="admin-modal-content">
-            <button class="admin-modal-close" onclick="closeAdminModal()">×</button>
-            
-            <!-- Login Screen -->
-            <div id="adminLoginScreen" class="admin-screen">
-                <div class="admin-login-header">
-                    <div class="admin-logo">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h2>Admin Access</h2>
-                    <p class="admin-subtitle">Secure Login Portal</p>
+    <!-- Admin Panel (Full Page) -->
+    <div id="adminPanel" class="admin-full-page hidden">
+        <div class="admin-shell logged-out" id="adminShell">
+            <aside class="admin-sidebar" aria-label="Admin navigation">
+                <div class="admin-brand">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Admin Core</span>
                 </div>
-                
-                <div id="loginMessage" class="admin-alert hidden"></div>
-                
-                <form id="loginForm" class="admin-form" onsubmit="handleLogin(event)">
-                    <div class="admin-input-group">
-                        <i class="fas fa-user input-icon"></i>
-                        <input type="text" id="loginUsername" class="admin-input" placeholder="Username" autocomplete="username" required />
-                    </div>
-                    
-                    <div class="admin-input-group">
-                        <i class="fas fa-lock input-icon"></i>
-                        <input type="password" id="loginPassword" class="admin-input" placeholder="Password" autocomplete="current-password" required />
-                    </div>
-                    
-                    <button type="submit" class="admin-btn-primary">
-                        <i class="fas fa-sign-in-alt"></i> Sign In
-                    </button>
-                </form>
-                
-                <div class="admin-login-footer">
-                    <p class="hint-text">Press <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>A</kbd> to open this dialog</p>
-                </div>
-            </div>
-            
-            <!-- Dashboard Screen -->
-            <div id="adminDashboard" class="admin-screen hidden">
-                <div class="admin-dashboard-header">
-                    <h2><i class="fas fa-tachometer-alt"></i> Admin Dashboard</h2>
-                    <button class="admin-btn-secondary" onclick="logoutAdmin()">
-                        <i class="fas fa-sign-out-alt"></i> Logout
-                    </button>
-                </div>
-                
-                <div class="admin-nav-tabs">
-                    <button class="admin-tab-btn active" onclick="switchTab('analytics')">
+                <nav class="admin-nav">
+                    <button class="admin-nav-item" onclick="openDashboardTab('analytics', this)">
                         <i class="fas fa-chart-line"></i>
                         <span>Analytics</span>
                     </button>
-                    <button class="admin-tab-btn" onclick="switchTab('blog')">
+                    <button class="admin-nav-item" onclick="openDashboardTab('blog', this)">
                         <i class="fas fa-blog"></i>
                         <span>Blog Posts</span>
                     </button>
-                    <button class="admin-tab-btn" onclick="switchTab('settings')">
+                    <button class="admin-nav-item" onclick="showNewPostForm()">
+                        <i class="fas fa-plus"></i>
+                        <span>New Post</span>
+                    </button>
+                    <button class="admin-nav-item" onclick="openDashboardTab('layout', this)">
+                        <i class="fas fa-layer-group"></i>
+                        <span>Layout Manager</span>
+                    </button>
+                    <button class="admin-nav-item" onclick="openDashboardTab('settings', this)">
                         <i class="fas fa-cog"></i>
                         <span>Settings</span>
                     </button>
-                </div>
-                
-                <div class="admin-tab-content">
-                    <!-- Analytics Tab -->
-                    <div id="tab-analytics" class="tab-pane active">
-                        <div class="stats-grid">
-                            <div class="stat-card">
-                                <div class="stat-header">
-                                    <i class="fas fa-users"></i>
-                                    <span>Today</span>
-                                </div>
-                                <div class="stat-value" id="stat-today">0</div>
-                            </div>
-                            <div class="stat-card">
-                                <div class="stat-header">
-                                    <i class="fas fa-calendar-week"></i>
-                                    <span>This Week</span>
-                                </div>
-                                <div class="stat-value" id="stat-week">0</div>
-                            </div>
-                            <div class="stat-card">
-                                <div class="stat-header">
-                                    <i class="fas fa-calendar-alt"></i>
-                                    <span>This Month</span>
-                                </div>
-                                <div class="stat-value" id="stat-month">0</div>
-                            </div>
-                            <div class="stat-card">
-                                <div class="stat-header">
-                                    <i class="fas fa-globe"></i>
-                                    <span>All Time</span>
-                                </div>
-                                <div class="stat-value" id="stat-total">0</div>
-                            </div>
-                        </div>
-                        <div class="analytics-content">
-                            <h3>Recent Activity</h3>
-                            <div id="recentActivity" class="activity-list"></div>
-                        </div>
+                </nav>
+
+                <div class="admin-user-profile">
+                    <div class="admin-user-meta">
+                        <div class="admin-user-name">Admin</div>
+                        <div class="admin-user-role">Full Access</div>
                     </div>
-                    
-                    <!-- Blog Tab -->
-                    <div id="tab-blog" class="tab-pane">
-                        <div class="blog-toolbar">
-                            <button class="admin-btn-primary" onclick="showNewPostForm()">
-                                <i class="fas fa-plus"></i> New Post
-                            </button>
-                        </div>
-                        <div id="blogPostsList" class="blog-list"></div>
-                    </div>
-                    
-                    <!-- Settings Tab -->
-                    <div id="tab-settings" class="tab-pane">
-                        <div class="settings-section">
-                            <h3>Account Security</h3>
-                            <div class="setting-item">
-                                <label>Change Password</label>
-                                <button class="admin-btn-secondary" onclick="alert('Password change feature - coming soon')">
-                                    <i class="fas fa-key"></i> Update Password
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- New/Edit Post Form -->
-            <div id="postEditorScreen" class="admin-screen hidden">
-                <div class="admin-form-header">
-                    <h2><i class="fas fa-edit"></i> <span id="postFormTitle">New Blog Post</span></h2>
-                    <button class="admin-btn-secondary" onclick="cancelPostEdit()">
-                        <i class="fas fa-times"></i> Cancel
+                    <button class="admin-logout-btn" onclick="logoutAdmin()">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
                     </button>
                 </div>
-                
-                <form id="postForm" class="admin-form" onsubmit="savePost(event)">
-                    <div class="admin-input-group">
-                        <label>Title</label>
-                        <input type="text" id="postTitle" class="admin-input" placeholder="Post title" required />
-                    </div>
-                    
-                    <div class="admin-input-group">
-                        <label>Category</label>
-                        <select id="postCategory" class="admin-input">
-                            <option value="ASP.NET Core">ASP.NET Core</option>
-                            <option value="C#">C#</option>
-                            <option value="Azure">Azure</option>
-                            <option value="News">News</option>
-                            <option value="Personal">Personal</option>
-                        </select>
-                    </div>
-                    
-                    <div class="admin-input-group">
-                        <label>Summary</label>
-                        <textarea id="postSummary" class="admin-input" rows="2" placeholder="Brief summary"></textarea>
-                    </div>
-                    
-                    <div class="admin-input-group">
-                        <label>Content (HTML)</label>
-                        <textarea id="postContent" class="admin-input" rows="10" placeholder="Post content..."></textarea>
-                    </div>
-                    
-                    <div class="admin-input-group">
-                        <label>Tags (comma separated)</label>
-                        <input type="text" id="postTags" class="admin-input" placeholder="tag1, tag2, tag3" />
-                    </div>
-                    
-                    <div class="admin-checkbox-group">
-                        <label>
-                            <input type="checkbox" id="postFeatured" />
-                            <span>Featured Post</span>
-                        </label>
-                    </div>
-                    
-                    <input type="hidden" id="postId" />
-                    
-                    <div class="admin-form-actions">
-                        <button type="button" class="admin-btn-secondary" onclick="cancelPostEdit()">
-                            <i class="fas fa-times"></i> Cancel
+            </aside>
+
+            <div class="admin-content">
+                <div class="admin-topbar">
+                    <div class="admin-topbar-title" id="adminTopbarTitle">Admin Panel</div>
+                    <div class="admin-topbar-actions">
+                        <button class="admin-btn-secondary" onclick="closeAdminPanel()">
+                            <i class="fas fa-times"></i> Close
                         </button>
-                        <button type="submit" class="admin-btn-primary">
-                            <i class="fas fa-save"></i> Save Post
+                        <button class="admin-btn-secondary" onclick="logoutAdmin()">
+                            <i class="fas fa-sign-out-alt"></i> Logout
                         </button>
                     </div>
-                </form>
+                </div>
+
+                <div class="admin-main">
+                    <!-- Login Screen -->
+                    <div id="adminLoginScreen" class="admin-screen">
+                        <div class="admin-login-header">
+                            <div class="admin-logo">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h2>Admin Access</h2>
+                            <p class="admin-subtitle">Secure Login Portal</p>
+                        </div>
+
+                        <div id="loginMessage" class="admin-alert hidden"></div>
+
+                        <form id="loginForm" class="admin-form" onsubmit="handleLogin(event)">
+                            <div class="admin-input-group">
+                                <i class="fas fa-user input-icon"></i>
+                                <input type="text" id="loginUsername" class="admin-input" placeholder="Username" autocomplete="username" required />
+                            </div>
+
+                            <div class="admin-input-group">
+                                <i class="fas fa-lock input-icon"></i>
+                                <input type="password" id="loginPassword" class="admin-input" placeholder="Password" autocomplete="current-password" required />
+                            </div>
+
+                            <button type="submit" class="admin-btn-primary">
+                                <i class="fas fa-sign-in-alt"></i> Sign In
+                            </button>
+                        </form>
+
+                        <div class="admin-login-footer">
+                            <p class="hint-text">Press <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>A</kbd> to open this panel</p>
+                        </div>
+                    </div>
+
+                    <!-- Dashboard Screen -->
+                    <div id="adminDashboard" class="admin-screen hidden">
+                        <div class="admin-dashboard-header">
+                            <h2><i class="fas fa-tachometer-alt"></i> Admin Dashboard</h2>
+                            <button class="admin-btn-secondary" onclick="logoutAdmin()">
+                                <i class="fas fa-sign-out-alt"></i> Logout
+                            </button>
+                        </div>
+
+                        <div class="admin-nav-tabs">
+                            <button class="admin-tab-btn active" onclick="switchTab('analytics', this)">
+                                <i class="fas fa-chart-line"></i>
+                                <span>Analytics</span>
+                            </button>
+                            <button class="admin-tab-btn" onclick="switchTab('blog', this)">
+                                <i class="fas fa-blog"></i>
+                                <span>Blog Posts</span>
+                            </button>
+                            <button class="admin-tab-btn" onclick="switchTab('layout', this)">
+                                <i class="fas fa-layer-group"></i>
+                                <span>Layout</span>
+                            </button>
+                            <button class="admin-tab-btn" onclick="switchTab('settings', this)">
+                                <i class="fas fa-cog"></i>
+                                <span>Settings</span>
+                            </button>
+                        </div>
+
+                        <div class="admin-tab-content">
+                            <!-- Analytics Tab -->
+                            <div id="tab-analytics" class="tab-pane active">
+                                <div class="stats-grid">
+                                    <div class="stat-card">
+                                        <div class="stat-header">
+                                            <i class="fas fa-users"></i>
+                                            <span>Today</span>
+                                        </div>
+                                        <div class="stat-value" id="stat-today">0</div>
+                                    </div>
+                                    <div class="stat-card">
+                                        <div class="stat-header">
+                                            <i class="fas fa-calendar-week"></i>
+                                            <span>This Week</span>
+                                        </div>
+                                        <div class="stat-value" id="stat-week">0</div>
+                                    </div>
+                                    <div class="stat-card">
+                                        <div class="stat-header">
+                                            <i class="fas fa-calendar-alt"></i>
+                                            <span>This Month</span>
+                                        </div>
+                                        <div class="stat-value" id="stat-month">0</div>
+                                    </div>
+                                    <div class="stat-card">
+                                        <div class="stat-header">
+                                            <i class="fas fa-globe"></i>
+                                            <span>All Time</span>
+                                        </div>
+                                        <div class="stat-value" id="stat-total">0</div>
+                                    </div>
+                                </div>
+                                <div class="analytics-content">
+                                    <h3>Recent Activity</h3>
+                                    <div id="recentActivity" class="activity-list"></div>
+                                </div>
+                            </div>
+
+                            <!-- Blog Tab -->
+                            <div id="tab-blog" class="tab-pane">
+                                <div class="blog-toolbar">
+                                    <button class="admin-btn-primary" onclick="showNewPostForm()">
+                                        <i class="fas fa-plus"></i> New Post
+                                    </button>
+                                </div>
+                                <div id="blogPostsList" class="blog-list"></div>
+                            </div>
+
+                            <!-- Layout Tab -->
+                            <div id="tab-layout" class="tab-pane">
+                                <div class="settings-section">
+                                    <h3>Layout Manager</h3>
+                                    <p class="admin-helper-text">Drag cards to reorder sections and toggle visibility.</p>
+                                    <div class="layout-manager-grid" id="layoutManager">
+                                        <div class="layout-card">
+                                            <div class="layout-card-info">
+                                                <span class="layout-drag-handle"><i class="fas fa-grip-vertical"></i></span>
+                                                <span>Hero</span>
+                                            </div>
+                                            <label class="layout-toggle">
+                                                Visible
+                                                <span class="switch"><input type="checkbox" checked><span class="slider"></span></span>
+                                            </label>
+                                        </div>
+                                        <div class="layout-card">
+                                            <div class="layout-card-info">
+                                                <span class="layout-drag-handle"><i class="fas fa-grip-vertical"></i></span>
+                                                <span>Projects</span>
+                                            </div>
+                                            <label class="layout-toggle">
+                                                Visible
+                                                <span class="switch"><input type="checkbox" checked><span class="slider"></span></span>
+                                            </label>
+                                        </div>
+                                        <div class="layout-card">
+                                            <div class="layout-card-info">
+                                                <span class="layout-drag-handle"><i class="fas fa-grip-vertical"></i></span>
+                                                <span>Skills</span>
+                                            </div>
+                                            <label class="layout-toggle">
+                                                Visible
+                                                <span class="switch"><input type="checkbox" checked><span class="slider"></span></span>
+                                            </label>
+                                        </div>
+                                        <div class="layout-card">
+                                            <div class="layout-card-info">
+                                                <span class="layout-drag-handle"><i class="fas fa-grip-vertical"></i></span>
+                                                <span>Blog</span>
+                                            </div>
+                                            <label class="layout-toggle">
+                                                Visible
+                                                <span class="switch"><input type="checkbox" checked><span class="slider"></span></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Settings Tab -->
+                            <div id="tab-settings" class="tab-pane">
+                                <div class="settings-section">
+                                    <h3>Account Security</h3>
+                                    <div class="setting-item">
+                                        <label>Change Password</label>
+                                        <button class="admin-btn-secondary" onclick="alert('Password change feature - coming soon')">
+                                            <i class="fas fa-key"></i> Update Password
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="settings-section">
+                                    <h3>Site Preferences</h3>
+                                    <div class="setting-item">
+                                        <label>Animations</label>
+                                        <label class="layout-toggle">
+                                            Enabled
+                                            <span class="switch"><input type="checkbox" checked><span class="slider"></span></span>
+                                        </label>
+                                    </div>
+                                    <div class="setting-item">
+                                        <label>Parallax Effects</label>
+                                        <label class="layout-toggle">
+                                            Enabled
+                                            <span class="switch"><input type="checkbox" checked><span class="slider"></span></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- New/Edit Post Form -->
+                    <div id="postEditorScreen" class="admin-screen hidden">
+                        <div class="admin-form-header">
+                            <h2><i class="fas fa-edit"></i> <span id="postFormTitle">New Blog Post</span></h2>
+                            <button class="admin-btn-secondary" onclick="cancelPostEdit()">
+                                <i class="fas fa-times"></i> Cancel
+                            </button>
+                        </div>
+
+                        <form id="postForm" class="admin-form" onsubmit="savePost(event)">
+                            <div class="admin-input-group">
+                                <label>Title</label>
+                                <input type="text" id="postTitle" class="admin-input" placeholder="Post title" required />
+                            </div>
+
+                            <div class="admin-input-group">
+                                <label>Category</label>
+                                <select id="postCategory" class="admin-input">
+                                    <option value="ASP.NET Core">ASP.NET Core</option>
+                                    <option value="C#">C#</option>
+                                    <option value="Azure">Azure</option>
+                                    <option value="News">News</option>
+                                    <option value="Personal">Personal</option>
+                                </select>
+                            </div>
+
+                            <div class="admin-input-group">
+                                <label>Summary</label>
+                                <textarea id="postSummary" class="admin-input" rows="2" placeholder="Brief summary"></textarea>
+                            </div>
+
+                            <div class="admin-input-group">
+                                <label>Content (HTML)</label>
+                                <textarea id="postContent" class="admin-input" rows="10" placeholder="Post content..."></textarea>
+                            </div>
+
+                            <div class="admin-input-group">
+                                <label>Tags (comma separated)</label>
+                                <input type="text" id="postTags" class="admin-input" placeholder="tag1, tag2, tag3" />
+                            </div>
+
+                            <div class="admin-checkbox-group">
+                                <label>
+                                    <input type="checkbox" id="postFeatured" />
+                                    <span>Featured Post</span>
+                                </label>
+                            </div>
+
+                            <input type="hidden" id="postId" />
+
+                            <div class="admin-form-actions">
+                                <button type="button" class="admin-btn-secondary" onclick="cancelPostEdit()">
+                                    <i class="fas fa-times"></i> Cancel
+                                </button>
+                                <button type="submit" class="admin-btn-primary">
+                                    <i class="fas fa-save"></i> Save Post
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <header class="layout-header">
-        <nav class="main-navigation">
-            <div class="nav-container">
-                <div class="header-title">Aydin Wylde</div>
-                <button class="mobile-menu-toggle" id="mobileMenuToggle">
-                    <i class="fas fa-bars"></i>
-                </button>
-                <div class="nav-menu" id="main-nav">
-                    <ul class="main-menu">
-                        <li class="main-menu-item">
-                            <a href="@Url.Action("Index", "Home")" class="main-menu-link @(ViewContext.RouteData.Values["Action"]?.ToString() == "Index" ? "active" : "")">Home</a>
-                        </li>
-                        <li class="main-menu-item">
-                            <a href="@Url.Action("About", "Home")" class="main-menu-link @(ViewContext.RouteData.Values["Action"]?.ToString() == "About" ? "active" : "")">About</a>
-                        </li>
-                        <li class="main-menu-item">
-                            <a href="@Url.Action("Skills", "Home")" class="main-menu-link @(ViewContext.RouteData.Values["Action"]?.ToString() == "Skills" ? "active" : "")">Skills</a>
-                            <div class="dropdown-menu">
-                                <a href="@Url.Action("Skills", "Home", new { id = "Backend" })" class="dropdown-item">
-                                    <i class="fas fa-server dropdown-icon"></i>
-                                    Backend
-                                </a>
-                                <a href="@Url.Action("Skills", "Home", new { id = "Frontend" })" class="dropdown-item">
-                                    <i class="fas fa-laptop-code dropdown-icon"></i>
-                                    Frontend
-                                </a>
-                                <a href="@Url.Action("Skills", "Home", new { id = "Cloud" })" class="dropdown-item">
-                                    <i class="fas fa-cloud dropdown-icon"></i>
-                                    Cloud & DevOps
-                                </a>
-                                <a href="@Url.Action("Skills", "Home", new { id = "Architecture" })" class="dropdown-item">
-                                    <i class="fas fa-sitemap dropdown-icon"></i>
-                                    Architecture
-                                </a>
-                                <a href="@Url.Action("Skills", "Home", new { id = "Databases" })" class="dropdown-item">
-                                    <i class="fas fa-database dropdown-icon"></i>
-                                    Databases
-                                </a>
-                                <a href="@Url.Action("Skills", "Home", new { id = "Mobile" })" class="dropdown-item">
-                                    <i class="fas fa-mobile-alt dropdown-icon"></i>
-                                    Mobile Dev
-                                </a>
-                                <a href="@Url.Action("Skills", "Home", new { id = "Certifications" })" class="dropdown-item">
-                                    <i class="fas fa-certificate dropdown-icon"></i>
-                                    Certifications
-                                </a>
-                                <a href="@Url.Action("Skills", "Home", new { id = "Tools" })" class="dropdown-item">
-                                    <i class="fas fa-tools dropdown-icon"></i>
-                                    Tools
-                                </a>
-                            </div>
-                        </li>
-                        <li class="main-menu-item">
-                            <a href="@Url.Action("Projects", "Home")" class="main-menu-link @(ViewContext.RouteData.Values["Action"]?.ToString() == "Projects" ? "active" : "")">Projects</a>
-                        </li>
-                        <li class="main-menu-item">
-                            <a href="@Url.Action("Education", "Home")" class="main-menu-link @(ViewContext.RouteData.Values["Action"]?.ToString() == "Education" ? "active" : "")">Education</a>
-                        </li>
-                        <li class="main-menu-item">
-                            <a href="@Url.Action("Blog", "Home")" class="main-menu-link @(ViewContext.RouteData.Values["Action"].ToString() == "Blog" ? "active" : "")">Blog</a>
-                        </li>
-                        <li class="main-menu-item">
-                            <a href="@Url.Action("Contact", "Home")" class="main-menu-link @(ViewContext.RouteData.Values["Action"].ToString() == "Contact" ? "active" : "")">Contact</a>
-                        </li>
-                    </ul>
+    <!-- 3D HOLOGRAPHIC NAVIGATION -->
+    <nav class="nav-3d-container" id="nav3D">
+        <!-- Central Hologram Core -->
+        <div class="nav-hologram-core" id="navCore">
+            <div class="core-ring ring-1"></div>
+            <div class="core-ring ring-2"></div>
+            <div class="core-ring ring-3"></div>
+            <div class="core-symbol">AW</div>
+        </div>
+
+        <!-- Orbital Navigation Items -->
+        <div class="nav-orbital-system" id="navOrbital">
+            <a href="@Url.Action("Contact", "Home")" class="nav-orbital-item" data-index="0" data-label="CONTACT">
+                <div class="orbital-inner">
+                    <i class="fas fa-satellite-dish"></i>
+                    <span class="orbital-label">CONTACT</span>
                 </div>
+                <div class="orbital-glow"></div>
+                <div class="orbital-trail"></div>
+            </a>
+            <a href="@Url.Action("About", "Home")" class="nav-orbital-item" data-index="1" data-label="ABOUT">
+                <div class="orbital-inner">
+                    <i class="fas fa-user-astronaut"></i>
+                    <span class="orbital-label">ABOUT</span>
+                </div>
+                <div class="orbital-glow"></div>
+                <div class="orbital-trail"></div>
+            </a>
+            <a href="@Url.Action("Skills", "Home")" class="nav-orbital-item" data-index="2" data-label="SKILLS">
+                <div class="orbital-inner">
+                    <i class="fas fa-code"></i>
+                    <span class="orbital-label">SKILLS</span>
+                </div>
+                <div class="orbital-glow"></div>
+                <div class="orbital-trail"></div>
+            </a>
+            <a href="@Url.Action("Projects", "Home")" class="nav-orbital-item" data-index="3" data-label="PROJECTS">
+                <div class="orbital-inner">
+                    <i class="fas fa-rocket"></i>
+                    <span class="orbital-label">PROJECTS</span>
+                </div>
+                <div class="orbital-glow"></div>
+                <div class="orbital-trail"></div>
+            </a>
+            <a href="@Url.Action("Education", "Home")" class="nav-orbital-item" data-index="4" data-label="EDUCATION">
+                <div class="orbital-inner">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span class="orbital-label">EDUCATION</span>
+                </div>
+                <div class="orbital-glow"></div>
+                <div class="orbital-trail"></div>
+            </a>
+            <a href="@Url.Action("Blog", "Home")" class="nav-orbital-item" data-index="5" data-label="BLOG">
+                <div class="orbital-inner">
+                    <i class="fas fa-newspaper"></i>
+                    <span class="orbital-label">BLOG</span>
+                </div>
+                <div class="orbital-glow"></div>
+                <div class="orbital-trail"></div>
+            </a>
+            <a href="@Url.Action("Index", "Home")" class="nav-orbital-item" data-index="6" data-label="HOME">
+                <div class="orbital-inner">
+                    <i class="fas fa-home"></i>
+                    <span class="orbital-label">HOME</span>
+                </div>
+                <div class="orbital-glow"></div>
+                <div class="orbital-trail"></div>
+            </a>
+        </div>
+
+        <!-- Toggle Button (Mobile & Desktop) -->
+        <button class="nav-3d-toggle" id="nav3DToggle" aria-label="Toggle Navigation">
+            <div class="toggle-morph">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
-        </nav>
-    </header>
+        </button>
+
+        <!-- Holographic Scanlines -->
+        <div class="nav-scanlines"></div>
+    </nav>
 
     <div class="parallax-container">
         <main id="content-wrapper">
@@ -314,10 +459,10 @@
             <div class="search-container">
                 <form id="searchForm" action="@Url.Action("Search", "Home")" method="get" class="search-form">
                     <i class="fas fa-search search-icon"></i>
-                    <input type="text" 
-                           class="search-input" 
-                           id="globalSearch" 
-                           name="q" 
+                    <input type="text"
+                           class="search-input"
+                           id="globalSearch"
+                           name="q"
                            placeholder="Search for anything..."
                            autocomplete="off"
                            value="@(Context.Request.Query["q"])" />
@@ -333,11 +478,13 @@
     </div>
 
     <button id="backToTop" title="Back to top"><i class="fas fa-chevron-up"></i></button>
-    <div id="matrix-cursor"><span id="cursor-char">A</span></div>
+    @* Matrix cursor disabled - animation code is commented out *@
+    @* <div id="matrix-cursor"><span id="cursor-char">A</span></div> *@
 
     <!-- Add search index script -->
     <script src="~/js/search-index.js"></script>
-    
+    <script src="~/js/site.js"></script>
+
     <script>
         // ========================================
         // PROFESSIONAL LOADING SCREEN
@@ -346,9 +493,9 @@
             const loader = document.getElementById('pageLoader');
             const progress = document.querySelector('.loader-progress');
             const status = document.querySelector('.loader-status');
-            
+
             if (!loader || !progress) return;
-            
+
             const loadingMessages = [
                 'Initializing',
                 'Loading assets',
@@ -356,43 +503,56 @@
                 'Almost ready',
                 'Welcome'
             ];
-            
+
             let currentProgress = 0;
             let messageIndex = 0;
-            
+
             function updateProgress() {
                 currentProgress += Math.random() * 20 + 10;
                 if (currentProgress > 100) currentProgress = 100;
-                
+
                 progress.style.width = currentProgress + '%';
-                
+
                 // Update loading message
                 const newIndex = Math.floor((currentProgress / 100) * (loadingMessages.length - 1));
                 if (newIndex !== messageIndex && status) {
                     messageIndex = newIndex;
                     status.textContent = loadingMessages[messageIndex];
                 }
-                
+
                 if (currentProgress < 100) {
                     setTimeout(updateProgress, 80 + Math.random() * 100);
                 } else {
                     completeLoading();
                 }
             }
-            
+
             function completeLoading() {
                 setTimeout(() => {
                     loader.classList.add('hidden');
                     document.body.style.overflow = '';
+
+                    // Signal to any UI effects that input is now "live".
+                    // (Useful on the Home hero page where other init may depend on loader completion.)
+                    document.documentElement.classList.add('app-loaded');
+                    window.dispatchEvent(new CustomEvent('app:loader-finished'));
+
+                    // Hard-stop any chance of the loader overlay lingering in the hit-test tree.
+                    // Keep the fade-out transition, then remove from layout.
+                    setTimeout(() => {
+                        if (loader && loader.parentNode) {
+                            loader.style.display = 'none';
+                        }
+                    }, 700);
                 }, 400);
             }
-            
+
             // Start loading animation
             document.body.style.overflow = 'hidden';
-            
+
             // Fail-safe: ensure loading completes within 3 seconds
             setTimeout(completeLoading, 3000);
-            
+
             // Start progress animation
             setTimeout(updateProgress, 200);
         })();
@@ -403,106 +563,366 @@
         (function initMouseEffects() {
             const mouseGlow = document.getElementById('mouse-glow');
             const trailContainer = document.getElementById('mouse-trail');
-            
+
             // Skip on touch devices
             if (window.matchMedia && window.matchMedia('(pointer: coarse)').matches) {
                 if (mouseGlow) mouseGlow.style.display = 'none';
                 document.body.style.cursor = 'auto';
                 return;
             }
-            
-            let mouseX = 0, mouseY = 0;
-            let glowX = 0, glowY = 0;
+
+            // Start centered so the effect is visible immediately after the loader fades.
+            let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
+            let glowX = mouseX, glowY = mouseY;
             let lastTrailTime = 0;
-            
+
             // Smooth glow follow
             function animateGlow() {
                 glowX += (mouseX - glowX) * 0.1;
                 glowY += (mouseY - glowY) * 0.1;
-                
+
                 if (mouseGlow) {
                     mouseGlow.style.left = glowX + 'px';
                     mouseGlow.style.top = glowY + 'px';
                 }
-                
+
                 requestAnimationFrame(animateGlow);
             }
             animateGlow();
-            
+
             // Trail effect
             function createTrailParticle(x, y) {
                 if (!trailContainer) return;
-                
+
                 const particle = document.createElement('div');
                 particle.className = 'trail-particle';
                 particle.style.left = (x - 3) + 'px';
                 particle.style.top = (y - 3) + 'px';
                 trailContainer.appendChild(particle);
-                
+
                 setTimeout(() => {
                     particle.remove();
                 }, 800);
             }
-            
+
             // Card tilt effect
             function handleCardTilt(card, e) {
                 const rect = card.getBoundingClientRect();
                 const centerX = rect.left + rect.width / 2;
                 const centerY = rect.top + rect.height / 2;
-                
+
                 const deltaX = (e.clientX - centerX) / (rect.width / 2);
                 const deltaY = (e.clientY - centerY) / (rect.height / 2);
-                
+
                 const rotateX = deltaY * -10; // Max 10 degrees
                 const rotateY = deltaX * 10;
-                
+
                 card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
                 card.classList.add('tilt-active');
             }
-            
+
             function resetCardTilt(card) {
                 card.style.transform = '';
                 card.classList.remove('tilt-active');
             }
-            
+
             // Apply tilt to interactive cards
             function setupCardTilt() {
                 const cards = document.querySelectorAll('.portfolio-card, .blog-card, .counter-item, .blog-hero-card, .skill-card');
-                
+
                 cards.forEach(card => {
                     card.addEventListener('mousemove', (e) => handleCardTilt(card, e));
                     card.addEventListener('mouseleave', () => resetCardTilt(card));
                 });
             }
-            
+
             // Global mouse move handler
             document.addEventListener('mousemove', (e) => {
                 mouseX = e.clientX;
                 mouseY = e.clientY;
-                
+
                 // Create trail particles (throttled)
                 const now = Date.now();
                 if (now - lastTrailTime > 50) {
                     createTrailParticle(e.clientX, e.clientY);
                     lastTrailTime = now;
                 }
-            });
-            
+            }, { passive: true });
+
+            // Ensure we position the glow immediately after the loader completes even
+            // if the mouse hasn't moved since page load.
+            window.addEventListener('app:loader-finished', () => {
+                if (mouseGlow) {
+                    mouseGlow.classList.remove('hidden');
+                    mouseGlow.style.left = glowX + 'px';
+                    mouseGlow.style.top = glowY + 'px';
+                }
+            }, { passive: true });
+
             // Hide effects when mouse leaves window
             document.addEventListener('mouseleave', () => {
                 if (mouseGlow) mouseGlow.classList.add('hidden');
             });
-            
+
             document.addEventListener('mouseenter', () => {
                 if (mouseGlow) mouseGlow.classList.remove('hidden');
             });
-            
+
             // Setup card tilt on DOM ready
             if (document.readyState === 'loading') {
                 document.addEventListener('DOMContentLoaded', setupCardTilt);
             } else {
                 setupCardTilt();
             }
+        })();
+
+        // ========================================
+        // ULTIMATE MATRIX PARALLAX SYSTEM
+        // Mind-Blowing 3D Scroll Effects
+        // ========================================
+        (function initMatrixParallax() {
+            const container = document.querySelector('.parallax-container');
+            if (!container) return;
+
+            const matrixChars = ['☰', 'Ω', 'Ψ', 'Δ', 'Σ', 'Π', 'λ', '∞', '⌘', '◊', '†', '‡', '§', '¶', '∂', '∑', '∏', '√', '∫', '≈', '≠', '∴', '∵'];
+            const hamburgerChar = document.getElementById('hamburgerChar');
+            const scrollProgressBar = document.getElementById('scrollProgressBar');
+            const depthIndicator = document.getElementById('depthIndicator');
+            
+            // Generate random matrix code for card reveals
+            function generateMatrixCode(length = 100) {
+                const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+                let result = '';
+                for (let i = 0; i < length; i++) {
+                    result += chars[Math.floor(Math.random() * chars.length)];
+                    if (i % 10 === 9) result += '\n';
+                }
+                return result;
+            }
+
+            // Initialize cards with parallax classes and matrix data
+            function initializeCards() {
+                const cards = document.querySelectorAll('.portfolio-card, .counter-item, .blog-hero-card');
+                const directions = ['card-enter-left', 'card-enter-right', 'card-enter-bottom'];
+                
+                cards.forEach((card, index) => {
+                    // Add parallax class
+                    if (card.classList.contains('portfolio-card') || card.classList.contains('blog-hero-card')) {
+                        card.classList.add('parallax-card', 'holographic', 'depth-shadow');
+                        // Alternate entrance directions
+                        const direction = directions[index % 3];
+                        card.classList.add(direction);
+                    }
+                    if (card.classList.contains('counter-item')) {
+                        card.classList.add('parallax-counter');
+                    }
+                    
+                    // Add matrix reveal data
+                    card.classList.add('matrix-reveal');
+                    card.setAttribute('data-matrix', generateMatrixCode(80));
+                });
+            }
+
+            // Initialize section titles with glitch effect
+            function initializeTitles() {
+                const titles = document.querySelectorAll('.parallax-section h2');
+                titles.forEach(title => {
+                    title.classList.add('glitch-text', 'floating-title');
+                    title.setAttribute('data-text', title.textContent);
+                });
+            }
+
+            // Create depth indicator dots for each section
+            function createDepthIndicator() {
+                const sections = document.querySelectorAll('.parallax-section');
+                if (!depthIndicator || sections.length === 0) return;
+                
+                depthIndicator.innerHTML = '';
+                sections.forEach((section, index) => {
+                    const dot = document.createElement('div');
+                    dot.className = 'depth-dot';
+                    dot.setAttribute('data-section', index);
+                    dot.addEventListener('click', () => {
+                        section.scrollIntoView({ behavior: 'smooth' });
+                    });
+                    depthIndicator.appendChild(dot);
+                });
+            }
+
+            // Add floating particles to sections
+            function addSectionParticles() {
+                const sections = document.querySelectorAll('.parallax-section');
+                sections.forEach(section => {
+                    const particleContainer = document.createElement('div');
+                    particleContainer.className = 'section-particles';
+                    
+                    for (let i = 0; i < 8; i++) {
+                        const particle = document.createElement('div');
+                        particle.className = 'particle';
+                        particle.style.left = Math.random() * 100 + '%';
+                        particle.style.top = Math.random() * 100 + '%';
+                        particle.style.animationDelay = (Math.random() * 4) + 's';
+                        particle.style.animationDuration = (6 + Math.random() * 4) + 's';
+                        particleContainer.appendChild(particle);
+                    }
+                    
+                    section.insertBefore(particleContainer, section.firstChild);
+                });
+            }
+
+            // Update hamburger menu character based on scroll
+            let currentCharIndex = 0;
+            function updateHamburgerChar(scrollPercent) {
+                if (!hamburgerChar) return;
+                // When the nav is open we intentionally freeze the glyph (shows the close icon)
+                if (document.documentElement.classList.contains('nav-open')) return;
+                const newIndex = Math.floor(scrollPercent * (matrixChars.length - 1));
+                if (newIndex !== currentCharIndex) {
+                    currentCharIndex = newIndex;
+                    hamburgerChar.style.transform = 'scale(0.5) rotate(180deg)';
+                    setTimeout(() => {
+                        hamburgerChar.textContent = matrixChars[currentCharIndex];
+                        hamburgerChar.style.transform = 'scale(1) rotate(0deg)';
+                    }, 150);
+                }
+            }
+
+            // Update scroll progress bar
+            function updateScrollProgress(scrollPercent) {
+                if (scrollProgressBar) {
+                    scrollProgressBar.style.width = (scrollPercent * 100) + '%';
+                }
+            }
+
+            // Update depth indicator
+            function updateDepthIndicator(sections) {
+                if (!depthIndicator) return;
+                const dots = depthIndicator.querySelectorAll('.depth-dot');
+                const containerRect = container.getBoundingClientRect();
+                const viewportCenter = containerRect.height / 2;
+                
+                let activeIndex = 0;
+                sections.forEach((section, index) => {
+                    const rect = section.getBoundingClientRect();
+                    const sectionCenter = rect.top + rect.height / 2 - containerRect.top;
+                    if (Math.abs(sectionCenter - viewportCenter) < rect.height / 2) {
+                        activeIndex = index;
+                    }
+                });
+                
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === activeIndex);
+                });
+            }
+
+            // Check element visibility and apply effects
+            function checkVisibility() {
+                const sections = document.querySelectorAll('.parallax-section');
+                const cards = document.querySelectorAll('.parallax-card, .parallax-counter');
+                const revealElements = document.querySelectorAll('.matrix-reveal');
+                const header = document.querySelector('.layout-header');
+                
+                const scrollTop = container.scrollTop;
+                const scrollHeight = container.scrollHeight - container.clientHeight;
+                const scrollPercent = scrollHeight > 0 ? scrollTop / scrollHeight : 0;
+
+                if (header) {
+                    header.classList.toggle('is-scrolled', scrollTop > 8);
+                }
+                
+                // Update hamburger character
+                updateHamburgerChar(scrollPercent);
+                
+                // Update scroll progress
+                updateScrollProgress(scrollPercent);
+                
+                // Update depth indicator
+                updateDepthIndicator(sections);
+                
+                // Check sections
+                sections.forEach(section => {
+                    const rect = section.getBoundingClientRect();
+                    const isVisible = rect.top < window.innerHeight * 0.85 && rect.bottom > 0;
+                    
+                    if (isVisible) {
+                        section.classList.add('in-view');
+                        
+                        // Calculate parallax offset for 3D depth
+                        const sectionProgress = 1 - (rect.top / window.innerHeight);
+                        const translateZ = Math.max(-50, Math.min(50, sectionProgress * 100 - 50));
+                        section.style.transform = `translateZ(${translateZ}px)`;
+                    }
+                });
+                
+                // Check cards with staggered reveal
+                cards.forEach((card, index) => {
+                    const rect = card.getBoundingClientRect();
+                    const isVisible = rect.top < window.innerHeight * 0.9 && rect.bottom > 0;
+                    
+                    if (isVisible && !card.classList.contains('visible')) {
+                        setTimeout(() => {
+                            card.classList.add('visible');
+                            card.classList.add('revealed');
+                        }, index * 100);
+                    }
+                });
+                
+                // Check matrix reveal elements
+                revealElements.forEach((el, index) => {
+                    const rect = el.getBoundingClientRect();
+                    const isVisible = rect.top < window.innerHeight * 0.85 && rect.bottom > 0;
+                    
+                    if (isVisible && !el.classList.contains('revealed')) {
+                        setTimeout(() => {
+                            el.classList.add('revealed');
+                        }, index * 80);
+                    }
+                });
+            }
+
+            // Throttle scroll events
+            let ticking = false;
+            function onScroll() {
+                if (!ticking) {
+                    requestAnimationFrame(() => {
+                        checkVisibility();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }
+
+            // Initialize everything
+            function init() {
+                initializeCards();
+                initializeTitles();
+                createDepthIndicator();
+                addSectionParticles();
+                
+                // Initial check
+                setTimeout(checkVisibility, 100);
+                
+                // Listen for scroll
+                container.addEventListener('scroll', onScroll, { passive: true });
+                
+                // Also listen for resize
+                window.addEventListener('resize', () => {
+                    createDepthIndicator();
+                    checkVisibility();
+                }, { passive: true });
+            }
+
+            // Run on DOM ready
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', init);
+            } else {
+                init();
+            }
+            
+            // Also run after loader finishes
+            window.addEventListener('app:loader-finished', () => {
+                setTimeout(checkVisibility, 500);
+            }, { passive: true });
         })();
 
         // Matrix code effect always running
@@ -545,33 +965,43 @@
         })();
 
         // Mobile menu toggle
-        document.getElementById('mobileMenuToggle').addEventListener('click', function() {
-            document.getElementById('main-nav').classList.toggle('active');
-            this.querySelector('i').classList.toggle('fa-bars');
-            this.querySelector('i').classList.toggle('fa-times');
-        });
+        (function initMobileMenuToggle() {
+            const toggle = document.getElementById('mobileMenuToggle');
+            const nav = document.getElementById('main-nav');
+            const hamburgerChar = document.getElementById('hamburgerChar');
 
-        // Mobile menu dropdown toggle
+            if (!toggle || !nav) return;
+
+            toggle.setAttribute('aria-controls', 'main-nav');
+            toggle.setAttribute('aria-expanded', 'false');
+
+            toggle.addEventListener('click', function() {
+                const isOpen = nav.classList.toggle('active');
+                document.documentElement.classList.toggle('nav-open', isOpen);
+
+                toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+                if (hamburgerChar) {
+                    hamburgerChar.textContent = isOpen ? '⨯' : (hamburgerChar.textContent || '☰');
+                }
+            });
+
+            // Close the menu with Escape
+            document.addEventListener('keydown', function(e) {
+                if (e.key !== 'Escape') return;
+                if (!nav.classList.contains('active')) return;
+                nav.classList.remove('active');
+                document.documentElement.classList.remove('nav-open');
+                toggle.setAttribute('aria-expanded', 'false');
+                if (hamburgerChar) hamburgerChar.textContent = '☰';
+            });
+        })();
+
+        // DOM-ready: lightweight UX helpers
         document.addEventListener('DOMContentLoaded', function() {
-            const menuItems = document.querySelectorAll('.main-menu-item');
-            
-            if (window.innerWidth <= 768) {
-                menuItems.forEach(item => {
-                    const hasDropdown = item.querySelector('.dropdown-menu');
-                    if (hasDropdown) {
-                        const link = item.querySelector('.main-menu-link');
-                        link.addEventListener('click', function(e) {
-                            e.preventDefault();
-                            item.classList.toggle('active');
-                        });
-                    }
-                });
-            }
-            
             // Setup search form submission
             const searchForm = document.getElementById('searchForm');
             const searchInput = document.getElementById('globalSearch');
-            
+
             if (searchForm && searchInput) {
                 searchForm.addEventListener('submit', function(e) {
                     // Only submit if search has at least 3 characters
@@ -582,24 +1012,75 @@
             }
         });
 
-        // Navigation click handling with smooth transitions
-        document.querySelectorAll('.main-menu-link').forEach(link => {
-            if (!link.closest('.main-menu-item').classList.contains('active')) {
-                link.addEventListener('click', function(e) {
-                    if (e.currentTarget.getAttribute('href').includes('#')) return;
-                    e.preventDefault();
+        // Matrix Transformer Nav & Typewriter/Scramble Effects
+        (function initMatrixNav() {
+            const links = document.querySelectorAll('.mx-link');
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789$#@@%&*<>?[]{}=+';
+            
+            links.forEach(link => {
+                let interval;
+                const originalText = link.getAttribute('data-text');
+
+                link.addEventListener('mouseenter', () => {
+                    let iteration = 0;
+                    const maxIterations = 10; // Speed of scramble
                     
-                    const url = e.currentTarget.getAttribute('href');
-                    const transition = document.getElementById('pageTransition');
-                    transition.classList.add('active');
+                    clearInterval(interval);
                     
-                    document.getElementById('main-nav').classList.remove('active');
-                    
-                    setTimeout(() => {
-                        window.location.href = url;
-                    }, 300);
+                    interval = setInterval(() => {
+                        link.innerText = originalText
+                            .split('')
+                            .map((letter, index) => {
+                                if (index < iteration) {
+                                    return originalText[index];
+                                }
+                                return chars[Math.floor(Math.random() * chars.length)];
+                            })
+                            .join('');
+                        
+                        if (iteration >= originalText.length) { 
+                            clearInterval(interval);
+                        }
+                        
+                        iteration += 1 / 3;
+                    }, 30);
                 });
+
+                link.addEventListener('mouseleave', () => {
+                    clearInterval(interval);
+                    link.innerText = originalText;
+                });
+            });
+
+            // Random glitch for status text
+            const statusText = document.querySelector('.status-glitch');
+            if (statusText) {
+                setInterval(() => {
+                    if (Math.random() > 0.9) {
+                        statusText.style.transform = `translate(${Math.random()*2 - 1}px, ${Math.random()*2 - 1}px)`;
+                        setTimeout(() => statusText.style.transform = 'none', 50);
+                    }
+                }, 2000);
             }
+        })();
+
+        // Matrix Navigation Click Handling (Page Transitions)
+        document.querySelectorAll('.mx-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                const href = e.currentTarget.getAttribute('href');
+                if (!href || href.startsWith('#') || href.startsWith('javascript:')) return;
+
+                e.preventDefault();
+
+                // Play transition animation (green data wipe or simple fade)
+                const transition = document.getElementById('pageTransition');
+                if (transition) transition.classList.add('active');
+
+                // Navigate after delay
+                setTimeout(() => {
+                    window.location.href = href;
+                }, 400); 
+            });
         });
 
         // Enhanced Back to top button logic (always visible)
@@ -607,7 +1088,7 @@
             const btn = document.getElementById('backToTop');
             if (!btn) return;
             const container = document.querySelector('.parallax-container');
-            
+
             container.addEventListener('scroll', function () {
                 if (container.scrollTop > 300) {
                     btn.style.opacity = "1";
@@ -615,16 +1096,16 @@
                     btn.style.opacity = "0.5";
                 }
             });
-            
-            btn.addEventListener('click', function () { 
-                container.scrollTo({ 
-                    top: 0, 
-                    behavior: 'smooth' 
-                }); 
+
+            btn.addEventListener('click', function () {
+                container.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
             });
         })();
 
-        // Enhanced matrix cursor
+        @* // Enhanced matrix cursor
         (function initMatrixCursor() {
             const cursor = document.getElementById('matrix-cursor');
             const charSpan = document.getElementById('cursor-char');
@@ -649,11 +1130,11 @@
             let currentY = window.innerHeight / 2;
             let targetX = currentX;
             let targetY = currentY;
-            
+
             // Get cursor element dimensions for centering
             const cursorSize = 54;
             const offset = cursorSize / 2;
-            
+
             // Set initial position
             cursor.style.left = '0px';
             cursor.style.top = '0px';
@@ -664,13 +1145,13 @@
                 // Smooth interpolation
                 currentX += (targetX - currentX) * 0.15;
                 currentY += (targetY - currentY) * 0.15;
-                
+
                 // Apply transform
                 cursor.style.transform = 'translate3d(' + (currentX - offset) + 'px, ' + (currentY - offset) + 'px, 0)';
-                
+
                 requestAnimationFrame(animate);
             }
-            
+
             // Start animation immediately
             animate();
 
@@ -685,7 +1166,7 @@
             document.addEventListener('mouseleave', function() {
                 cursor.style.opacity = '0';
             });
-            
+
             // Show when mouse enters document
             document.addEventListener('mouseenter', function(e) {
                 targetX = e.clientX;
@@ -696,44 +1177,44 @@
             });
 
             // Hide on touch
-            window.addEventListener('touchstart', function () { 
-                cursor.style.display = 'none'; 
+            window.addEventListener('touchstart', function () {
+                cursor.style.display = 'none';
                 document.body.style.cursor = 'auto';
             }, { passive: true });
-        })();
+        })(); *@
 
         // Enhanced parallax scroll effect with smooth animations
         (function initParallax() {
             const container = document.querySelector('.parallax-container');
             const sections = document.querySelectorAll('.parallax-section');
-            
+
             if (!sections.length) return;
-            
+
             let ticking = false;
-            
+
             function updateParallax() {
                 const scrolled = container.scrollTop;
                 const windowHeight = window.innerHeight;
-                
+
                 sections.forEach((section, index) => {
                     const sectionTop = section.offsetTop;
                     const sectionHeight = section.offsetHeight;
                     const sectionCenter = sectionTop + sectionHeight / 2;
                     const distanceFromCenter = scrolled + windowHeight / 2 - sectionCenter;
                     const normalizedDistance = distanceFromCenter / windowHeight;
-                    
+
                     // Enhanced parallax with multiple effects
                     if (scrolled + windowHeight > sectionTop && scrolled < sectionTop + sectionHeight) {
                         const yPos = normalizedDistance * 30; // Reduced movement for smoother effect
                         const scale = 1 + Math.abs(normalizedDistance) * 0.05;
-                        
+
                         section.style.transform = `translateY(${yPos}px) scale(${Math.max(0.95, Math.min(1.05, scale))})`;
                     }
                 });
-                
+
                 ticking = false;
             }
-            
+
             container.addEventListener('scroll', () => {
                 if (!ticking) {
                     requestAnimationFrame(updateParallax);
@@ -752,18 +1233,18 @@
                 const frameDuration = 1000 / frameRate;
                 const totalFrames = duration / frameDuration;
                 const increment = target / totalFrames;
-                
+
                 let current = 0;
                 let frame = 0;
-                
+
                 // Reset counter if it was previously animated
                 counter.textContent = '0';
-                
+
                 const timer = setInterval(() => {
                     frame++;
                     current += increment;
                     counter.textContent = Math.round(current);
-                    
+
                     if (frame >= totalFrames) {
                         counter.textContent = target;
                         clearInterval(timer);
@@ -789,7 +1270,7 @@
             // Observe counter sections
             const countersSections = document.querySelectorAll('.counters-section');
             countersSections.forEach(section => observer.observe(section));
-            
+
             // Remove page transition on load
             const transition = document.getElementById('pageTransition');
             setTimeout(() => {
@@ -802,29 +1283,37 @@
         // Press: Ctrl + Shift + A + W (in sequence)
         // ============================================
         (function initAdminPanel() {
-            // Admin dialog hotkey: Alt+Shift+A (safe, no browser conflicts)
+            // Admin panel hotkey: Alt+Shift+A (safe, no browser conflicts)
             document.addEventListener('keydown', function(e) {
-                // Alt+Shift+A - doesn't conflict with Edge or Chrome shortcuts
                 if (e.altKey && e.shiftKey && (e.key === 'A' || e.key === 'a')) {
                     e.preventDefault();
-                    openAdminModal();
+                    openAdminPanel();
                 }
             });
         })();
 
-        // Admin Modal Functions
+        // Admin Panel Functions
         let isAdminInitialized = false;
 
-        function openAdminModal() {
-            const modal = document.getElementById('adminModal');
-            modal.classList.remove('hidden');
+        function openAdminPanel() {
+            const panel = document.getElementById('adminPanel');
+            if (!panel) return;
+            panel.classList.remove('hidden');
+            document.body.classList.add('admin-mode');
             showLoginScreen();
         }
 
-        function closeAdminModal() {
-            document.getElementById('adminModal').classList.add('hidden');
+        function closeAdminPanel() {
+            const panel = document.getElementById('adminPanel');
+            if (!panel) return;
+            panel.classList.add('hidden');
+            document.body.classList.remove('admin-mode');
             resetAllScreens();
         }
+
+        // Backwards compatibility
+        function openAdminModal() { openAdminPanel(); }
+        function closeAdminModal() { closeAdminPanel(); }
 
         function showScreen(screenId) {
             document.querySelectorAll('.admin-screen').forEach(s => s.classList.add('hidden'));
@@ -836,36 +1325,44 @@
             document.getElementById('loginUsername').value = '';
             document.getElementById('loginPassword').value = '';
             document.getElementById('loginMessage').classList.add('hidden');
+            const shell = document.getElementById('adminShell');
+            if (shell) shell.classList.add('logged-out');
+            const title = document.getElementById('adminTopbarTitle');
+            if (title) title.textContent = 'Admin Panel';
         }
 
         function showLoginScreen() {
             showScreen('adminLoginScreen');
+            const shell = document.getElementById('adminShell');
+            if (shell) shell.classList.add('logged-out');
+            const title = document.getElementById('adminTopbarTitle');
+            if (title) title.textContent = 'Admin Login';
         }
 
         async function handleLogin(event) {
             event.preventDefault();
-            
+
             const username = document.getElementById('loginUsername').value;
             const password = document.getElementById('loginPassword').value;
             const messageEl = document.getElementById('loginMessage');
-            
+
             messageEl.classList.add('hidden');
-            
+
             try {
                 const response = await fetch('/api/admin/login', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ username, password })
                 });
-                
+
                 const data = await response.json();
-                
+
                 if (response.ok) {
                     messageEl.textContent = 'Login successful!';
                     messageEl.classList.remove('error');
                     messageEl.classList.add('success');
                     messageEl.classList.remove('hidden');
-                    
+
                     setTimeout(() => showDashboardScreen(), 500);
                 } else {
                     messageEl.textContent = data.error || 'Invalid credentials';
@@ -890,23 +1387,37 @@
 
         function showDashboardScreen() {
             showScreen('adminDashboard');
+            const shell = document.getElementById('adminShell');
+            if (shell) shell.classList.remove('logged-out');
             switchTab('analytics');
             loadDashboardData();
         }
 
-        function switchTab(tabName) {
+        function openDashboardTab(tabName, buttonEl) {
+            showDashboardScreen();
+            switchTab(tabName, buttonEl);
+        }
+
+        function switchTab(tabName, buttonEl) {
             // Update tab buttons
             document.querySelectorAll('.admin-tab-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
-            event?.currentTarget?.classList.add('active');
-            
+            const trigger = buttonEl || event?.currentTarget;
+            trigger?.classList?.add('active');
+
             // Show selected tab content
             document.querySelectorAll('.tab-pane').forEach(pane => {
                 pane.classList.remove('active');
             });
             document.getElementById('tab-' + tabName)?.classList.add('active');
-            
+
+            const title = document.getElementById('adminTopbarTitle');
+            if (title) {
+                const label = tabName.charAt(0).toUpperCase() + tabName.slice(1);
+                title.textContent = `Admin · ${label}`;
+            }
+
             // Load tab data
             if (tabName === 'blog') {
                 loadBlogPosts();
@@ -920,19 +1431,19 @@
                     showLoginScreen();
                     return;
                 }
-                
+
                 const data = await response.json();
-                
+
                 // Update stats
                 document.getElementById('stat-today').textContent = data.TodayVisitors || 0;
                 document.getElementById('stat-week').textContent = data.ThisWeekVisitors || 0;
                 document.getElementById('stat-month').textContent = data.ThisMonthVisitors || 0;
                 document.getElementById('stat-total').textContent = data.TotalVisitors || 0;
-                
+
                 // Show recent activity
                 const activityHtml = '<div style="color: rgba(0,255,120,0.7);">Activity monitoring coming soon...</div>';
                 document.getElementById('recentActivity').innerHTML = activityHtml;
-                
+
             } catch (error) {
                 console.error('Error loading dashboard:', error);
             }
@@ -942,23 +1453,27 @@
             try {
                 const response = await fetch('/api/admin/blog/posts');
                 if (!response.ok) return;
-                
+
                 const posts = await response.json();
                 const listEl = document.getElementById('blogPostsList');
-                
+
                 if (posts.length === 0) {
                     listEl.innerHTML = '<div style="text-align:center; color:rgba(0,255,120,0.6); padding:40px;">No blog posts yet. Create your first post!</div>';
                     return;
                 }
-                
-                listEl.innerHTML = posts.map(post => `
+
+                listEl.innerHTML = posts.map(raw => {
+                    const post = normalizePost(raw);
+                    const featured = post.isFeatured ? ' • <strong style="color:#00ff7a">Featured</strong>' : '';
+                    const date = post.publishDate ? new Date(post.publishDate).toLocaleDateString() : 'Draft';
+                    return `
                     <div class="blog-item">
                         <div class="blog-item-info">
                             <h4>${post.title}</h4>
                             <div class="blog-item-meta">
-                                <span>${post.category}</span> • 
-                                <span>${post.date}</span>
-                                ${post.featured ? ' • <strong style="color:#00ff7a">Featured</strong>' : ''}
+                                <span>${post.category || 'Uncategorized'}</span> •
+                                <span>${date}</span>
+                                ${featured}
                             </div>
                         </div>
                         <div class="blog-item-actions">
@@ -970,10 +1485,25 @@
                             </button>
                         </div>
                     </div>
-                `).join('');
+                `;
+                }).join('');
             } catch (error) {
                 console.error('Error loading posts:', error);
             }
+        }
+
+        function normalizePost(post) {
+            return {
+                id: post.id ?? post.Id,
+                title: post.title ?? post.Title ?? 'Untitled',
+                category: post.category ?? post.Category,
+                summary: post.summary ?? post.Summary,
+                content: post.content ?? post.Content,
+                tags: post.tags ?? post.Tags ?? [],
+                isFeatured: post.isFeatured ?? post.IsFeatured ?? false,
+                publishDate: post.publishDate ?? post.PublishDate,
+                isPublished: post.isPublished ?? post.IsPublished ?? true
+            };
         }
 
         function showNewPostForm() {
@@ -985,26 +1515,26 @@
             document.getElementById('postContent').value = '';
             document.getElementById('postTags').value = '';
             document.getElementById('postFeatured').checked = false;
-            
+
             showScreen('postEditorScreen');
         }
 
         async function editPost(postId) {
             try {
-                const response = await fetch(`/api/admin/blog/post/${postId}`);
+                const response = await fetch(`/api/admin/blog/posts/${postId}`);
                 if (!response.ok) return;
-                
-                const post = await response.json();
-                
+
+                const post = normalizePost(await response.json());
+
                 document.getElementById('postFormTitle').textContent = 'Edit Blog Post';
-                document.getElementById('postId').value = post.Id;
-                document.getElementById('postTitle').value = post.Title;
-                document.getElementById('postCategory').value = post.Category;
-                document.getElementById('postSummary').value = post.Summary;
-                document.getElementById('postContent').value = post.Content;
-                document.getElementById('postTags').value = post.Tags;
-                document.getElementById('postFeatured').checked = post.Featured;
-                
+                document.getElementById('postId').value = post.id;
+                document.getElementById('postTitle').value = post.title;
+                document.getElementById('postCategory').value = post.category || 'ASP.NET Core';
+                document.getElementById('postSummary').value = post.summary || '';
+                document.getElementById('postContent').value = post.content || '';
+                document.getElementById('postTags').value = Array.isArray(post.tags) ? post.tags.join(', ') : (post.tags || '');
+                document.getElementById('postFeatured').checked = post.isFeatured;
+
                 showScreen('postEditorScreen');
             } catch (error) {
                 alert('Error loading post');
@@ -1013,25 +1543,32 @@
 
         async function savePost(event) {
             event.preventDefault();
-            
+
+            const tags = document.getElementById('postTags').value
+                .split(',')
+                .map(tag => tag.trim())
+                .filter(Boolean);
+
             const postData = {
                 id: document.getElementById('postId').value || null,
                 title: document.getElementById('postTitle').value,
                 category: document.getElementById('postCategory').value,
                 summary: document.getElementById('postSummary').value,
                 content: document.getElementById('postContent').value,
-                tags: document.getElementById('postTags').value,
-                featured: document.getElementById('postFeatured').checked
+                tags,
+                isFeatured: document.getElementById('postFeatured').checked,
+                isPublished: true
             };
-            
+
             try {
-                const url = postData.id ? `/api/admin/blog/update/${postData.id}` : '/api/admin/blog/create';
+                const isUpdate = Boolean(postData.id);
+                const url = isUpdate ? `/api/admin/blog/posts/${postData.id}` : '/api/admin/blog/posts';
                 const response = await fetch(url, {
-                    method: 'POST',
+                    method: isUpdate ? 'PUT' : 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(postData)
                 });
-                
+
                 if (response.ok) {
                     alert('Post saved successfully!');
                     showDashboardScreen();
@@ -1046,12 +1583,10 @@
 
         async function deletePost(postId) {
             if (!confirm('Are you sure you want to delete this post?')) return;
-            
+
             try {
-                const response = await fetch(`/api/admin/blog/delete/${postId}`, {
-                    method: 'POST'
-                });
-                
+                const response = await fetch(`/api/admin/blog/posts/${postId}`, { method: 'DELETE' });
+
                 if (response.ok) {
                     loadBlogPosts();
                 } else {
@@ -1066,33 +1601,137 @@
             showDashboardScreen();
             switchTab('blog');
         }
-                
-                // Render recent visitors
-                const visitors = data.RecentVisitors || [];
-                const visitorsHtml = visitors.slice(0, 10).map(v => 
-                    `<tr>
-                        <td>${new Date(v.VisitTime).toLocaleString()}</td>
-                        <td>${v.PageVisited}</td>
-                        <td>${v.Browser}</td>
-                        <td>${v.DeviceType}</td>
-                    </tr>`
-                ).join('');
-                document.getElementById('recentVisitorsTable').innerHTML = 
-                    `<table class="admin-table">
-                        <thead><tr><th>Time</th><th>Page</th><th>Browser</th><th>Device</th></tr></thead>
-                        <tbody>${visitorsHtml || '<tr><td colspan="4">No visitors yet</td></tr>'}</tbody>
-                    </table>`;
-            } catch (error) {
-                console.error('Error loading dashboard:', error);
-            }
-        }
 
         // Close modal on Escape key
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && !document.getElementById('adminModal').classList.contains('hidden')) {
-                closeAdminModal();
+            const panel = document.getElementById('adminPanel');
+            if (e.key === 'Escape' && panel && !panel.classList.contains('hidden')) {
+                closeAdminPanel();
             }
         });
+
+        // ========================================
+        // 3D HOLOGRAPHIC NAVIGATION SYSTEM
+        // ========================================
+        (function init3DNavigation() {
+            const nav = document.getElementById('nav3D');
+            const toggle = document.getElementById('nav3DToggle');
+            const orbital = document.getElementById('navOrbital');
+            const items = document.querySelectorAll('.nav-orbital-item');
+
+            if (!nav || !toggle) return;
+
+            // Toggle navigation
+            toggle.addEventListener('click', function() {
+                nav.classList.toggle('is-open');
+                document.body.style.overflow = nav.classList.contains('is-open') ? 'hidden' : '';
+            });
+
+            // Close on clicking outside
+            nav.addEventListener('click', function(e) {
+                if (e.target === nav || e.target.classList.contains('nav-scanlines')) {
+                    nav.classList.remove('is-open');
+                    document.body.style.overflow = '';
+                }
+            });
+
+            // Close on Escape
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && nav.classList.contains('is-open')) {
+                    nav.classList.remove('is-open');
+                    document.body.style.overflow = '';
+                }
+            });
+
+            // 3D rotation effect on mouse move
+            let rafId = null;
+            nav.addEventListener('mousemove', function(e) {
+                if (!nav.classList.contains('is-open')) return;
+
+                if (rafId) cancelAnimationFrame(rafId);
+                rafId = requestAnimationFrame(() => {
+                    const rect = nav.getBoundingClientRect();
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const mouseX = e.clientX - rect.left;
+                    const mouseY = e.clientY - rect.top;
+
+                    const rotateY = ((mouseX - centerX) / centerX) * 15;
+                    const rotateX = ((centerY - mouseY) / centerY) * 15;
+
+                    if (orbital) {
+                        orbital.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+                    }
+                });
+            });
+
+            nav.addEventListener('mouseleave', function() {
+                if (orbital) {
+                    orbital.style.transform = 'rotateX(0deg) rotateY(0deg)';
+                }
+            });
+
+            // Add ripple effect on item click
+            items.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    // Create ripple
+                    const ripple = document.createElement('span');
+                    ripple.style.cssText = `
+                        position: absolute;
+                        border-radius: 50%;
+                        background: rgba(0, 255, 120, 0.4);
+                        transform: scale(0);
+                        animation: rippleExpand 0.6s ease-out forwards;
+                        pointer-events: none;
+                        width: 200%;
+                        height: 200%;
+                        left: -50%;
+                        top: -50%;
+                    `;
+
+                    this.querySelector('.orbital-inner').appendChild(ripple);
+
+                    // Small delay before navigation for visual feedback
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 600);
+                });
+            });
+
+            // Add CSS for ripple
+            const style = document.createElement('style');
+            style.textContent = `
+                @@keyframes rippleExpand {
+                    from { transform: scale(0); opacity: 1; }
+                    to { transform: scale(1); opacity: 0; }
+                }
+            `;
+            document.head.appendChild(style);
+
+            // Keyboard navigation
+            let currentIndex = -1;
+            document.addEventListener('keydown', function(e) {
+                if (!nav.classList.contains('is-open')) return;
+
+                if (e.key === 'Tab') {
+                    e.preventDefault();
+                    currentIndex = (currentIndex + 1) % items.length;
+                    items[currentIndex].focus();
+                } else if (e.key === 'Enter' && document.activeElement.classList.contains('nav-orbital-item')) {
+                    document.activeElement.click();
+                }
+            });
+
+            // Reset index when nav closes
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.attributeName === 'class' && !nav.classList.contains('is-open')) {
+                        currentIndex = -1;
+                    }
+                });
+            });
+            observer.observe(nav, { attributes: true });
+        })();
     </script>
 
 @* Render optional page Scripts section (fixes unrendered 'Scripts' exception) *@

@@ -4,7 +4,7 @@
     var featuredPosts = ViewBag.FeaturedPosts as List<AydinWyldePortfolioX.Models.BlogPost> ?? new List<AydinWyldePortfolioX.Models.BlogPost>();
 }
 
-<div id="section-hero" class="parallax-section">
+<div id="section-hero" class="parallax-section hero-intro">
     <h2>Welcome to My Portfolio</h2>
     <div class="portfolio-grid hero-cards">
         <div class="portfolio-card">
@@ -125,42 +125,10 @@
             }
         </div>
         <div class="view-all-link">
-            <a href="@Url.Action("Blog", "Home")" class="main-menu-link">
+            <a href="@Url.Action("Blog", "Home")" class="matrix-cta">
                 <i class="fas fa-book-open"></i> View All Articles
             </a>
         </div>
     </div>
 }
 
-<script>
-    // Ensure variables are declared
-    const items = document.querySelectorAll('.your-nav-item-selector'); // Replace with actual selector
-    const container = document.documentElement || document.body; // Adjust if you have a specific scroll container
-    const sections = [
-        document.getElementById('section-hero'),
-        document.getElementById('section-expertise'),
-        document.getElementById('section-latest')
-    ];
-
-    // Click scroll
-    items.forEach(item => {
-        item.addEventListener('click', () => {
-            const target = document.querySelector(item.dataset.target);
-            if(target){
-                target.scrollIntoView({behavior:'smooth', block:'start'});
-            }
-        });
-    });
-
-    // Active state on scroll
-    function updateActive(){
-        let activeIndex = 0;
-        const scrollPos = container.scrollTop + window.innerHeight * 0.3; // bias
-        sections.forEach((sec, idx) => {
-            if(sec.offsetTop <= scrollPos) activeIndex = idx;
-        });
-        items.forEach((i, idx)=> i.classList.toggle('active', idx===activeIndex));
-    }
-    container.addEventListener('scroll', updateActive);
-    updateActive();
-</script>

@@ -1,9 +1,9 @@
 {
-  "name": "DXApplication3",
+  "name": "dxapplication3",
   "version": "1.0.0",
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "devextreme-dist": "24.2.3"
+    "devextreme-dist": "24.2.8"
   }
 }
