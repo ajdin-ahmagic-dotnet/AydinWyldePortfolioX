@@ -95,13 +95,26 @@ namespace AydinWyldePortfolioX.Services
         {
             lock (_lock)
             {
-                var posts = LoadPosts();
-                post.Id = posts.Any() ? posts.Max(p => p.Id) + 1 : 1;
-                post.PublishDate = DateTime.UtcNow;
-                post.Slug = GenerateSlug(post.Title);
-                posts.Add(post);
-                SavePosts(posts);
-                return true;
+                try
+                {
+                    EnsureDirectoryExists();
+                    var posts = LoadPosts();
+                    post.Id = posts.Any() ? posts.Max(p => p.Id) + 1 : 1;
+                    post.PublishDate = DateTime.UtcNow;
+                    post.LastModified = DateTime.UtcNow;
+                    post.Slug = GenerateSlug(post.Title);
+                    post.Author = post.Author ?? "Aydin Wylde";
+                    posts.Add(post);
+                    SavePosts(posts);
+                    Console.WriteLine($"[BlogService] Created post ID {post.Id}: {post.Title}");
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"[BlogService] ERROR creating post: {ex.Message}");
+                    Console.WriteLine($"[BlogService] Stack trace: {ex.StackTrace}");
+                    return false;
+                }
             }
         }
 
@@ -109,19 +122,39 @@ namespace AydinWyldePortfolioX.Services
         {
             lock (_lock)
             {
-                var posts = LoadPosts();
-                var existing = posts.FirstOrDefault(p => p.Id == post.Id);
-                if (existing == null) return false;
-
-                posts.Remove(existing);
-                post.LastModified = DateTime.UtcNow;
-                if (string.IsNullOrEmpty(post.Slug))
+                try
                 {
-                    post.Slug = GenerateSlug(post.Title);
+                    EnsureDirectoryExists();
+                    var posts = LoadPosts();
+                    var existing = posts.FirstOrDefault(p => p.Id == post.Id);
+                    if (existing == null)
+                    {
+                        Console.WriteLine($"[BlogService] Post ID {post.Id} not found for update");
+                        return false;
+                    }
+
+                    // Preserve original data
+                    post.PublishDate = existing.PublishDate;
+                    post.Author = existing.Author ?? "Aydin Wylde";
+                    post.ViewCount = existing.ViewCount;
+
+                    posts.Remove(existing);
+                    post.LastModified = DateTime.UtcNow;
+                    if (string.IsNullOrEmpty(post.Slug))
+                    {
+                        post.Slug = GenerateSlug(post.Title);
+                    }
+                    posts.Add(post);
+                    SavePosts(posts);
+                    Console.WriteLine($"[BlogService] Updated post ID {post.Id}: {post.Title}");
+                    return true;
                 }
-                posts.Add(post);
-                SavePosts(posts);
-                return true;
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"[BlogService] ERROR updating post: {ex.Message}");
+                    Console.WriteLine($"[BlogService] Stack trace: {ex.StackTrace}");
+                    return false;
+                }
             }
         }
 
@@ -129,13 +162,36 @@ namespace AydinWyldePortfolioX.Services
         {
             lock (_lock)
             {
-                var posts = LoadPosts();
-                var post = posts.FirstOrDefault(p => p.Id == id);
-                if (post == null) return false;
+                try
+                {
+                    var posts = LoadPosts();
+                    var post = posts.FirstOrDefault(p => p.Id == id);
+                    if (post == null)
+                    {
+                        Console.WriteLine($"[BlogService] Post ID {id} not found for deletion");
+                        return false;
+                    }
 
-                posts.Remove(post);
-                SavePosts(posts);
-                return true;
+                    posts.Remove(post);
+                    SavePosts(posts);
+                    Console.WriteLine($"[BlogService] Deleted post ID {id}");
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"[BlogService] ERROR deleting post: {ex.Message}");
+                    Console.WriteLine($"[BlogService] Stack trace: {ex.StackTrace}");
+                    return false;
+                }
+            }
+        }
+
+        private void EnsureDirectoryExists()
+        {
+            if (!Directory.Exists(_dataPath))
+            {
+                Directory.CreateDirectory(_dataPath);
+                Console.WriteLine($"[BlogService] Created directory: {_dataPath}");
             }
         }
 
@@ -203,17 +259,42 @@ namespace AydinWyldePortfolioX.Services
                 using var stream = File.OpenRead(_postsFile);
                 return (List<BlogPost>?)serializer.Deserialize(stream) ?? new List<BlogPost>();
             }
-            catch
+            catch (Exception ex)
             {
+                Console.WriteLine($"[BlogService] ERROR loading posts: {ex.Message}");
                 return new List<BlogPost>();
             }
         }
 
         private void SavePosts(List<BlogPost> posts)
         {
-            var serializer = new XmlSerializer(typeof(List<BlogPost>));
-            using var stream = File.Create(_postsFile);
-            serializer.Serialize(stream, posts);
+            try
+            {
+                EnsureDirectoryExists();
+                var serializer = new XmlSerializer(typeof(List<BlogPost>));
+                
+                // Write to temp file first, then rename for atomic operation
+                var tempFile = _postsFile + ".tmp";
+                using (var stream = File.Create(tempFile))
+                {
+                    serializer.Serialize(stream, posts);
+                }
+                
+                // Replace original with temp file
+                if (File.Exists(_postsFile))
+                {
+                    File.Delete(_postsFile);
+                }
+                File.Move(tempFile, _postsFile);
+                
+                Console.WriteLine($"[BlogService] Saved {posts.Count} posts to {_postsFile}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[BlogService] CRITICAL ERROR saving posts: {ex.Message}");
+                Console.WriteLine($"[BlogService] Stack trace: {ex.StackTrace}");
+                throw; // Re-throw to signal failure to caller
+            }
         }
 
         private void InitializeSampleData()

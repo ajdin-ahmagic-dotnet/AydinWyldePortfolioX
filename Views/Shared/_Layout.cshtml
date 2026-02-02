@@ -56,13 +56,16 @@
     <div id="mouse-glow" class="mouse-glow"></div>
     <div id="mouse-trail"></div>
 
-    <!-- Admin Panel (Full Page) -->
+    <!-- Admin Panel (Full Page) - HOLOGRAPHIC COMMAND CENTER -->
     <div id="adminPanel" class="admin-full-page hidden">
+        <!-- Matrix Data Stream Background -->
+        <div class="admin-matrix-bg" id="adminMatrixBg"></div>
+        
         <div class="admin-shell logged-out" id="adminShell">
             <aside class="admin-sidebar" aria-label="Admin navigation">
                 <div class="admin-brand">
                     <i class="fas fa-shield-alt"></i>
-                    <span>Admin Core</span>
+                    <span>ADMIN</span>
                 </div>
                 <nav class="admin-nav">
                     <button class="admin-nav-item" onclick="openDashboardTab('analytics', this)">
@@ -90,11 +93,10 @@
                 <div class="admin-user-profile">
                     <div class="admin-user-meta">
                         <div class="admin-user-name">Admin</div>
-                        <div class="admin-user-role">Full Access</div>
+                        <div class="admin-user-role">FULL ACCESS</div>
                     </div>
                     <button class="admin-logout-btn" onclick="logoutAdmin()">
-                        <i class="fas fa-sign-out-alt"></i>
-                        <span>Logout</span>
+                        <i class="fas fa-power-off"></i>
                     </button>
                 </div>
             </aside>
@@ -1290,7 +1292,38 @@
                     openAdminPanel();
                 }
             });
+            
+            // Initialize admin matrix background
+            initAdminMatrixBackground();
         })();
+        
+        // Epic Matrix Background for Admin Panel
+        function initAdminMatrixBackground() {
+            const container = document.getElementById('adminMatrixBg');
+            if (!container) return;
+            
+            const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノ∂∑∏√∫≈≠∴∵ΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩ';
+            const columnCount = Math.floor(window.innerWidth / 30);
+            
+            for (let i = 0; i < columnCount; i++) {
+                const column = document.createElement('div');
+                column.className = 'admin-matrix-column';
+                column.style.left = (i * 30 + Math.random() * 20) + 'px';
+                column.style.animationDuration = (5 + Math.random() * 10) + 's';
+                column.style.animationDelay = Math.random() * 5 + 's';
+                column.style.opacity = 0.1 + Math.random() * 0.3;
+                
+                // Generate random matrix text
+                let text = '';
+                const length = 15 + Math.floor(Math.random() * 20);
+                for (let j = 0; j < length; j++) {
+                    text += chars[Math.floor(Math.random() * chars.length)] + ' ';
+                }
+                column.textContent = text;
+                
+                container.appendChild(column);
+            }
+        }
 
         // Admin Panel Functions
         let isAdminInitialized = false;
@@ -1560,6 +1593,17 @@
                 isPublished: true
             };
 
+            // Validate
+            if (!postData.title.trim()) {
+                showToast('❌ Title is required!', 'error');
+                return;
+            }
+
+            const saveBtn = event.target.querySelector('button[type="submit"]');
+            const originalText = saveBtn.innerHTML;
+            saveBtn.innerHTML = '<div class="admin-spinner"></div> SAVING...';
+            saveBtn.disabled = true;
+
             try {
                 const isUpdate = Boolean(postData.id);
                 const url = isUpdate ? `/api/admin/blog/posts/${postData.id}` : '/api/admin/blog/posts';
@@ -1569,31 +1613,99 @@
                     body: JSON.stringify(postData)
                 });
 
+                const result = await response.json();
+
                 if (response.ok) {
-                    alert('Post saved successfully!');
-                    showDashboardScreen();
-                    switchTab('blog');
+                    showToast('✅ Post saved successfully!', 'success');
+                    createSuccessParticles();
+                    setTimeout(() => {
+                        showDashboardScreen();
+                        switchTab('blog');
+                    }, 1000);
                 } else {
-                    alert('Error saving post');
+                    const errorMsg = result.error || `Error ${result.code || response.status}`;
+                    showToast(`❌ ${errorMsg}`, 'error');
+                    console.error('[Admin] Save failed:', result);
                 }
             } catch (error) {
-                alert('Error saving post');
+                console.error('[Admin] Save error:', error);
+                showToast('❌ Network error - check your connection', 'error');
+            } finally {
+                saveBtn.innerHTML = originalText;
+                saveBtn.disabled = false;
+            }
+        }
+
+        // ========================================
+        // EPIC TOAST NOTIFICATION SYSTEM
+        // ========================================
+        function showToast(message, type = 'success') {
+            // Remove existing toasts
+            document.querySelectorAll('.admin-toast').forEach(t => t.remove());
+
+            const toast = document.createElement('div');
+            toast.className = `admin-toast ${type}`;
+            toast.innerHTML = `
+                <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-triangle'}"></i>
+                <span>${message}</span>
+            `;
+            document.body.appendChild(toast);
+
+            // Auto remove after 4 seconds with fade out
+            setTimeout(() => {
+                toast.style.animation = 'slideOutToRight 0.4s ease-out forwards';
+                setTimeout(() => toast.remove(), 400);
+            }, 4000);
+        }
+
+        // Add CSS for slide out animation
+        (function addToastStyles() {
+            const style = document.createElement('style');
+            style.textContent = `
+                @@keyframes slideOutToRight {
+                    from { transform: translateX(0); opacity: 1; }
+                    to { transform: translateX(100%); opacity: 0; }
+                }
+            `;
+            document.head.appendChild(style);
+        })();
+
+        // Epic success particles effect
+        function createSuccessParticles() {
+            const panel = document.getElementById('adminPanel');
+            if (!panel) return;
+
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'admin-particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 0.5 + 's';
+                particle.style.transform = `scale(${0.5 + Math.random()})`;
+                panel.appendChild(particle);
+
+                setTimeout(() => particle.remove(), 2000);
             }
         }
 
         async function deletePost(postId) {
-            if (!confirm('Are you sure you want to delete this post?')) return;
+            if (!confirm('⚠️ Are you sure you want to delete this post?\n\nThis action cannot be undone.')) return;
 
             try {
                 const response = await fetch(`/api/admin/blog/posts/${postId}`, { method: 'DELETE' });
+                const result = await response.json();
 
                 if (response.ok) {
+                    showToast('🗑️ Post deleted successfully!', 'success');
                     loadBlogPosts();
                 } else {
-                    alert('Error deleting post');
+                    const errorMsg = result.error || `Error ${result.code || response.status}`;
+                    showToast(`❌ ${errorMsg}`, 'error');
+                    console.error('[Admin] Delete failed:', result);
                 }
             } catch (error) {
-                alert('Error deleting post');
+                console.error('[Admin] Delete error:', error);
+                showToast('❌ Failed to delete post', 'error');
             }
         }
 

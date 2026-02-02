@@ -20515,6 +20515,1280 @@
       <OperatingSystem>Windows 10/11</OperatingSystem>
       <DeviceType>Desktop</DeviceType>
     </Visit>
+    <Visit>
+      <SessionId>dce96f42-d790-67f9-c9e9-c5d6bd5cb52a</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/</PageVisited>
+      <Referrer />
+      <VisitTime>2026-02-02T07:44:02.2705899Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>2d6ffa06-4342-f4d2-0740-decbe1d32b55</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/About</PageVisited>
+      <Referrer>https://localhost:7001/</Referrer>
+      <VisitTime>2026-02-02T07:44:04.5213281Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>22bb7ea1-9c0b-85bf-ffdc-3187835e0514</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Skills</PageVisited>
+      <Referrer>https://localhost:7001/</Referrer>
+      <VisitTime>2026-02-02T07:44:04.6413727Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>755589f4-738a-03e7-3c96-60dafbb383c3</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Projects</PageVisited>
+      <Referrer>https://localhost:7001/</Referrer>
+      <VisitTime>2026-02-02T07:44:04.7520776Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>b1eca4f2-1c80-775a-4908-a30cf5011d69</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Education</PageVisited>
+      <Referrer>https://localhost:7001/</Referrer>
+      <VisitTime>2026-02-02T07:44:04.8355569Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>6eb365bc-ada9-05a4-2ea2-2f29a36c2dad</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Blog</PageVisited>
+      <Referrer>https://localhost:7001/</Referrer>
+      <VisitTime>2026-02-02T07:44:04.9239176Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>4b081afb-1c78-bd35-fd72-901624e8647b</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Contact</PageVisited>
+      <Referrer>https://localhost:7001/</Referrer>
+      <VisitTime>2026-02-02T07:44:05.1344574Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>edc06378-6928-e525-2ff2-e356d26fb24a</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/</PageVisited>
+      <Referrer>https://localhost:7001/</Referrer>
+      <VisitTime>2026-02-02T07:44:18.7951964Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>9df76399-8ac1-7264-7846-751ad7f601d2</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/About</PageVisited>
+      <Referrer>https://localhost:7001/</Referrer>
+      <VisitTime>2026-02-02T07:44:19.1587544Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>8d0cb1ea-f06e-746e-f396-3d989ef9083b</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Skills</PageVisited>
+      <Referrer>https://localhost:7001/</Referrer>
+      <VisitTime>2026-02-02T07:44:19.2510215Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>a44b5855-d7c9-708e-6a72-39fa30688cb4</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Projects</PageVisited>
+      <Referrer>https://localhost:7001/</Referrer>
+      <VisitTime>2026-02-02T07:44:19.3579954Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>d579706c-ca27-7a80-d316-3e4939ff32bc</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Education</PageVisited>
+      <Referrer>https://localhost:7001/</Referrer>
+      <VisitTime>2026-02-02T07:44:19.4070581Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>796b339b-e6c7-13e1-6561-d081cef2ea4a</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Blog</PageVisited>
+      <Referrer>https://localhost:7001/</Referrer>
+      <VisitTime>2026-02-02T07:44:19.4481961Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>ce7e44f9-9abe-1e97-a9b6-1c1c611957c7</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Contact</PageVisited>
+      <Referrer>https://localhost:7001/</Referrer>
+      <VisitTime>2026-02-02T07:44:19.4938066Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>7e72f660-c660-aa73-b11e-704504ed20c8</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Blog</PageVisited>
+      <Referrer>https://localhost:7001/</Referrer>
+      <VisitTime>2026-02-02T07:44:27.1185319Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>d41862af-4e58-f2e2-ee7f-e4394db92012</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/</PageVisited>
+      <Referrer>https://localhost:7001/Home/Blog</Referrer>
+      <VisitTime>2026-02-02T07:44:27.4529683Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>c135cb33-87f4-9259-d996-e6d48c8f164e</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/About</PageVisited>
+      <Referrer>https://localhost:7001/Home/Blog</Referrer>
+      <VisitTime>2026-02-02T07:44:27.50229Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>8437968b-bae5-63f6-1116-50da376bbacb</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Skills</PageVisited>
+      <Referrer>https://localhost:7001/Home/Blog</Referrer>
+      <VisitTime>2026-02-02T07:44:27.5366333Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>ad74cee2-6c25-2490-2626-197cf994da74</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Projects</PageVisited>
+      <Referrer>https://localhost:7001/Home/Blog</Referrer>
+      <VisitTime>2026-02-02T07:44:27.5807049Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>dad9e109-fb89-4596-8b01-426ef0917ac9</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Education</PageVisited>
+      <Referrer>https://localhost:7001/Home/Blog</Referrer>
+      <VisitTime>2026-02-02T07:44:27.6456011Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>e1a0f60c-d8d4-94b6-a710-d11f53e6a175</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Contact</PageVisited>
+      <Referrer>https://localhost:7001/Home/Blog</Referrer>
+      <VisitTime>2026-02-02T07:44:27.6983907Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>2c85e60d-6928-1982-908b-5d3ce9d43921</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Blog</PageVisited>
+      <Referrer>https://localhost:7001/Home/Blog</Referrer>
+      <VisitTime>2026-02-02T07:47:34.423534Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>e010bcb2-d7f2-1358-3b70-52c9b50f4cd8</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/</PageVisited>
+      <Referrer>https://localhost:7001/Home/Blog?search=</Referrer>
+      <VisitTime>2026-02-02T07:47:36.1980319Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>146d8a4e-df26-d5e6-a7d4-07ccd5a8fad4</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/About</PageVisited>
+      <Referrer>https://localhost:7001/Home/Blog?search=</Referrer>
+      <VisitTime>2026-02-02T07:47:36.2555446Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>5e90f748-b254-fd77-6d5f-153d7a755b6d</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Skills</PageVisited>
+      <Referrer>https://localhost:7001/Home/Blog?search=</Referrer>
+      <VisitTime>2026-02-02T07:47:36.299716Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>a9862e02-cb9c-d4f3-781f-490c72fa2add</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Projects</PageVisited>
+      <Referrer>https://localhost:7001/Home/Blog?search=</Referrer>
+      <VisitTime>2026-02-02T07:47:36.3361823Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>00f47ab6-5237-d5a8-a1e0-6640f262d12b</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Education</PageVisited>
+      <Referrer>https://localhost:7001/Home/Blog?search=</Referrer>
+      <VisitTime>2026-02-02T07:47:36.3781759Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>b23ed9b7-13f7-98b6-a6e8-93cea4f74e83</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Contact</PageVisited>
+      <Referrer>https://localhost:7001/Home/Blog?search=</Referrer>
+      <VisitTime>2026-02-02T07:47:36.4895755Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>96adf62e-f54b-a10e-03aa-079b068753ed</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Blog</PageVisited>
+      <Referrer>https://localhost:7001/Home/Blog</Referrer>
+      <VisitTime>2026-02-02T07:48:53.8569497Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>1fd70f57-94b6-8568-81d0-4cf20f1f02f6</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/</PageVisited>
+      <Referrer>https://localhost:7001/Home/Blog?search=</Referrer>
+      <VisitTime>2026-02-02T07:48:54.9419211Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>1124f875-b2ef-eaa1-8b65-e4e3fb57df00</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/About</PageVisited>
+      <Referrer>https://localhost:7001/Home/Blog?search=</Referrer>
+      <VisitTime>2026-02-02T07:48:55.046953Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>f7668840-4c2f-5ef5-8434-1d1d538b8cb2</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Skills</PageVisited>
+      <Referrer>https://localhost:7001/Home/Blog?search=</Referrer>
+      <VisitTime>2026-02-02T07:48:55.1142648Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>9e792fda-8c45-1971-2c22-6d1904d2728d</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Projects</PageVisited>
+      <Referrer>https://localhost:7001/Home/Blog?search=</Referrer>
+      <VisitTime>2026-02-02T07:48:55.1634564Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>586311ef-baef-88b7-cee2-e3c6a50f83f9</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Education</PageVisited>
+      <Referrer>https://localhost:7001/Home/Blog?search=</Referrer>
+      <VisitTime>2026-02-02T07:48:55.2167233Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>c0eb5d2b-e236-ccd9-c026-4823c14983d6</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Contact</PageVisited>
+      <Referrer>https://localhost:7001/Home/Blog?search=</Referrer>
+      <VisitTime>2026-02-02T07:48:55.2624834Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>936ec3d3-1a13-b009-00eb-19a0e3797368</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/</PageVisited>
+      <Referrer />
+      <VisitTime>2026-02-02T08:11:14.0890499Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>07f22e9a-b206-8d3f-7283-b31e75445b03</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/About</PageVisited>
+      <Referrer>http://localhost:5001/</Referrer>
+      <VisitTime>2026-02-02T08:11:17.3086229Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>44decf05-869a-507d-bb7e-3e034e5bbe76</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Skills</PageVisited>
+      <Referrer>http://localhost:5001/</Referrer>
+      <VisitTime>2026-02-02T08:11:17.4428218Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>fd0bbc62-fee1-a27e-7e6e-4eaaa8aba591</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Projects</PageVisited>
+      <Referrer>http://localhost:5001/</Referrer>
+      <VisitTime>2026-02-02T08:11:17.5970774Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>11b6527f-6952-01cc-060a-e01d4ed5a35f</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Education</PageVisited>
+      <Referrer>http://localhost:5001/</Referrer>
+      <VisitTime>2026-02-02T08:11:17.6846403Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>bd453840-086b-805f-7297-e4af21519733</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Blog</PageVisited>
+      <Referrer>http://localhost:5001/</Referrer>
+      <VisitTime>2026-02-02T08:11:17.7787412Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>b918404c-2b8f-d7a1-92e2-82b6f30375be</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Contact</PageVisited>
+      <Referrer>http://localhost:5001/</Referrer>
+      <VisitTime>2026-02-02T08:11:17.94383Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>9983660c-780b-6b5b-ef2b-03214e2fdaf9</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Blog</PageVisited>
+      <Referrer>http://localhost:5001/</Referrer>
+      <VisitTime>2026-02-02T08:11:42.3949668Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>96e53d88-6591-1801-e9f3-899c8ac39649</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/</PageVisited>
+      <Referrer>http://localhost:5001/Home/Blog</Referrer>
+      <VisitTime>2026-02-02T08:11:42.7643234Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>7199e527-d295-735d-ceaf-ccbb8bc8ba5f</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/About</PageVisited>
+      <Referrer>http://localhost:5001/Home/Blog</Referrer>
+      <VisitTime>2026-02-02T08:11:42.8081045Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>baf3e167-e447-433f-d557-585cafd51008</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Skills</PageVisited>
+      <Referrer>http://localhost:5001/Home/Blog</Referrer>
+      <VisitTime>2026-02-02T08:11:42.8753479Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>5fb833de-4e9c-86f2-2334-a4e3a59a6525</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Projects</PageVisited>
+      <Referrer>http://localhost:5001/Home/Blog</Referrer>
+      <VisitTime>2026-02-02T08:11:42.9407442Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>e12fac5f-5c21-eb28-3fa8-818abf522b96</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Education</PageVisited>
+      <Referrer>http://localhost:5001/Home/Blog</Referrer>
+      <VisitTime>2026-02-02T08:11:43.0138112Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>79becdbe-a692-fb07-e508-8d579c8eedb6</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Contact</PageVisited>
+      <Referrer>http://localhost:5001/Home/Blog</Referrer>
+      <VisitTime>2026-02-02T08:11:43.0817408Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>634a753e-3b61-4b9b-8e2a-2f4ab1e4cd25</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Blog</PageVisited>
+      <Referrer>http://localhost:5001/Home/Blog</Referrer>
+      <VisitTime>2026-02-02T08:11:49.8770329Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>abc02d17-5a6d-6c30-ccaf-deb52efb8109</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/</PageVisited>
+      <Referrer>http://localhost:5001/Home/Blog?search=C%23</Referrer>
+      <VisitTime>2026-02-02T08:11:50.2036481Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>ca8caaf4-7bc2-51ec-8986-7cad3a3b2e7c</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/About</PageVisited>
+      <Referrer>http://localhost:5001/Home/Blog?search=C%23</Referrer>
+      <VisitTime>2026-02-02T08:11:50.2559036Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>a3791600-8acb-3fad-d3aa-c60ee32b3dd2</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Skills</PageVisited>
+      <Referrer>http://localhost:5001/Home/Blog?search=C%23</Referrer>
+      <VisitTime>2026-02-02T08:11:50.3232619Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>36bbbd40-fce5-1ba6-1aa6-4b5b6ec90fe9</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Projects</PageVisited>
+      <Referrer>http://localhost:5001/Home/Blog?search=C%23</Referrer>
+      <VisitTime>2026-02-02T08:11:50.36458Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>c86ae92d-2d3d-0ce6-3e56-cd479357a18b</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Education</PageVisited>
+      <Referrer>http://localhost:5001/Home/Blog?search=C%23</Referrer>
+      <VisitTime>2026-02-02T08:11:50.4084805Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>9d5cc66c-9a7d-2897-a1bd-6ea0f2936798</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Contact</PageVisited>
+      <Referrer>http://localhost:5001/Home/Blog?search=C%23</Referrer>
+      <VisitTime>2026-02-02T08:11:50.4580363Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>c2da01cb-9b8b-eed4-b08d-b34ba7e3d5dc</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Blog</PageVisited>
+      <Referrer>http://localhost:5001/Home/Blog?search=C%23</Referrer>
+      <VisitTime>2026-02-02T08:12:00.2805884Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>8a4b7b1f-7958-c7bb-8bc1-a74d24b51375</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/</PageVisited>
+      <Referrer>http://localhost:5001/Home/Blog?category=News</Referrer>
+      <VisitTime>2026-02-02T08:12:00.582488Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>45b32bd2-0fc1-57e7-49e1-afe67a37aeee</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/About</PageVisited>
+      <Referrer>http://localhost:5001/Home/Blog?category=News</Referrer>
+      <VisitTime>2026-02-02T08:12:00.6225128Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>8998d421-a449-0b3d-75ca-005974a5814c</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Skills</PageVisited>
+      <Referrer>http://localhost:5001/Home/Blog?category=News</Referrer>
+      <VisitTime>2026-02-02T08:12:00.6665805Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>1c83d75a-3125-51ba-3928-8fca704d7b83</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Projects</PageVisited>
+      <Referrer>http://localhost:5001/Home/Blog?category=News</Referrer>
+      <VisitTime>2026-02-02T08:12:00.7080649Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>3d129cdb-ee37-0334-df8e-80dfae914f21</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Education</PageVisited>
+      <Referrer>http://localhost:5001/Home/Blog?category=News</Referrer>
+      <VisitTime>2026-02-02T08:12:00.7602899Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>962c8ca8-387a-7347-9237-14aae41c2ee3</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Contact</PageVisited>
+      <Referrer>http://localhost:5001/Home/Blog?category=News</Referrer>
+      <VisitTime>2026-02-02T08:12:00.8179677Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>8822bc7c-c38e-2eef-c8f4-dc3d11f1ec89</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/BlogPost</PageVisited>
+      <Referrer>http://localhost:5001/Home/Blog?category=News</Referrer>
+      <VisitTime>2026-02-02T08:12:09.2357784Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>beb0cf5d-72d0-ce70-7639-5d42200dfefd</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/</PageVisited>
+      <Referrer>http://localhost:5001/Home/BlogPost?slug=dotnet-9-performance-improvements</Referrer>
+      <VisitTime>2026-02-02T08:12:09.5446664Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>847ef17a-0a5d-c5b8-5eea-faa08cde73e4</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/About</PageVisited>
+      <Referrer>http://localhost:5001/Home/BlogPost?slug=dotnet-9-performance-improvements</Referrer>
+      <VisitTime>2026-02-02T08:12:09.5789907Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>5f46c767-38b1-9ef0-17b4-8ab923439c38</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Skills</PageVisited>
+      <Referrer>http://localhost:5001/Home/BlogPost?slug=dotnet-9-performance-improvements</Referrer>
+      <VisitTime>2026-02-02T08:12:09.6198915Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>95de910a-535c-e614-8db4-b0c39052d393</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Projects</PageVisited>
+      <Referrer>http://localhost:5001/Home/BlogPost?slug=dotnet-9-performance-improvements</Referrer>
+      <VisitTime>2026-02-02T08:12:09.6607315Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>96e39268-eb2f-46b3-d3d1-052e230c0c8f</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Education</PageVisited>
+      <Referrer>http://localhost:5001/Home/BlogPost?slug=dotnet-9-performance-improvements</Referrer>
+      <VisitTime>2026-02-02T08:12:09.6996733Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>7c9f0216-1852-d74f-b5dc-253475b45448</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Blog</PageVisited>
+      <Referrer>http://localhost:5001/Home/BlogPost?slug=dotnet-9-performance-improvements</Referrer>
+      <VisitTime>2026-02-02T08:12:09.7502387Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>df88a318-49c6-4570-436b-0fad263da026</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Contact</PageVisited>
+      <Referrer>http://localhost:5001/Home/BlogPost?slug=dotnet-9-performance-improvements</Referrer>
+      <VisitTime>2026-02-02T08:12:09.8260941Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>35bce42b-84f9-13c6-eed0-c97e59a02ec8</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/</PageVisited>
+      <Referrer />
+      <VisitTime>2026-02-02T08:39:50.7828658Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>bd0301b0-cd30-a631-fbed-a9dbc2c8d17e</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/About</PageVisited>
+      <Referrer>https://localhost:7001/</Referrer>
+      <VisitTime>2026-02-02T08:39:53.9319968Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>2bdf629d-befd-be1e-1ac9-f4492c0c7531</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Skills</PageVisited>
+      <Referrer>https://localhost:7001/</Referrer>
+      <VisitTime>2026-02-02T08:39:54.0392768Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>fd912f4f-26b9-89ea-e64d-5524deabb988</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Projects</PageVisited>
+      <Referrer>https://localhost:7001/</Referrer>
+      <VisitTime>2026-02-02T08:39:54.1411666Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>66992783-ae15-ebe0-41ef-c0754db6e9fd</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Education</PageVisited>
+      <Referrer>https://localhost:7001/</Referrer>
+      <VisitTime>2026-02-02T08:39:54.2241847Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>6776a91f-6d8d-d99a-01ba-daabcb89676f</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Blog</PageVisited>
+      <Referrer>https://localhost:7001/</Referrer>
+      <VisitTime>2026-02-02T08:39:54.3117483Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>02e36f9b-c1e1-afa9-9e33-5ca12c60ce07</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Contact</PageVisited>
+      <Referrer>https://localhost:7001/</Referrer>
+      <VisitTime>2026-02-02T08:39:54.4416867Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>df7332ec-5d35-8c73-42a1-21a2236f5f10</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/</PageVisited>
+      <Referrer>https://localhost:7001/</Referrer>
+      <VisitTime>2026-02-02T08:40:02.2142523Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>e9d139d7-efc5-ad0c-58d1-a34a65240382</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/About</PageVisited>
+      <Referrer>https://localhost:7001/</Referrer>
+      <VisitTime>2026-02-02T08:40:02.5713072Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>000009ae-f488-2723-5430-79a0fbe1fab7</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Skills</PageVisited>
+      <Referrer>https://localhost:7001/</Referrer>
+      <VisitTime>2026-02-02T08:40:02.6129787Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>dc67e18d-c915-8ff8-67e8-42c22005d855</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Projects</PageVisited>
+      <Referrer>https://localhost:7001/</Referrer>
+      <VisitTime>2026-02-02T08:40:02.6629623Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>ea8b3a78-e927-5f2b-30dd-ca9d4ed28643</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Education</PageVisited>
+      <Referrer>https://localhost:7001/</Referrer>
+      <VisitTime>2026-02-02T08:40:02.7101335Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>4cfbbb3b-2142-a0f4-9141-5738ffb50760</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Blog</PageVisited>
+      <Referrer>https://localhost:7001/</Referrer>
+      <VisitTime>2026-02-02T08:40:02.7691744Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>518d0fde-3153-1d64-34e9-195b704903d4</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Contact</PageVisited>
+      <Referrer>https://localhost:7001/</Referrer>
+      <VisitTime>2026-02-02T08:40:02.8395368Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>0f4ddab3-b871-b758-fb05-df461b544602</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/</PageVisited>
+      <Referrer>https://localhost:7001/</Referrer>
+      <VisitTime>2026-02-02T08:41:37.1513228Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>4e8f04a9-7269-11b9-1ef5-a5a70beacbb6</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/About</PageVisited>
+      <Referrer>https://localhost:7001/</Referrer>
+      <VisitTime>2026-02-02T08:41:38.1175741Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>635cbe11-9767-10ae-309a-9580e190563f</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Projects</PageVisited>
+      <Referrer>https://localhost:7001/</Referrer>
+      <VisitTime>2026-02-02T08:41:38.2735078Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>0c715083-5e33-49dd-6c6f-b728107e5128</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Education</PageVisited>
+      <Referrer>https://localhost:7001/</Referrer>
+      <VisitTime>2026-02-02T08:41:38.3318393Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>b043992d-19dc-a787-a8eb-8396e9e3465c</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Blog</PageVisited>
+      <Referrer>https://localhost:7001/</Referrer>
+      <VisitTime>2026-02-02T08:41:38.3949777Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>0806db4d-f1e4-09ba-3358-22d4fb1930b5</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Contact</PageVisited>
+      <Referrer>https://localhost:7001/</Referrer>
+      <VisitTime>2026-02-02T08:41:38.4706493Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>e1471a22-44e9-f0d7-ee7e-d428002730b4</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/About</PageVisited>
+      <Referrer>https://localhost:7001/</Referrer>
+      <VisitTime>2026-02-02T08:41:45.0357329Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>3d85805f-8460-81a5-734d-420cc000012b</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/</PageVisited>
+      <Referrer>https://localhost:7001/Home/About</Referrer>
+      <VisitTime>2026-02-02T08:41:45.3289353Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>b7dbaa07-5895-f175-36f9-f29f29a51eb0</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Skills</PageVisited>
+      <Referrer>https://localhost:7001/Home/About</Referrer>
+      <VisitTime>2026-02-02T08:41:45.3749129Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>8581ec18-9863-9090-21c3-722b727dc31f</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Projects</PageVisited>
+      <Referrer>https://localhost:7001/Home/About</Referrer>
+      <VisitTime>2026-02-02T08:41:45.4137309Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>cb8246e0-cdd9-8406-b549-178168663317</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Education</PageVisited>
+      <Referrer>https://localhost:7001/Home/About</Referrer>
+      <VisitTime>2026-02-02T08:41:45.4620876Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>73dbc6f4-dda3-6795-b652-f478441c56e5</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Blog</PageVisited>
+      <Referrer>https://localhost:7001/Home/About</Referrer>
+      <VisitTime>2026-02-02T08:41:45.5221081Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
+    <Visit>
+      <SessionId>cac83e36-d15c-394a-0d34-6f14f00de82a</SessionId>
+      <IpAddress>::1</IpAddress>
+      <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0</UserAgent>
+      <PageVisited>/Home/Contact</PageVisited>
+      <Referrer>https://localhost:7001/Home/About</Referrer>
+      <VisitTime>2026-02-02T08:41:45.5980295Z</VisitTime>
+      <Country />
+      <City />
+      <Browser>Edge</Browser>
+      <OperatingSystem>Windows 10/11</OperatingSystem>
+      <DeviceType>Desktop</DeviceType>
+    </Visit>
   </Visits>
   <DailyStats>
     <Day>
@@ -20543,9 +21817,9 @@
     </Day>
     <Day>
       <Date>2026-02-02T00:00:00Z</Date>
-      <TotalVisits>1256</TotalVisits>
+      <TotalVisits>1354</TotalVisits>
       <UniqueVisitors>1</UniqueVisitors>
-      <PageViews>1256</PageViews>
+      <PageViews>1354</PageViews>
       <AverageSessionDuration>0</AverageSessionDuration>
       <BounceRate>0</BounceRate>
     </Day>

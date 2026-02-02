@@ -1,48 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfBlogPost xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <BlogPost>
-    <Id>1</Id>
-    <Title>Getting Started with ASP.NET Core 9</Title>
-    <Slug>getting-started-aspnet-core-9</Slug>
-    <Summary>A comprehensive guide to building modern web applications with ASP.NET Core 9, covering the latest features and best practices.</Summary>
-    <Content>&lt;h3&gt;Introduction&lt;/h3&gt;
-&lt;p&gt;ASP.NET Core 9 brings exciting new features and performance improvements to the .NET ecosystem. In this article, we'll explore the key changes and how to leverage them in your applications.&lt;/p&gt;
-
-&lt;h3&gt;What's New in .NET 9&lt;/h3&gt;
-&lt;p&gt;The latest release focuses on performance, cloud-native development, and developer productivity. Key highlights include:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Native AOT improvements for faster startup times&lt;/li&gt;
-&lt;li&gt;Enhanced minimal APIs with better OpenAPI support&lt;/li&gt;
-&lt;li&gt;Blazor improvements for hybrid applications&lt;/li&gt;
-&lt;li&gt;Better performance in Entity Framework Core&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3&gt;Getting Started&lt;/h3&gt;
-&lt;p&gt;To create a new ASP.NET Core 9 project, ensure you have the .NET 9 SDK installed, then run:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;dotnet new webapp -n MyWebApp
-cd MyWebApp
-dotnet run&lt;/code&gt;&lt;/pre&gt;
-
- 
-
-&lt;h3&gt;Conclusion&lt;/h3&gt;
-&lt;p&gt;ASP.NET Core 9 continues to evolve as a powerful framework for building modern web applications. Start exploring today!&lt;/p&gt;</Content>
-    <PublishDate>2026-01-26T13:49:06.4639217Z</PublishDate>
-    <LastModified xsi:nil="true" />
-    <Author>Aydin Wylde</Author>
-    <Category>ASP.NET Core</Category>
-    <Tags>
-      <Tag>ASP.NET Core</Tag>
-      <Tag>.NET 9</Tag>
-      <Tag>Web Development</Tag>
-      <Tag>Tutorial</Tag>
-    </Tags>
-    <IsFeatured>true</IsFeatured>
-    <FeaturedImage>/images/blog/aspnet-core-9.jpg</FeaturedImage>
-    <ViewCount>0</ViewCount>
-    <IsPublished>true</IsPublished>
-  </BlogPost>
-  <BlogPost>
     <Id>2</Id>
     <Title>Mastering C# Pattern Matching</Title>
     <Slug>mastering-csharp-pattern-matching</Slug>
@@ -90,39 +48,6 @@ var result = numbers switch
     <IsPublished>true</IsPublished>
   </BlogPost>
   <BlogPost>
-    <Id>3</Id>
-    <Title>Building a Career in Software Development</Title>
-    <Slug>building-career-software-development</Slug>
-    <Summary>Personal insights and lessons learned from my journey as a software developer, including tips for aspiring developers.</Summary>
-    <Content>&lt;h3&gt;My Journey&lt;/h3&gt;
-&lt;p&gt;After years in the software development industry, I've gathered valuable insights that I wish someone had shared with me when I started.&lt;/p&gt;
-
-&lt;h3&gt;Key Lessons Learned&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Never stop learning:&lt;/strong&gt; Technology evolves rapidly. Dedicate time each week to learning new skills.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Build a portfolio:&lt;/strong&gt; Personal projects demonstrate your abilities better than any resume.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Soft skills matter:&lt;/strong&gt; Communication and teamwork are as important as coding skills.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Embrace failure:&lt;/strong&gt; Every bug is a learning opportunity. Don't fear making mistakes.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3&gt;Advice for Beginners&lt;/h3&gt;
-&lt;p&gt;Start with fundamentals before jumping to frameworks. Understanding how things work under the hood makes you a better developer.&lt;/p&gt;</Content>
-    <PublishDate>2026-01-18T13:49:06.4642125Z</PublishDate>
-    <LastModified xsi:nil="true" />
-    <Author>Aydin Wylde</Author>
-    <Category>Personal</Category>
-    <Tags>
-      <Tag>Career</Tag>
-      <Tag>Personal</Tag>
-      <Tag>Advice</Tag>
-      <Tag>Development</Tag>
-    </Tags>
-    <IsFeatured>false</IsFeatured>
-    <FeaturedImage>/images/blog/career.jpg</FeaturedImage>
-    <ViewCount>0</ViewCount>
-    <IsPublished>true</IsPublished>
-  </BlogPost>
-  <BlogPost>
     <Id>4</Id>
     <Title>.NET 9 Performance Improvements</Title>
     <Slug>dotnet-9-performance-improvements</Slug>
@@ -153,6 +78,48 @@ var result = numbers switch
     <IsPublished>true</IsPublished>
   </BlogPost>
   <BlogPost>
+    <Id>1</Id>
+    <Title>Getting Started with ASP.NET Core 9</Title>
+    <Slug>getting-started-with-aspnet-core-9</Slug>
+    <Summary>A comprehensive guide to building modern web applications with ASP.NET Core 9, covering the latest features and best practices.</Summary>
+    <Content>&lt;h3&gt;Introduction&lt;/h3&gt;
+&lt;p&gt;ASP.NET Core 9 brings exciting new features and performance improvements to the .NET ecosystem. In this article, we'll explore the key changes and how to leverage them in your applications.&lt;/p&gt;
+
+&lt;h3&gt;What's New in .NET 9&lt;/h3&gt;
+&lt;p&gt;The latest release focuses on performance, cloud-native development, and developer productivity. Key highlights include:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Native AOT improvements for faster startup times&lt;/li&gt;
+&lt;li&gt;Enhanced minimal APIs with better OpenAPI support&lt;/li&gt;
+&lt;li&gt;Blazor improvements for hybrid applications&lt;/li&gt;
+&lt;li&gt;Better performance in Entity Framework Core&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Getting Started&lt;/h3&gt;
+&lt;p&gt;To create a new ASP.NET Core 9 project, ensure you have the .NET 9 SDK installed, then run:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;dotnet new webapp -n MyWebApp
+cd MyWebApp
+dotnet run&lt;/code&gt;&lt;/pre&gt;
+
+ 
+
+&lt;h3&gt;Conclusion&lt;/h3&gt;
+&lt;p&gt;ASP.NET Core 9 continues to evolve as a powerful framework for building modern web applications. Start exploring today!&lt;/p&gt;</Content>
+    <PublishDate>0001-01-01T00:00:00</PublishDate>
+    <LastModified>2026-02-02T07:45:58.371113Z</LastModified>
+    <Author />
+    <Category>Azure</Category>
+    <Tags>
+      <Tag>ASP.NET Core</Tag>
+      <Tag>.NET 9</Tag>
+      <Tag>Web Development</Tag>
+      <Tag>Tutorial</Tag>
+    </Tags>
+    <IsFeatured>true</IsFeatured>
+    <FeaturedImage />
+    <ViewCount>0</ViewCount>
+    <IsPublished>true</IsPublished>
+  </BlogPost>
+  <BlogPost>
     <Id>5</Id>
     <Title>Entity Framework Core Best Practices</Title>
     <Slug>entity-framework-core-best-practices</Slug>
@@ -178,9 +145,9 @@ var result = numbers switch
     })
     .ToListAsync();&lt;/code&gt;&lt;/pre&gt;</Content>
     <PublishDate>2026-01-08T13:49:06.4642139Z</PublishDate>
-    <LastModified xsi:nil="true" />
+    <LastModified>2026-02-02T08:42:05.2024499Z</LastModified>
     <Author>Aydin Wylde</Author>
-    <Category>ASP.NET Core</Category>
+    <Category>News</Category>
     <Tags>
       <Tag>Entity Framework</Tag>
       <Tag>Database</Tag>
@@ -188,7 +155,7 @@ var result = numbers switch
       <Tag>Best Practices</Tag>
     </Tags>
     <IsFeatured>false</IsFeatured>
-    <FeaturedImage>/images/blog/efcore.jpg</FeaturedImage>
+    <FeaturedImage />
     <ViewCount>0</ViewCount>
     <IsPublished>true</IsPublished>
   </BlogPost>

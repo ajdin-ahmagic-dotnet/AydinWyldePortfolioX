@@ -210,14 +210,27 @@ namespace AydinWyldePortfolioX.Controllers
         {
             if (!IsAuthenticated())
             {
-                return Unauthorized();
+                return Unauthorized(new { error = "Unauthorized - please log in again", code = 4001 });
             }
 
-            if (_blogService.CreatePost(post))
+            try
             {
-                return Ok(new { success = true, message = "Post created successfully" });
+                if (string.IsNullOrWhiteSpace(post.Title))
+                {
+                    return BadRequest(new { error = "Title is required", code = 4002 });
+                }
+
+                if (_blogService.CreatePost(post))
+                {
+                    return Ok(new { success = true, message = "Post created successfully", postId = post.Id });
+                }
+                return StatusCode(500, new { error = "Failed to create post - check server logs", code = 5001 });
             }
-            return BadRequest(new { error = "Failed to create post" });
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[AdminController] CreateBlogPost error: {ex.Message}");
+                return StatusCode(500, new { error = $"Server error: {ex.Message}", code = 5002 });
+            }
         }
 
         [HttpPut("blog/posts/{id}")]
@@ -225,15 +238,28 @@ namespace AydinWyldePortfolioX.Controllers
         {
             if (!IsAuthenticated())
             {
-                return Unauthorized();
+                return Unauthorized(new { error = "Unauthorized - please log in again", code = 4001 });
             }
 
-            post.Id = id;
-            if (_blogService.UpdatePost(post))
+            try
             {
-                return Ok(new { success = true, message = "Post updated successfully" });
+                if (string.IsNullOrWhiteSpace(post.Title))
+                {
+                    return BadRequest(new { error = "Title is required", code = 4002 });
+                }
+
+                post.Id = id;
+                if (_blogService.UpdatePost(post))
+                {
+                    return Ok(new { success = true, message = "Post updated successfully" });
+                }
+                return StatusCode(500, new { error = "Failed to update post - check server logs", code = 5001 });
             }
-            return BadRequest(new { error = "Failed to update post" });
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[AdminController] UpdateBlogPost error: {ex.Message}");
+                return StatusCode(500, new { error = $"Server error: {ex.Message}", code = 5002 });
+            }
         }
 
         [HttpDelete("blog/posts/{id}")]
@@ -241,14 +267,22 @@ namespace AydinWyldePortfolioX.Controllers
         {
             if (!IsAuthenticated())
             {
-                return Unauthorized();
+                return Unauthorized(new { error = "Unauthorized - please log in again", code = 4001 });
             }
 
-            if (_blogService.DeletePost(id))
+            try
             {
-                return Ok(new { success = true, message = "Post deleted successfully" });
+                if (_blogService.DeletePost(id))
+                {
+                    return Ok(new { success = true, message = "Post deleted successfully" });
+                }
+                return StatusCode(500, new { error = "Failed to delete post - check server logs", code = 5001 });
             }
-            return BadRequest(new { error = "Failed to delete post" });
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[AdminController] DeleteBlogPost error: {ex.Message}");
+                return StatusCode(500, new { error = $"Server error: {ex.Message}", code = 5002 });
+            }
         }
 
         [HttpGet("blog/categories")]
