@@ -275,17 +275,21 @@ namespace AydinWyldePortfolioX.Services
                 
                 // Write to temp file first, then rename for atomic operation
                 var tempFile = _postsFile + ".tmp";
-                using (var stream = File.Create(tempFile))
+                using (var stream = new FileStream(tempFile, FileMode.Create, FileAccess.Write, FileShare.None))
                 {
                     serializer.Serialize(stream, posts);
+                    stream.Flush(true);
                 }
-                
-                // Replace original with temp file
+
+                // On Windows, File.Replace is atomic and avoids partial writes.
                 if (File.Exists(_postsFile))
                 {
-                    File.Delete(_postsFile);
+                    File.Replace(tempFile, _postsFile, null);
                 }
-                File.Move(tempFile, _postsFile);
+                else
+                {
+                    File.Move(tempFile, _postsFile);
+                }
                 
                 Console.WriteLine($"[BlogService] Saved {posts.Count} posts to {_postsFile}");
             }
