@@ -92,7 +92,7 @@ namespace AydinWyldePortfolioX.Services
             return await SendEmailAsync(email, subject, body);
         }
 
-        public async Task<bool> SendSmsAsync(string phoneNumber, string message)
+        public Task<bool> SendSmsAsync(string phoneNumber, string message)
         {
             try
             {
@@ -107,7 +107,7 @@ namespace AydinWyldePortfolioX.Services
                     _logger.LogWarning("Twilio configuration not set. SMS not sent to {Phone}", phoneNumber);
                     // For development, log the SMS content instead
                     _logger.LogInformation("SMS would be sent to: {Phone}, Message: {Message}", phoneNumber, message);
-                    return true; // Return true to allow testing without SMS config
+                    return Task.FromResult(true); // Return true to allow testing without SMS config
                 }
 
                 // Twilio implementation would go here
@@ -119,12 +119,12 @@ namespace AydinWyldePortfolioX.Services
                 // );
 
                 _logger.LogInformation("SMS sent successfully to {Phone}", phoneNumber);
-                return true;
+                return Task.FromResult(true);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Failed to send SMS to {Phone}", phoneNumber);
-                return false;
+                return Task.FromResult(false);
             }
         }
 
